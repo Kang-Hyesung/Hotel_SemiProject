@@ -1,5 +1,5 @@
 public class Room {
-    String roomNum;    // 객실 호수
+    String roomNum;     // 객실 호수
     String grade;       // 객실의 등급
     String bedType;     // 침대 타입
     int num;            // 객실의 사용가능 인원
@@ -31,12 +31,14 @@ public class Room {
     }
 }
 
-public class Deluxe extends Room{
-    roomNum = "101";
-    grade = "deluxe";
-    bedType = "twin";
-    num = 2;
-    roomPrice = 150000;
-    roomRe = false;
+class Deluxe extends Room{
+    {
+        roomNum = "101";
+        grade = "deluxe";
+        bedType = "twin";
+        num = 2;
+        roomPrice = 150000;
+        roomRe = false;
+    }
 
 }
