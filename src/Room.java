@@ -40,5 +40,4 @@ class Deluxe extends Room{
         roomPrice = 150000;
         roomRe = false;
     }
-
 }
