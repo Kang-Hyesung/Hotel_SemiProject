@@ -1,10 +1,19 @@
+import java.util.Calendar;
+
 public class Room {
+//    public Room() {
+//        Calendar now = Calendar.getInstance();
+//        int year = now.get(Calendar.YEAR);
+//        int month = now.get(Calendar.MONTH);
+//        int day = now.get(Calendar.DATE);
+//    }
     protected String roomNum;     // 객실 호수
     protected String grade;       // 객실의 등급
     protected String bedType;     // 침대 타입
     protected int num;            // 객실의 사용가능 인원
     protected int roomPrice;      // 객실 가격
     protected boolean roomRe;     // 예약 여부
+    int year,month,day;
 
     public String getRoomNum() {
         return roomNum;
@@ -59,6 +68,26 @@ public class Room {
             System.out.println("인원수 : 가능");
         else
             System.out.println("인원수 : 불가능");
+    }
+
+    public void reservationFin(){
+        roomRe = true;
+    }
+
+    @Override
+    public String toString() {
+        Calendar now = Calendar.getInstance();
+        int year = now.get(Calendar.YEAR);
+        int month = now.get(Calendar.MONTH) + 1;
+        int day = now.get(Calendar.DATE);
+
+        return "{" +
+                "객실 번호=" + roomNum +
+                ", 등급=" + grade +
+                ", 침대 타입=" + bedType +
+                ", 최대인원수=" + num +
+                ", 객실 가격=" + roomPrice +
+                '}' + "\n" + year + "년 " + month + "월 " + day + "일";
     }
 }
 
