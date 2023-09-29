@@ -71,8 +71,54 @@ class Deluxe extends Room{
         setRoomRe(false);
     }
 
-    Deluxe(String roomNum, String bedType)
+    Deluxe(String roomNum, String bedType) {
+        setRoomNum(roomNum);
+        setBedType(bedType);
+    }
+}
+
+class Superior extends Room{
     {
+        setGrade("Superior");
+        setBedType("twin & Double");
+        setNum(3);
+        setRoomPrice(180000);
+        setRoomRe(false);
+    }
+
+    Superior(String roomNum, String bedType) {
+        setRoomNum(roomNum);
+        setBedType(bedType);
+    }
+}
+
+class Family extends Room{
+
+    {
+        setGrade("Family");
+        setBedType("King2");
+        setNum(6);
+        setRoomPrice(250000);
+        setRoomRe(false);
+    }
+
+    Family(String roomNum, String bedType) {
+        setRoomNum(roomNum);
+        setBedType(bedType);
+    }
+}
+
+class Suite extends Room{
+
+    {
+        setGrade("Suite");
+        setBedType("King");
+        setNum(3);
+        setRoomPrice(300000);
+        setRoomRe(false);
+    }
+
+    Suite(String roomNum, String bedType) {
         setRoomNum(roomNum);
         setBedType(bedType);
     }
