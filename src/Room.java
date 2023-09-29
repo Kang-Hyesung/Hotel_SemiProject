@@ -1,10 +1,10 @@
 public class Room {
-    private String roomNum;     // 객실 호수
-    private String grade;       // 객실의 등급
-    private String bedType;     // 침대 타입
-    private int num;            // 객실의 사용가능 인원
-    private int roomPrice;      // 객실 가격
-    private boolean roomRe;     // 예약 여부
+    protected String roomNum;     // 객실 호수
+    protected String grade;       // 객실의 등급
+    protected String bedType;     // 침대 타입
+    protected int num;            // 객실의 사용가능 인원
+    protected int roomPrice;      // 객실 가격
+    protected boolean roomRe;     // 예약 여부
 
     public String getRoomNum() {
         return roomNum;
@@ -64,62 +64,62 @@ public class Room {
 
 class Deluxe extends Room{
     {
-        setGrade("Deluxe");
-        setBedType("twin");
-        setNum(2);
-        setRoomPrice(150000);
-        setRoomRe(false);
+        grade = "Deluxe";
+        bedType = "twin";
+        num = 2;
+        roomPrice = 150000;
+        roomRe = false;
     }
 
     Deluxe(String roomNum, String bedType) {
-        setRoomNum(roomNum);
-        setBedType(bedType);
+        this.roomNum = roomNum;
+        this.bedType = bedType;
     }
 }
 
 class Superior extends Room{
     {
-        setGrade("Superior");
-        setBedType("twin & Double");
-        setNum(3);
-        setRoomPrice(180000);
-        setRoomRe(false);
+        grade = "Superior";
+        bedType = "twin & Double";
+        num = 3;
+        roomPrice = 180000;
+        roomRe = false;
     }
 
     Superior(String roomNum, String bedType) {
-        setRoomNum(roomNum);
-        setBedType(bedType);
+        this.roomNum = roomNum;
+        this.bedType = bedType;
     }
 }
 
 class Family extends Room{
 
     {
-        setGrade("Family");
-        setBedType("King2");
-        setNum(6);
-        setRoomPrice(250000);
-        setRoomRe(false);
+        grade = "Family";
+        bedType = "King2";
+        num = 6;
+        roomPrice = 250000;
+        roomRe = false;
     }
 
     Family(String roomNum, String bedType) {
-        setRoomNum(roomNum);
-        setBedType(bedType);
+        this.roomNum = roomNum;
+        this.bedType = bedType;
     }
 }
 
 class Suite extends Room{
 
     {
-        setGrade("Suite");
-        setBedType("King");
-        setNum(3);
-        setRoomPrice(300000);
-        setRoomRe(false);
+        grade = "Suite";
+        bedType = "King";
+        num = 3;
+        roomPrice = 300000;
+        roomRe = false;
     }
 
     Suite(String roomNum, String bedType) {
-        setRoomNum(roomNum);
-        setBedType(bedType);
+        this.roomNum = roomNum;
+        this.bedType = bedType;
     }
 }
