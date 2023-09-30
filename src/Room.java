@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Calendar;
 
-public class Room {
+public class Room implements Serializable {
 //    public Room() {
 //        Calendar now = Calendar.getInstance();
 //        int year = now.get(Calendar.YEAR);
