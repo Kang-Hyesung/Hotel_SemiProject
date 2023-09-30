@@ -10,6 +10,13 @@ public class Main{
 
         Map<String, Room> roomMap = new HashMap<>();
 
+        FileInputStream fis = new FileInputStream("test.ser");
+        ObjectInputStream in = new ObjectInputStream(fis);
+
+        roomMap = (HashMap) in.readObject();
+//        System.out.println(roomMap);
+
+
         System.out.print("객실번호를 선택하세요 : ");
         String roomNum = br.readLine();
         System.out.print("침대 타입을 입력하세요 : ");
@@ -23,7 +30,7 @@ public class Main{
         String appDir = System.getProperty("user.dir");
 
         System.out.println(appDir);
-        File f0 = new File(appDir, "\\Test1\\test.ser");
+        File f0 = new File(appDir, "test.ser");
 
         FileOutputStream fos = new FileOutputStream(f0);
         ObjectOutputStream oos = new ObjectOutputStream(fos);

@@ -16,7 +16,7 @@ public class Room implements Serializable {
     protected boolean roomRe;     // 예약 여부
     int year,month,day;
 
- /*   public String getRoomNum() {
+    public String getRoomNum() {
         return roomNum;
     }
 
@@ -62,7 +62,7 @@ public class Room implements Serializable {
 
     public void setRoomRe(boolean roomRe) {
         this.roomRe = roomRe;
-    }*/     // 게터세터
+    }     // 게터세터
 
     public void checkCon(int num){
         if(this.num >= num)
@@ -90,6 +90,8 @@ public class Room implements Serializable {
                 ", 객실 가격=" + roomPrice +
                 '}' + "\n" + year + "년 " + month + "월 " + day + "일";
     }
+
+
 }
 
 class Deluxe extends Room{
