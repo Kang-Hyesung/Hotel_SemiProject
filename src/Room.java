@@ -15,7 +15,7 @@ public class Room {
     protected boolean roomRe;     // 예약 여부
     int year,month,day;
 
-    public String getRoomNum() {
+ /*   public String getRoomNum() {
         return roomNum;
     }
 
@@ -61,7 +61,7 @@ public class Room {
 
     public void setRoomRe(boolean roomRe) {
         this.roomRe = roomRe;
-    }
+    }*/     // 게터세터
 
     public void checkCon(int num){
         if(this.num >= num)
