@@ -2,12 +2,13 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 public class Room implements Serializable {
-//    public Room() {
-//        Calendar now = Calendar.getInstance();
-//        int year = now.get(Calendar.YEAR);
-//        int month = now.get(Calendar.MONTH);
-//        int day = now.get(Calendar.DATE);
-//    }
+    public Room() {
+        Calendar now = Calendar.getInstance();
+        year = now.get(Calendar.YEAR);
+        month = now.get(Calendar.MONTH);
+        day = now.get(Calendar.DATE);
+        System.out.println(year);
+    }
     protected String roomNum;     // 객실 호수
     protected String grade;       // 객실의 등급
     protected String bedType;     // 침대 타입
@@ -77,10 +78,10 @@ public class Room implements Serializable {
 
     @Override
     public String toString() {
-        Calendar now = Calendar.getInstance();
-        int year = now.get(Calendar.YEAR);
-        int month = now.get(Calendar.MONTH) + 1;
-        int day = now.get(Calendar.DATE);
+//        Calendar now = Calendar.getInstance();
+//        int year = now.get(Calendar.YEAR);
+//        int month = now.get(Calendar.MONTH) + 1;
+//        int day = now.get(Calendar.DATE);
 
         return "{" +
                 "객실 번호=" + roomNum +
@@ -88,7 +89,7 @@ public class Room implements Serializable {
                 ", 침대 타입=" + bedType +
                 ", 최대인원수=" + num +
                 ", 객실 가격=" + roomPrice +
-                '}' + "\n" + year + "년 " + month + "월 " + day + "일";
+                '}' + "\n" + String.format("%d년 %02d월 %02d일", year, month, day);
     }
 
 
@@ -104,6 +105,7 @@ class Deluxe extends Room{
     }
 
     Deluxe(String roomNum, String bedType) {
+        super();
         this.roomNum = roomNum;
         this.bedType = bedType;
     }
