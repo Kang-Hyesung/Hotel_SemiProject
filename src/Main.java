@@ -22,6 +22,8 @@ public class Main{
         System.out.print("침대 타입을 입력하세요 : ");
         String bedType = br.readLine();
 
+        // 예약 변호 만들어서 map에 roomNum 대신 넣어줄 것(마지막에 결제되면 실행되게 해야 함)
+
         roomMap.put(roomNum, new Deluxe(roomNum, bedType));
 
         roomMap.get(roomNum).reservationFin();
