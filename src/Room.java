@@ -19,7 +19,7 @@ public class Room implements Serializable {
     protected String bedType;     // 침대 타입
     protected int num;            // 객실의 사용가능 인원
     protected int roomPrice;      // 객실 가격
-    protected boolean roomRe;     // 예약 여부
+    protected boolean roomRe = false;     // 예약 여부
     protected int days;           // 몇박??
     int startYear, startMonth, startDay, endYear, endMonth, endDay;     // 숙박 시작 날짜, 숙박 종료 날짜
 
@@ -86,10 +86,6 @@ public class Room implements Serializable {
             System.out.println("인원수 : 불가능");
     }
 
-    public void reservationFin(){
-        roomRe = true;
-    }
-
     @Override
     public String toString() {
         Calendar now = Calendar.getInstance();
@@ -109,7 +105,8 @@ public class Room implements Serializable {
                 ", 최대인원수=" + num +
                 ", 객실 가격=" + roomPrice +
                 '}' + "\n" + String.format("숙박 시작 : %d년 %02d월 %02d일\n", startYear, startMonth, startDay)
-                + String.format("숙박 종료 : %d년 %02d월 %02d일", endYear, endMonth, endDay);
+                + String.format("숙박 종료 : %d년 %02d월 %02d일", endYear, endMonth, endDay)
+                + roomRe;
     }
 
 
@@ -124,7 +121,7 @@ class Deluxe extends Room{
         roomRe = false;
     }
 
-    Deluxe(String roomNum, String bedType,int days) {
+    Deluxe(String roomNum, String bedType, int days) {
         super();
         this.roomNum = roomNum;
         this.bedType = bedType;

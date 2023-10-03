@@ -11,7 +11,7 @@ public class FileInputOutput {
         ObjectInputStream in = new ObjectInputStream(fis);
 
         roomMap = (Hashtable<String, Room>) in.readObject();
-        System.out.println(roomMap);
+        //System.out.println(roomMap);
         in.close();
         fis.close();
 
