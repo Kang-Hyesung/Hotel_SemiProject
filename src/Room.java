@@ -2,17 +2,17 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 public class Room implements Serializable {
-    public Room() {
-//        Calendar now = Calendar.getInstance();
-//        startYear = now.get(Calendar.YEAR);
-//        startMonth = now.get(Calendar.MONTH);
-//        startDay = now.get(Calendar.DATE);
-//        System.out.println(startDay);
-//        now.add(Calendar.DATE,days);
-//        endYear = now.get(Calendar.YEAR);
-//        endMonth = now.get(Calendar.MONTH);
-//        endDay = now.get(Calendar.DATE);
-//        System.out.println(endDay);
+    public Room(int days) {
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.DATE, afDay);
+        startYear = now.get(Calendar.YEAR);
+        startMonth = now.get(Calendar.MONTH);
+        startDay = now.get(Calendar.DATE);
+
+        now.add(Calendar.DATE, days);
+        endYear = now.get(Calendar.YEAR);
+        endMonth = now.get(Calendar.MONTH);
+        endDay = now.get(Calendar.DATE);
     }
     protected String roomNum;     // 객실 호수
     protected String grade;       // 객실의 등급
@@ -21,6 +21,7 @@ public class Room implements Serializable {
     protected int roomPrice;      // 객실 가격
     protected boolean roomRe = false;     // 예약 여부
     protected int days;           // 몇박??
+    protected int afDay;          // 예약이 며칠 뒤 부터?
     int startYear, startMonth, startDay, endYear, endMonth, endDay;     // 숙박 시작 날짜, 숙박 종료 날짜
 
     public String getEndDate() {
@@ -88,16 +89,6 @@ public class Room implements Serializable {
 
     @Override
     public String toString() {
-        Calendar now = Calendar.getInstance();
-        startYear = now.get(Calendar.YEAR);
-        startMonth = now.get(Calendar.MONTH);
-        startDay = now.get(Calendar.DATE);
-
-        now.add(Calendar.DATE,days);
-        endYear = now.get(Calendar.YEAR);
-        endMonth = now.get(Calendar.MONTH);
-        endDay = now.get(Calendar.DATE);
-
         return "{" +
                 "객실 번호=" + roomNum +
                 ", 등급=" + grade +
@@ -122,10 +113,18 @@ class Deluxe extends Room{
     }
 
     Deluxe(String roomNum, String bedType, int days) {
-        super();
+        super(days);
         this.roomNum = roomNum;
         this.bedType = bedType;
         this.days = days;
+    }
+
+    Deluxe(String roomNum, String bedType, int days, int afDay) {
+        super(days);
+        this.roomNum = roomNum;
+        this.bedType = bedType;
+        this.days = days;
+        this.afDay = afDay;
     }
 }
 
@@ -139,9 +138,18 @@ class Superior extends Room{
     }
 
     Superior(String roomNum, String bedType, int days) {
+        super(days);
         this.roomNum = roomNum;
         this.bedType = bedType;
         this.days = days;
+    }
+
+    Superior(String roomNum, String bedType, int days, int afDay) {
+        super(days);
+        this.roomNum = roomNum;
+        this.bedType = bedType;
+        this.days = days;
+        this.afDay = afDay;
     }
 }
 
@@ -156,9 +164,18 @@ class Family extends Room{
     }
 
     Family(String roomNum, String bedType, int days) {
+        super(days);
         this.roomNum = roomNum;
         this.bedType = bedType;
         this.days = days;
+    }
+
+    Family(String roomNum, String bedType, int days, int afDay) {
+        super(days);
+        this.roomNum = roomNum;
+        this.bedType = bedType;
+        this.days = days;
+        this.afDay = afDay;
     }
 }
 
@@ -173,8 +190,17 @@ class Suite extends Room{
     }
 
     Suite(String roomNum, String bedType, int days) {
+        super(days);
         this.roomNum = roomNum;
         this.bedType = bedType;
         this.days = days;
+    }
+
+    Suite(String roomNum, String bedType, int days, int afDay) {
+        super(days);
+        this.roomNum = roomNum;
+        this.bedType = bedType;
+        this.days = days;
+        this.afDay = afDay;
     }
 }
