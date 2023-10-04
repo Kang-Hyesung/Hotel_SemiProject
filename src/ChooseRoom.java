@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
-
+//
 public class ChooseRoom implements Purchase{
     @Override
     public Hashtable<String, Room> buyRoom(Hashtable<String, Room> roomMap) throws IOException{
