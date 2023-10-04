@@ -2,12 +2,31 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
-//
+
 public class ChooseRoom implements Purchase{
     @Override
     public Hashtable<String, Room> buyRoom(Hashtable<String, Room> roomMap) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         toChangeRoomEmpty(roomMap);
+
+        for (int i = 1; i < 11; i++)
+        {
+            Iterator<String> it = roomMap.keySet().iterator();
+            Calendar today = Calendar.getInstance();
+            int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DATE)));
+            while(it.hasNext())
+            {
+                String key = it.next();
+                if(todayDate >= (roomMap.get(key).getIntStartDate()) && todayDate <= (roomMap.get(key).getIntEndDate()))
+                {
+                    if(Integer.parseInt(roomMap.get(key).getRoomNum()) == 100 + i)
+                        System.out.print(" ■ ");
+                    else
+                        System.out.print(" □ ");
+                }
+            }
+        }
+        System.out.println();
 
         System.out.print("몇 박? : ");
         int days = Integer.parseInt(br.readLine());
