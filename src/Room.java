@@ -14,6 +14,8 @@ public class Room implements Serializable {
         endMonth = now.get(Calendar.MONTH);
         endDay = now.get(Calendar.DATE);
     }
+
+
     protected String roomNum;     // 객실 호수
     protected String grade;       // 객실의 등급
     protected String bedType;     // 침대 타입
@@ -25,11 +27,19 @@ public class Room implements Serializable {
     int startYear, startMonth, startDay, endYear, endMonth, endDay;     // 숙박 시작 날짜, 숙박 종료 날짜
 
     public String getEndDate() {
-        return String.format("%d%d%d",endYear,endMonth,endDay);
+        return String.format("%d%02d%02d",endYear,endMonth,endDay);
+    }
+
+    public int getIntEndDate() {
+        return Integer.parseInt(String.format("%d%02d%02d",endYear,endMonth,endDay));
     }
 
     public String getStartDate() {
-        return String.format("%d%d%d",startYear,startMonth,startDay);
+        return String.format("%d%02d%02d", startYear, startMonth, startDay);
+    }
+
+    public int getIntStartDate() {
+        return Integer.parseInt(String.format("%d%02d%02d", startYear, startMonth, startDay));
     }
 
     public String getRoomNum() {

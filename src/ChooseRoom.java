@@ -25,7 +25,7 @@ public class ChooseRoom implements Purchase{
         String reNum;
         do {
             int i = rd.nextInt(8999) + 1000;
-            reNum = String.format("%d%02d%02d%03d", year, month, day,i);
+            reNum = String.format("%d%02d%02d%03d", year, month, day,i);						// 고쳐야 함
         }
         while (roomMap.put(reNum, new Deluxe(roomNum, bedType, days)) != null);
 
@@ -37,11 +37,12 @@ public class ChooseRoom implements Purchase{
 
 
     // 방 예약
+    @Override
     public Hashtable<String, Room> reRoom(Hashtable<String, Room> roomMap) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         toChangeRoomEmpty(roomMap);
 
-        System.out.print("며칠뒤부터 시작 : ?");
+        System.out.print("며칠 뒤부터 시작?");
         int afDay = Integer.parseInt(br.readLine());
         System.out.print("몇 박? : ");
         int days = Integer.parseInt(br.readLine());
@@ -73,23 +74,25 @@ public class ChooseRoom implements Purchase{
     public void toChangeRoomEmpty(Hashtable<String, Room> roomMap){
         Iterator<String> it = roomMap.keySet().iterator();
         Calendar today = Calendar.getInstance();
-        String todayDate = String.format("%d%d%d", today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DATE));
+        int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DATE)));
         while(it.hasNext())
         {
             String key = it.next();
-            if(todayDate.compareTo(roomMap.get(key).getEndDate()) > 0){
+            if(todayDate > (roomMap.get(key).getIntEndDate())){
                 roomMap.get(key).setRoomRe(false);
             }
-            if(todayDate.compareTo(roomMap.get(key).getStartDate()) == 0) {
+            if(todayDate == (roomMap.get(key).getIntStartDate())) {
                 roomMap.get(key).setRoomRe(true);
             }
             System.out.println(roomMap.get(key));
+            System.out.println();
         }
-    } //toEmpty end
+    } //toChangeRoomEmpty end
 
 }
 
 interface Purchase {
     public abstract Hashtable<String, Room> buyRoom(Hashtable<String, Room> roomMap) throws IOException;
+    public abstract Hashtable<String, Room> reRoom(Hashtable<String, Room> roomMap) throws IOException;
     public abstract void toChangeRoomEmpty(Hashtable<String, Room> roomMap) throws IOException;
 }
