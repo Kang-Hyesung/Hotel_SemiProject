@@ -18,10 +18,28 @@ public class ChooseRoom {
         printRoom(roomMap, days, num);                                // 객실 출력 □ ■
         System.out.print("객실번호를 선택하세요 : ");
         String roomNum = br.readLine();
-        checkRoomCondition(roomMap, days,roomNum);
+
+
+
+        if(roomNum.charAt(0) =='1')
+            if(num > 2)
+                System.out.println("인원수 초과");
+        else if(roomNum.charAt(0) =='2')
+            if(num > 3)
+                System.out.println("인원수 초과");
+        else if(roomNum.charAt(0) =='3')
+            if(num > 6)
+                System.out.println("인원수 초과");
+        else if(roomNum.charAt(0) =='4')
+            if(num > 3)
+                System.out.println("인원수 초과");
+
+        checkRoomCondition(roomMap, days, roomNum);
 
         System.out.print("침대 타입을 선택하세요 : ");
         String bedType = br.readLine();
+
+        putRoom(roomMap, roomNum, days);
 
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
@@ -65,21 +83,21 @@ public class ChooseRoom {
         for (int i = 1; i <= 4; i++){
 
 
-            if(num > 2)
-                if(i == 1)
-                    i++;
-            if(num >= 4)
-                if(i == 2)
-                    i++;
+//            if(num > 2)
+//                if(i == 1)
+//                    i++;
+//            if(num >= 4)
+//                if(i == 2)
+//                    i++;
 
             if(i == 1 && num <= 2)
-                System.out.println("Deluxe");
+                System.out.println("Deluxe (2인 기준)");
             if(i == 2 && num <= 3)
-                System.out.println("Superior");
+                System.out.println("Superior (2 ~ 3인 기준)");
             if(i == 3 && num <= 7)
-                System.out.println("Family");
+                System.out.println("Family (4 ~ 6인 기준)");
             if(i == 4 && num <= 3)
-                System.out.println("Suite");
+                System.out.println("Suite (2 ~ 3인 기준)");
 
             for(int j = 1; j <= 10; j++){
 
@@ -116,16 +134,15 @@ public class ChooseRoom {
             }
             System.out.println("\n");
 
-            if(num >= 4)
-                if(i == 3)
-                    break;
+//            if(num >= 4)
+//                if(i == 3)
+//                    break;
         }
     }
 
     public void checkRoomCondition(Hashtable<String, Room> roomMap, int days, String roomNum) throws IOException{  // 해쉬 테이블, 몇 박, 방 호수
         for (int i = 1; i <= 4; i++){
             for(int j = 1; j <= 10; j++){
-                boolean flag = false;
                 Iterator<String> it = roomMap.keySet().iterator();
                 Calendar today = Calendar.getInstance();
                 int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
