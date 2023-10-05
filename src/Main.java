@@ -10,7 +10,7 @@ public class Main{
 
         //Hashtable<String, Room> roomMap = new Hashtable<>();
 
-        ReChooseRoom chooseRoom = new ReChooseRoom();
+        ChooseRoom chooseRoom = new ChooseRoom();
 
         roomMap = chooseRoom.buyRoom(roomMap);					// void 형으로 바꿔도 될 듯
         // 날짜 비교해 빈 방 만들고 구매된 방 채운 후 방 구매
