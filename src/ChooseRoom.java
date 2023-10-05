@@ -8,11 +8,15 @@ public class ChooseRoom implements Purchase{
     public Hashtable<String, Room> buyRoom(Hashtable<String, Room> roomMap) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         toChangeRoomEmpty(roomMap);
-        printRoom(roomMap);                                // 객실 출력 □ ■
 
         System.out.print("몇 박? : ");
         int days = Integer.parseInt(br.readLine());
-        //인원수
+
+        System.out.printf("인원수? : ");
+        int num = Integer.parseInt(br.readLine());
+
+        printRoom(roomMap, days, num);                                // 객실 출력 □ ■
+
 
         System.out.print("객실번호를 선택하세요 : ");
         String roomNum = br.readLine();
@@ -21,7 +25,7 @@ public class ChooseRoom implements Purchase{
 
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
+        int month = cal.get(Calendar.MONTH) + 1;
         int day = cal.get(Calendar.DATE);
         Random rd = new Random();
 
@@ -42,7 +46,7 @@ public class ChooseRoom implements Purchase{
     public void toChangeRoomEmpty(Hashtable<String, Room> roomMap){
         Iterator<String> it = roomMap.keySet().iterator();
         Calendar today = Calendar.getInstance();
-        int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DATE)));
+        int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
         while(it.hasNext())
         {
             String key = it.next();
@@ -58,7 +62,7 @@ public class ChooseRoom implements Purchase{
     } //toChangeRoomEmpty end
 
     @Override
-    public void printRoom(Hashtable<String, Room> roomMap){
+    public void printRoom(Hashtable<String, Room> roomMap, int days, int num){  // 자료구조, 몇 박, 인원 수
         for (int i = 1; i <= 4; i++){
             if(i == 1)
                 System.out.println("Deluxe");
@@ -73,14 +77,17 @@ public class ChooseRoom implements Purchase{
                 boolean flag = false;
                 Iterator<String> it = roomMap.keySet().iterator();
                 Calendar today = Calendar.getInstance();
-                int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DATE)));
+                int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
+                today.add(Calendar.DATE, days);
+                int endDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
 
                 while(it.hasNext())
                 {
                     String key = it.next();
                     if(Integer.parseInt(roomMap.get(key).getRoomNum()) == 100 * i + j)
                     {
-                        if(todayDate >= (roomMap.get(key).getIntStartDate()) && todayDate < (roomMap.get(key).getIntEndDate())) {
+                        if( (todayDate >= (roomMap.get(key).getIntStartDate()) && todayDate < (roomMap.get(key).getIntEndDate())) &&
+                                (endDate >= (roomMap.get(key).getIntStartDate()) && endDate < (roomMap.get(key).getIntEndDate()))) {
                             System.out.print(" ■  ");
                             flag = true;
                             continue;
@@ -106,5 +113,5 @@ public class ChooseRoom implements Purchase{
 interface Purchase {
     public abstract Hashtable<String, Room> buyRoom(Hashtable<String, Room> roomMap) throws IOException;
     public abstract void toChangeRoomEmpty(Hashtable<String, Room> roomMap) throws IOException;
-    public abstract void printRoom(Hashtable<String, Room> roomMap);
+    public abstract void printRoom(Hashtable<String, Room> roomMap, int days, int num);
 }

@@ -14,12 +14,16 @@ public class ReChooseRoom implements Purchase{
     public Hashtable<String, Room> buyRoom(Hashtable<String, Room> roomMap) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         toChangeRoomEmpty(roomMap);
+        int afDay = afterDay();
 
 
-        System.out.print("며칠 뒤부터 시작?");
-        int afDay = Integer.parseInt(br.readLine());
         System.out.print("몇 박? : ");
         int days = Integer.parseInt(br.readLine());
+
+        System.out.printf("인원수? : ");
+        int num = Integer.parseInt(br.readLine());
+
+        printRoom(roomMap, days, num);                                // 객실 출력 □ ■
         System.out.print("객실번호를 선택하세요 : ");
         String roomNum = br.readLine();
         System.out.print("침대 타입을 선택하세요 : ");
@@ -28,7 +32,7 @@ public class ReChooseRoom implements Purchase{
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, afDay);
         int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
+        int month = cal.get(Calendar.MONTH) + 1;
         int day = cal.get(Calendar.DATE);
         Random rd = new Random();
 
@@ -49,7 +53,7 @@ public class ReChooseRoom implements Purchase{
     public void toChangeRoomEmpty(Hashtable<String, Room> roomMap){
         Iterator<String> it = roomMap.keySet().iterator();
         Calendar today = Calendar.getInstance();
-        int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DATE)));
+        int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
         while(it.hasNext())
         {
             String key = it.next();
@@ -65,7 +69,7 @@ public class ReChooseRoom implements Purchase{
     } //toChangeRoomEmpty end
 
     @Override
-    public void printRoom(Hashtable<String, Room> roomMap){
+    public void printRoom(Hashtable<String, Room> roomMap, int days, int num){
         for (int i = 1; i <= 4; i++){
             if(i == 1)
                 System.out.println("Deluxe");
@@ -80,7 +84,7 @@ public class ReChooseRoom implements Purchase{
                 boolean flag = false;
                 Iterator<String> it = roomMap.keySet().iterator();
                 Calendar today = Calendar.getInstance();
-                int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH), today.get(Calendar.DATE)));
+                int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
 
                 while(it.hasNext())
                 {
@@ -109,17 +113,38 @@ public class ReChooseRoom implements Purchase{
         }
     }
 
-    public void afterDay() throws IOException {
+    public int afterDay() throws IOException {
+        int afDay = 0;
         Calendar now = Calendar.getInstance();
-        now.add(Calendar.DATE, afDay);
         startYear = now.get(Calendar.YEAR);
-        startMonth = now.get(Calendar.MONTH);
+        startMonth = now.get(Calendar.MONTH) + 1;
         startDay = now.get(Calendar.DATE);
+        int todayDate = Integer.parseInt(String.format("%d%02d%02d", now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DATE)));
+
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.printf("체크인 날짜를 입력하세요");
-        System.out.printf("");
+        System.out.println("체크인 날짜를 입력하세요");
+        System.out.println("예)2000년 08월 04일");
         String afDate = br.readLine();
+        int afterYear = Integer.parseInt(afDate.substring(0, 4));
+        int afterMonth = Integer.parseInt(afDate.substring(6, 8));
+        int afterDay = Integer.parseInt(afDate.substring(10, 12));
+        int afterDate = Integer.parseInt(String.format("%d%02d%02d", afterYear, afterMonth, afterDay));
+
+        for(int i = 1; i <= 30; i++){
+            now.add(Calendar.DATE, 1);
+            startYear = now.get(Calendar.YEAR);
+            startMonth = now.get(Calendar.MONTH);
+            startDay = now.get(Calendar.DATE);
+            todayDate = Integer.parseInt(String.format("%d%02d%02d", now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1, now.get(Calendar.DATE)));
+
+            if (todayDate == afterDate) {
+                afDay = i;
+            }
+        }
+        return afDay;
     }
+
+
 }

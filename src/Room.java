@@ -2,16 +2,31 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 public class Room implements Serializable {
+
+    private static final long serialVersionUID = -3406591124049958401l;
     public Room(int days) {
         Calendar now = Calendar.getInstance();
         now.add(Calendar.DATE, afDay);
         startYear = now.get(Calendar.YEAR);
-        startMonth = now.get(Calendar.MONTH);
+        startMonth = now.get(Calendar.MONTH) + 1;
         startDay = now.get(Calendar.DATE);
 
         now.add(Calendar.DATE, days);
         endYear = now.get(Calendar.YEAR);
-        endMonth = now.get(Calendar.MONTH);
+        endMonth = now.get(Calendar.MONTH) + 1;
+        endDay = now.get(Calendar.DATE);
+    }
+
+    public Room(int days, int afDay) {
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.DATE, afDay);
+        startYear = now.get(Calendar.YEAR);
+        startMonth = now.get(Calendar.MONTH) + 1;
+        startDay = now.get(Calendar.DATE);
+
+        now.add(Calendar.DATE, days);
+        endYear = now.get(Calendar.YEAR);
+        endMonth = now.get(Calendar.MONTH) + 1;
         endDay = now.get(Calendar.DATE);
     }
 
@@ -130,7 +145,7 @@ class Deluxe extends Room{
     }
 
     Deluxe(String roomNum, String bedType, int days, int afDay) {
-        super(days);
+        super(days, afDay);
         this.roomNum = roomNum;
         this.bedType = bedType;
         this.days = days;
@@ -155,7 +170,7 @@ class Superior extends Room{
     }
 
     Superior(String roomNum, String bedType, int days, int afDay) {
-        super(days);
+        super(days, afDay);
         this.roomNum = roomNum;
         this.bedType = bedType;
         this.days = days;
@@ -181,7 +196,7 @@ class Family extends Room{
     }
 
     Family(String roomNum, String bedType, int days, int afDay) {
-        super(days);
+        super(days, afDay);
         this.roomNum = roomNum;
         this.bedType = bedType;
         this.days = days;
@@ -207,7 +222,7 @@ class Suite extends Room{
     }
 
     Suite(String roomNum, String bedType, int days, int afDay) {
-        super(days);
+        super(days, afDay);
         this.roomNum = roomNum;
         this.bedType = bedType;
         this.days = days;
