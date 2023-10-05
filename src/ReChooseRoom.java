@@ -1,25 +1,32 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Random;
 
-public class ChooseRoom implements Purchase{
+public class ReChooseRoom implements Purchase{
+    int startYear,startMonth,startDay;
+
+    // 방 예약
     @Override
-    public Hashtable<String, Room> buyRoom(Hashtable<String, Room> roomMap) throws IOException{
+    public Hashtable<String, Room> buyRoom(Hashtable<String, Room> roomMap) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         toChangeRoomEmpty(roomMap);
-        printRoom(roomMap);                                // 객실 출력 □ ■
 
+
+        System.out.print("며칠 뒤부터 시작?");
+        int afDay = Integer.parseInt(br.readLine());
         System.out.print("몇 박? : ");
         int days = Integer.parseInt(br.readLine());
-        //인원수
-
         System.out.print("객실번호를 선택하세요 : ");
         String roomNum = br.readLine();
         System.out.print("침대 타입을 선택하세요 : ");
         String bedType = br.readLine();
 
         Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, afDay);
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DATE);
@@ -28,15 +35,15 @@ public class ChooseRoom implements Purchase{
         String reNum;
         do {
             int i = rd.nextInt(8999) + 1000;
-            reNum = String.format("%d%02d%02d%03d", year, month, day,i);						// 고쳐야 함
+            reNum = String.format("%d%02d%02d%03d", year, month, day,i);
         }
-        while (roomMap.put(reNum, new Deluxe(roomNum, bedType, days)) != null);
+        while (roomMap.put(reNum, new Deluxe(roomNum, bedType, days, afDay)) != null);
 
         roomMap.get(reNum).setRoomRe(true);
         System.out.println(roomMap.get(reNum));     // 객체 정보(애약/구매 내역) 확인
 
         return roomMap;
-    } // buyRoom end
+    } // reRoom end
 
     @Override
     public void toChangeRoomEmpty(Hashtable<String, Room> roomMap){
@@ -101,10 +108,18 @@ public class ChooseRoom implements Purchase{
             System.out.println("\n");
         }
     }
-}
 
-interface Purchase {
-    public abstract Hashtable<String, Room> buyRoom(Hashtable<String, Room> roomMap) throws IOException;
-    public abstract void toChangeRoomEmpty(Hashtable<String, Room> roomMap) throws IOException;
-    public abstract void printRoom(Hashtable<String, Room> roomMap);
+    public void afterDay() throws IOException {
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.DATE, afDay);
+        startYear = now.get(Calendar.YEAR);
+        startMonth = now.get(Calendar.MONTH);
+        startDay = now.get(Calendar.DATE);
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.printf("체크인 날짜를 입력하세요");
+        System.out.printf("");
+        String afDate = br.readLine();
+    }
 }

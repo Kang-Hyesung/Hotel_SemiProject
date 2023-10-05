@@ -18,9 +18,6 @@ public class Main{
         inOut.fileOut(roomMap);                                 // 추가한 Map 직렬화
         inOut = null;
 
-
-
-
     }
 }
 
