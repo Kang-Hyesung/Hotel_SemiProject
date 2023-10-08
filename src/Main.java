@@ -12,9 +12,6 @@ public class Main{
         admin.adminSel();
         admin.adminRun(roomMap);
 
-
-
-
         inOut.fileOut(roomMap);                                 // 추가한 Map 직렬화
         inOut = null;
 

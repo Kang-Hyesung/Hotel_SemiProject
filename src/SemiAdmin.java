@@ -17,7 +17,8 @@ class AdminMenus
 public class SemiAdmin
 {
     static int adminSel;
-    static int teethBrushPaste, roomSlipper;
+    static int teethBrushPaste;
+    static int roomSlipper;
     static int totalPrice;
     static int password;
     static int countReRoom;				// 당일 예약된 방을 보여주는 변수
@@ -131,6 +132,7 @@ public class SemiAdmin
     // 재고 관리 메소드
     public void adminStock()
     {
+
         stockTeeth();
         stockSlipper();
     }

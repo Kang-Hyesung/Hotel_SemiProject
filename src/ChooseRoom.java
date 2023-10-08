@@ -8,12 +8,10 @@ public class ChooseRoom {
     int sukbak;             // 숙박일수
     int inwon;              // 인원
     int roomNum;            // 방 호수
-    int afDay;              // 며칠뒤부터 시작?
-    String afDate;          // afDay 스트링형
     int column;             // 층
     int row;                // 호수
-    String reNum;           // 예약 번호
-    Hashtable<String, Room> roomMap;                     // 예약번호, 객실 객체 자료 구조
+    static String reNum;           // 예약 번호
+    static Hashtable<String, Room> roomMap;                     // 예약번호, 객실 객체 자료 구조
     Set<String> reNumList = new HashSet<>();             // 예약번호 담을 자료구조
     Calendar today = Calendar.getInstance();
     int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
@@ -21,7 +19,15 @@ public class ChooseRoom {
     boolean[][] roomCheck = new boolean[4][10];
 
     ChooseRoom(Hashtable<String, Room> roomMap){                 // 생성자로 자료구조 받아오기
-        this.roomMap = roomMap;
+        ChooseRoom.roomMap = roomMap;
+    }
+
+    public void ChooseRoomRun(){
+        inputSukbakInwon();
+        toChangeRoomEmpty();
+        printRoom();
+        inputRoomNum();
+        putRoom();
     }
 
     public void inputSukbakInwon(){                             // 숙박일수와 인원수 받는 메소드
@@ -39,6 +45,7 @@ public class ChooseRoom {
     }
 
     public void toChangeRoomEmpty(){
+        // 오늘 날짜와 객실 객체의 숙박시작 ~ 종료날짜를 비교하여 방이 비어 있는지 여부를 true false로 변경
         Iterator<String> it = roomMap.keySet().iterator();
         while(it.hasNext())
         {
@@ -53,7 +60,7 @@ public class ChooseRoom {
         }
     } //toChangeRoomEmpty end
 
-    public void printRoom(){  // 자료구조, 몇 박, 인원 수
+    public void printRoom(){  // 구매 시점의 숙박 가능 여부 출력 □ ■
         for (int i = 1; i <= 4; i++){
             if(i == 1)
                 System.out.println("Deluxe (2인 기준)");
@@ -100,7 +107,7 @@ public class ChooseRoom {
         }
     }
 
-    public void inputRoomNum(){
+    public void inputRoomNum(){                 // 객실번호 선택할 때 현재 차있는 방이라면 다시 입력하라는 메소드
         try {
             System.out.print("객실번호를 선택하세요 : ");
             roomNum = Integer.parseInt(br.readLine());
@@ -135,7 +142,7 @@ public class ChooseRoom {
         }
     }
 
-    public void putRoom(){
+    public void putRoom(){                          // 예약번호를 랜덤으로 생성하여 객실 객체 생성
         Random rd = new Random();
         do {
             int i = rd.nextInt(9000) + 1000;
@@ -162,10 +169,6 @@ public class ChooseRoom {
             else
                 roomMap.put(reNum, new Superior(roomNum, "2 Double", sukbak));
 
-    }
-
-    public void getInformation(){
-        System.out.println(roomMap.get(reNum));
     }
 
     public void removeRoom(){
