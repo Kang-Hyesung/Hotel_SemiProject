@@ -140,7 +140,6 @@ public class Reserve_list
                 chooseRoom.printRoom();
                 chooseRoom.inputRoomNum();
                 chooseRoom.putRoom();
-                chooseRoom.getInformation();
             }
         }
         catch (Exception ee)
@@ -327,7 +326,6 @@ public class Reserve_list
                     chooseRoom.printRoom();
                     chooseRoom.inputRoomNum();
                     chooseRoom.putRoom();
-                    chooseRoom.getInformation();
                 }
 
                 // 미성년자일 경우

@@ -28,6 +28,7 @@ public class SemiAdmin
         this.roomMap = roomMap;
     }
 
+
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     Scanner sc = new Scanner(System.in);
 

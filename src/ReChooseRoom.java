@@ -23,7 +23,7 @@ public class ReChooseRoom{
         ReChooseRoom.roomMap = roomMap;
     }
 
-    public void ChooseRoomRun(){
+    public void ReChooseRoomRun(){
         today = Calendar.getInstance();
         afterDay();
         inputSukbakInwon();

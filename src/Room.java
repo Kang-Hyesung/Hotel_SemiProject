@@ -36,7 +36,7 @@ public class Room implements Serializable {
     protected String bedType;     // 침대 타입
     protected int num;            // 객실의 사용가능 인원
     protected int roomPrice;      // 객실 가격
-    protected boolean roomRe = false;     // 예약 여부
+    protected boolean roomRe;     // 예약 여부
     protected int days;           // 몇박??
     protected int afDay;          // 예약이 며칠 뒤 부터?
     int startYear, startMonth, startDay, endYear, endMonth, endDay;     // 숙박 시작 날짜, 숙박 종료 날짜

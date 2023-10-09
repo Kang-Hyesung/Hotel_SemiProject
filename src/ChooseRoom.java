@@ -85,7 +85,7 @@ public class ChooseRoom {
                     if(roomMap.get(key).getRoomNum() == 100 * i + j)
                     {
                         if( (startDate >= (roomMap.get(key).getIntStartDate()) && startDate < (roomMap.get(key).getIntEndDate())) ||
-                                (endDate >= (roomMap.get(key).getIntStartDate()) && endDate < (roomMap.get(key).getIntEndDate()))) {
+                                (endDate > (roomMap.get(key).getIntStartDate()) && endDate <= (roomMap.get(key).getIntEndDate()))) {
                             System.out.print(" ■  ");
                             roomCheck[i - 1][j - 1] = true;
                             flag = true;
@@ -150,7 +150,6 @@ public class ChooseRoom {
         }
         while (!reNumList.add(reNum));
 
-
         if(column == 1)
             if(row <= 5)
                 roomMap.put(reNum, new Deluxe(roomNum, "Twin", sukbak));
@@ -175,6 +174,37 @@ public class ChooseRoom {
         roomMap.remove(reNum);
         reNumList.remove(reNum);
     }
+
+    public void checkRoomGrade(){               // 당일 기준 객실 구매 현황 (일주일 등으로 기간 변경 가능)
+        Iterator<String> it = roomMap.keySet().iterator();
+        int deluxe = 0;
+        int superior = 0;
+        int family = 0;
+        int suite = 0;
+
+        while (it.hasNext()){
+            String key = it.next();
+            if (roomMap.get(key).isRoomRe() == true){
+                if(roomMap.get(key).getGrade().equals("Deluxe")){
+                    deluxe++;
+                } else if (roomMap.get(key).getGrade().equals("Superior")) {
+                    superior++;
+                } else if (roomMap.get(key).getGrade().equals("Family")) {
+                    family++;
+                }else if (roomMap.get(key).getGrade().equals("Suite")) {
+                    suite++;
+                }
+            }
+        }
+
+        System.out.println("당일 기준");
+        System.out.println("Deluxe등급" + " " + deluxe);
+        System.out.println("Superior등급" + " " + superior);
+        System.out.println("Family등급" + " " + family);
+        System.out.println("Suite등급" + " " + suite);
+    }//end CheckRoomGrade
+
+
 
 
 }
