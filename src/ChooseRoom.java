@@ -144,8 +144,8 @@ public class ChooseRoom {
 
     public void putRoom(){                          // 예약번호를 랜덤으로 생성하여 객실 객체 생성
         Random rd = new Random();
-        do {
-            int i = rd.nextInt(9000) + 1000;
+        do {// 예약의 경우 1000 ~ 4999 부여
+            int i = rd.nextInt(4000) + 1000;
             reNum = String.format("%d%02d%02d%04d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE),i);
         }
         while (!reNumList.add(reNum));

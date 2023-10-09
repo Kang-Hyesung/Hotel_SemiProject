@@ -6,6 +6,8 @@ public class Main{
         Hashtable<String, Room> roomMap = inOut.fileIn();       // 역직렬화로 Hashtable 가져오기
 
         //Hashtable<String, Room> roomMap = new Hashtable<>();
+
+        // 관리자모드 나와서 회원이냐 묻는 메소드 반복해야 함
         SemiAdmin admin = new SemiAdmin(roomMap);
         admin.menuDisp();
         admin.adminPassword();

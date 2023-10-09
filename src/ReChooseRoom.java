@@ -146,8 +146,8 @@ public class ReChooseRoom{
 
     public void putRoom(){
         Random rd = new Random();
-        do {
-            int i = rd.nextInt(9000) + 1000;
+        do {// 예약의 경우 5000 ~ 9999 부여
+            int i = rd.nextInt(5000) + 5000;
             reNum = String.format("%d%02d%02d%04d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE),i);
         }
         while (!reNumList.add(reNum));
