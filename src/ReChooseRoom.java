@@ -4,36 +4,37 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class ReChooseRoom{
-    int sukbak;             // 숙박일수
-    int inwon;              // 인원
-    int roomNum;            // 방 호수
-    int afDay;              // 며칠뒤부터 시작?
-    String afDate;          // afDay 스트링형
-    int column;             // 층
-    int row;                // 호수
-    static String reNum;           // 예약 번호
-    static Hashtable<String, Room> roomMap;                     // 예약번호, 객실 객체 자료 구조
+    private int sukbak;             // 숙박일수
+    private String inwon;              // 인원
+    private int roomNum;            // 방 호수
+    private int afDay;              // 며칠뒤부터 시작?
+    private String afDate;          // afDay 스트링형
+    private int column;             // 층
+    private int row;                // 호수
+    private String reNum;           // 예약 번호
+    Hashtable<String, Room> roomMap;                     // 예약번호, 객실 객체 자료 구조
     Set<String> reNumList = new HashSet<>();             // 예약번호 담을 자료구조
-    Calendar today;
+    Calendar today = Calendar.getInstance();
     int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     boolean[][] roomCheck = new boolean[4][10];
 
     ReChooseRoom(Hashtable<String, Room> roomMap){                 // 생성자로 자료구조 받아오기
-        ReChooseRoom.roomMap = roomMap;
+        this.roomMap = roomMap;
     }
 
-    public void ReChooseRoomRun(){
+    public String ReChooseRoomRun(){
         today = Calendar.getInstance();
         afterDay();
         inputSukbakInwon();
         toChangeRoomEmpty();
         printRoom();
         inputRoomNum();
-        putRoom();
+
+        return putRoom();
     }
 
-    public static String getReNum() {
+    public String getReNum() {
         return reNum;
     }
 
@@ -43,7 +44,7 @@ public class ReChooseRoom{
             sukbak = Integer.parseInt(br.readLine());
 
             System.out.printf("인원수? : ");
-            inwon = Integer.parseInt(br.readLine());
+            inwon = br.readLine();
         }
         catch (Exception e){
             System.out.println("정수 형태로 입력해 주세요");
@@ -125,19 +126,19 @@ public class ReChooseRoom{
                 inputRoomNum();
             }
 
-            if((roomNum / 100 == 1) &&  inwon > 2){
+            if((roomNum / 100 == 1) &&  Integer.parseInt(inwon) > 2){
                 System.out.println("Deluxe등급의 객실은 2인까지 가능");
                 inputRoomNum();
             }
-            else if((roomNum / 100 == 2) &&  inwon > 3){
+            else if((roomNum / 100 == 2) &&  Integer.parseInt(inwon) > 3){
                 System.out.println("Superior등급의 객실은 3인까지 가능");
                 inputRoomNum();
             }
-            else if((roomNum / 100 == 3) &&  inwon > 6){
+            else if((roomNum / 100 == 3) &&  Integer.parseInt(inwon) > 6){
                 System.out.println("Family등급의 객실은 6인까지 가능");
                 inputRoomNum();
             }
-            else if((roomNum / 100 == 4) &&  inwon > 3){
+            else if((roomNum / 100 == 4) &&  Integer.parseInt(inwon) > 3){
                 System.out.println("Suite등급의 객실은 3인까지 가능");
                 inputRoomNum();
             }
@@ -148,7 +149,7 @@ public class ReChooseRoom{
         }
     }
 
-    public void putRoom(){
+    public String putRoom(){
         Random rd = new Random();
         do {// 예약의 경우 5000 ~ 9999 부여
             int i = rd.nextInt(5000) + 5000;
@@ -174,6 +175,9 @@ public class ReChooseRoom{
                 roomMap.put(reNum, new Superior(roomNum, "King", sukbak, afDay));
             else
                 roomMap.put(reNum, new Superior(roomNum, "2 Double", sukbak, afDay));
+
+
+        return reNum;
 
     }
 
@@ -206,10 +210,6 @@ public class ReChooseRoom{
                 break;
             }
         }
-    }
-
-    public static void getInformation(){
-        System.out.println(roomMap.get(reNum));
     }
 
     public void removeRoom(){

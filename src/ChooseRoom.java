@@ -1,16 +1,15 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.sql.SQLOutput;
 import java.util.*;
 
 //현장구매 클래스
 public class ChooseRoom {
-    int sukbak;             // 숙박일수
-    int inwon;              // 인원
-    int roomNum;            // 방 호수
-    int column;             // 층
-    int row;                // 호수
-    String reNum;           // 예약 번호
+    private int sukbak;             // 숙박일수
+    private String inwon;              // 인원
+    private int roomNum;            // 방 호수
+    private int column;             // 층
+    private int row;                // 호수
+    private String reNum;           // 예약 번호
 
     public String getReNum() {
         return reNum;
@@ -40,8 +39,8 @@ public class ChooseRoom {
             System.out.print("몇 박? : ");
             sukbak = Integer.parseInt(br.readLine());
 
-            System.out.printf("인원수? : ");
-            inwon = Integer.parseInt(br.readLine());
+            System.out.printf("인원수를 숫자형태로? :  예)3" );
+            inwon = br.readLine();
         }
         catch (Exception e){
             System.out.println("정수 형태로 입력해 주세요");
@@ -124,19 +123,19 @@ public class ChooseRoom {
                 inputRoomNum();
             }
 
-            if((roomNum / 100 == 1) &&  inwon > 2){
+            if((roomNum / 100 == 1) &&  Integer.parseInt(inwon) > 2){
                 System.out.println("Deluxe등급의 객실은 2인까지 가능");
                 inputRoomNum();
             }
-            else if((roomNum / 100 == 2) &&  inwon > 3){
+            else if((roomNum / 100 == 2) &&  Integer.parseInt(inwon) > 3){
                 System.out.println("Superior등급의 객실은 3인까지 가능");
                 inputRoomNum();
             }
-            else if((roomNum / 100 == 3) &&  inwon > 6){
+            else if((roomNum / 100 == 3) &&  Integer.parseInt(inwon) > 6){
                 System.out.println("Family등급의 객실은 6인까지 가능");
                 inputRoomNum();
             }
-            else if((roomNum / 100 == 4) &&  inwon > 3){
+            else if((roomNum / 100 == 4) &&  Integer.parseInt(inwon) > 3){
                 System.out.println("Suite등급의 객실은 3인까지 가능");
                 inputRoomNum();
             }

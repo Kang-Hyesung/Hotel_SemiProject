@@ -133,7 +133,6 @@ public class Reserve_list
             {
                 System.out.println(map.get(str));						//-- 회원정보출력
                 System.out.println("\n객실 구매창으로 이동합니다.");	//-- 회원이므로 객실 구매창(객실 선택)으로 이동**삭제해야함
-
                 ChooseRoom chooseRoom = new ChooseRoom(roomMap);
                 chooseRoom.inputSukbakInwon();
                 chooseRoom.toChangeRoomEmpty();
