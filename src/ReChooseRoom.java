@@ -160,21 +160,21 @@ public class ReChooseRoom{
 
         if(column == 1)
             if(row <= 5)
-                roomMap.put(reNum, new Deluxe(roomNum, "Twin", sukbak, afDay));
+                roomMap.put(reNum, new Deluxe(roomNum, "Twin", sukbak, afDay, inwon));
             else
-                roomMap.put(reNum, new Deluxe(roomNum, "Double", sukbak, afDay));
+                roomMap.put(reNum, new Deluxe(roomNum, "Double", sukbak, afDay, inwon));
         else if(column == 2)
             if(row <= 5)
-                roomMap.put(reNum, new Superior(roomNum, "Twin + Double", sukbak, afDay));
+                roomMap.put(reNum, new Superior(roomNum, "Twin + Double", sukbak, afDay, inwon));
             else
-                roomMap.put(reNum, new Superior(roomNum, "3 Twin", sukbak, afDay));
+                roomMap.put(reNum, new Superior(roomNum, "3 Twin", sukbak, afDay, inwon));
         else if(column == 3)
-            roomMap.put(reNum, new Family(roomNum, "2 King", sukbak, afDay));
+            roomMap.put(reNum, new Family(roomNum, "2 King", sukbak, afDay, inwon));
         else if(column == 4)
             if(row <= 5)
-                roomMap.put(reNum, new Superior(roomNum, "King", sukbak, afDay));
+                roomMap.put(reNum, new Superior(roomNum, "King", sukbak, afDay, inwon));
             else
-                roomMap.put(reNum, new Superior(roomNum, "2 Double", sukbak, afDay));
+                roomMap.put(reNum, new Superior(roomNum, "2 Double", sukbak, afDay, inwon));
 
 
         return reNum;

@@ -157,21 +157,21 @@ public class ChooseRoom {
 
         if(column == 1)
             if(row <= 5)
-                roomMap.put(reNum, new Deluxe(roomNum, "Twin", sukbak));
+                roomMap.put(reNum, new Deluxe(roomNum, "Twin", sukbak, inwon));
             else
-                roomMap.put(reNum, new Deluxe(roomNum, "Double", sukbak));
+                roomMap.put(reNum, new Deluxe(roomNum, "Double", sukbak, inwon));
         else if(column == 2)
             if(row <= 5)
-                roomMap.put(reNum, new Superior(roomNum, "Twin + Double", sukbak));
+                roomMap.put(reNum, new Superior(roomNum, "Twin + Double", sukbak, inwon));
             else
-                roomMap.put(reNum, new Superior(roomNum, "3 Twin", sukbak));
+                roomMap.put(reNum, new Superior(roomNum, "3 Twin", sukbak, inwon));
         else if(column == 3)
-            roomMap.put(reNum, new Family(roomNum, "2 King", sukbak));
+            roomMap.put(reNum, new Family(roomNum, "2 King", sukbak, inwon));
         else if(column == 4)
             if(row <= 5)
-                roomMap.put(reNum, new Suite(roomNum, "King", sukbak));
+                roomMap.put(reNum, new Suite(roomNum, "King", sukbak, inwon));
             else
-                roomMap.put(reNum, new Suite(roomNum, "2 Double", sukbak));
+                roomMap.put(reNum, new Suite(roomNum, "2 Double", sukbak, inwon));
 
         return reNum;
     }
