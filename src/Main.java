@@ -12,14 +12,14 @@ public class Main{
         // 관리자모드 나와서 회원이냐 묻는 메소드 반복해야 함
         SemiAdmin admin = new SemiAdmin(stockArray);
 
-        int i = admin.AdminRun(roomMap);                // SemiAdmin custommode에서 선택결과
-        String Renum;                                   // 객실 선택 후 부여된 예약 번호
+        int S = admin.AdminRun(roomMap);                // SemiAdmin custommode에서 선택결과
+        String reNum;                                   // 객실 선택 후 부여된 예약 번호
 
-        switch (i){
-            case 1: Reserve_list abc = new Reserve_list(roomMap);
-                    abc.reserve(); break;
+        switch (S){
+            case 1: Reserve_list reList = new Reserve_list(roomMap);
+                    reList.reserve(); break;
             case 2: ReChooseRoom rechoose = new ReChooseRoom(roomMap);
-                    Renum = rechoose.ReChooseRoomRun(); break;
+                    reNum = rechoose.ReChooseRoomRun(); break;
 
         }
 
