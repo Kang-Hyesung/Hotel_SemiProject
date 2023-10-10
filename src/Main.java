@@ -18,5 +18,3 @@ public class Main{
         inOut = null;
     }
 }
-
-

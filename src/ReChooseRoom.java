@@ -33,6 +33,10 @@ public class ReChooseRoom{
         putRoom();
     }
 
+    public static String getReNum() {
+        return reNum;
+    }
+
     public void inputSukbakInwon(){                             // 숙박일수와 인원수 받는 메소드
         try {
             System.out.print("몇 박? : ");

@@ -10,7 +10,12 @@ public class ChooseRoom {
     int roomNum;            // 방 호수
     int column;             // 층
     int row;                // 호수
-    static String reNum;           // 예약 번호
+    String reNum;           // 예약 번호
+
+    public String getReNum() {
+        return reNum;
+    }
+
     static Hashtable<String, Room> roomMap;                     // 예약번호, 객실 객체 자료 구조
     Set<String> reNumList = new HashSet<>();             // 예약번호 담을 자료구조
     Calendar today = Calendar.getInstance();
@@ -164,9 +169,9 @@ public class ChooseRoom {
             roomMap.put(reNum, new Family(roomNum, "2 King", sukbak));
         else if(column == 4)
             if(row <= 5)
-                roomMap.put(reNum, new Superior(roomNum, "King", sukbak));
+                roomMap.put(reNum, new Suite(roomNum, "King", sukbak));
             else
-                roomMap.put(reNum, new Superior(roomNum, "2 Double", sukbak));
+                roomMap.put(reNum, new Suite(roomNum, "2 Double", sukbak));
 
     }
 
