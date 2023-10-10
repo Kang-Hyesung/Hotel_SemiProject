@@ -1,3 +1,4 @@
+// Reserve_list에서 임의적으로 put함
 public class Members
 {
     protected String memberName;

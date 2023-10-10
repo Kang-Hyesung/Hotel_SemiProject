@@ -26,12 +26,13 @@ public class ChooseRoom {
         ChooseRoom.roomMap = roomMap;
     }
 
-    public void ChooseRoomRun(){
+    public String ChooseRoomRun(){
         inputSukbakInwon();
         toChangeRoomEmpty();
         printRoom();
         inputRoomNum();
-        putRoom();
+
+        return putRoom();
     }
 
     public void inputSukbakInwon(){                             // 숙박일수와 인원수 받는 메소드
@@ -146,7 +147,7 @@ public class ChooseRoom {
         }
     }
 
-    public void putRoom(){                          // 예약번호를 랜덤으로 생성하여 객실 객체 생성
+    public String putRoom(){                          // 예약번호를 랜덤으로 생성하여 객실 객체 생성
         Random rd = new Random();
         do {// 예약의 경우 1000 ~ 4999 부여
             int i = rd.nextInt(4000) + 1000;
@@ -172,6 +173,7 @@ public class ChooseRoom {
             else
                 roomMap.put(reNum, new Suite(roomNum, "2 Double", sukbak));
 
+        return reNum;
     }
 
     public void removeRoom(){

@@ -2,7 +2,11 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
-import java.util.*;
+import java.util.Scanner;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Hashtable;
 
 
 public class Reserve_list
@@ -10,19 +14,24 @@ public class Reserve_list
     // BufferedReader 인스턴스 생성
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    String reName="채다선", reBirth, reTel, reNum="12345678";	//-- 예약자명, 주민번호, 전화번호, 예약번호 (일단 임의로 지정함**삭제해야함)
-    String res;													//-- 응답확인 변수 Y/N
-    String name, birth, tel;									//-- (비회원모드) 이름, 주민번호, 전화번호
+    private String reNum;												//-- 예약번호
+    private String res;													//-- 응답확인 변수 Y/N
+    private String name, birth, tel;									//-- (비회원모드) 이름, 주민번호, 전화번호
 
     int n = 0;													// 다시 입력, 돌아가기 값 받는 곳
-    Hashtable<String, Room> roomMap;
-    Reserve_list(Hashtable<String, Room> roomMap){
+    int i;
+
+    public Hashtable<String,Room> roomMap;
+    public Hashtable<String,Reserves> reGuest;
+
+    Reserve_list(Hashtable<String,Room> roomMap, Hashtable<String,Reserves> reGuest)
+    {
         this.roomMap = roomMap;
+        this.reGuest = reGuest;
     }
 
-
     // 예약 여부(Y/N) 확인
-    public void reserve() throws IOException
+    public int reserve() throws IOException
     {
         do
         {
@@ -41,6 +50,9 @@ public class Reserve_list
             }
         }
         while (!res.equals("Y") && !res.equals("N"));				//-- Y나 N이 아닌 다른 문자나 숫자를 입력했을 경우..
+
+        return i;
+
     } // end reserve()
 
 
@@ -54,7 +66,7 @@ public class Reserve_list
 
             if (inputNum.equals(reNum))
             {
-                System.out.println(roomMap.get(inputNum));		// 정보출력예시
+                System.out.println("예약번호 : "+reNum+"\n"+"\n"+"객실정보출력 : \n");		// 정보출력예시
                 break;
             }
             else
@@ -82,7 +94,7 @@ public class Reserve_list
                 }
             }
         }
-        while (n == 1);										//-- 다시 입력(1)을 클릭했을 때 예약번호입력으로 돌아가기
+        while (n == 1);												//-- 다시 입력(1)을 클릭했을 때 예약번호입력으로 돌아가기
 
     } // end reserveCheck()
 
@@ -96,13 +108,13 @@ public class Reserve_list
             if (!res.equals("Y") && !res.equals("N"))
                 System.out.println("\n=======Y/N 중 선택해주세요.=======\n");
 
-            if (res.equals("Y"))									//-- Y (
+            if (res.equals("Y"))									//-- Y (회원일 때)
             {
-                memberCheck();										//--
+                memberCheck();										//-- 회원모드로 이동
             }
-            else if (res.equals("N"))								//-- N (
+            else if (res.equals("N"))								//-- N (비회원일 때)
             {
-                nonMemberCheck();											//--
+                nonMemberCheck();									//-- 비회원모드로 이동
             }
         }
         while (!res.equals("Y") && !res.equals("N"));				//-- Y나 N이 아닌 다른 문자나 숫자를 입력했을 경우..
@@ -115,12 +127,12 @@ public class Reserve_list
         HashMap<String, Members> map = new HashMap<String, Members>();
 
         // 회원명단
-        map.put("111111", new Members("채다선","961023","010-1234-5678", 111111));
-        map.put("222222", new Members("이윤수","950106","010-2345-6789", 222222));
-        map.put("333333", new Members("최혜인","000000","010-3456-6789", 333333));
-        map.put("444444", new Members("강혜성","000000","010-4567-8901", 444444));
-        map.put("555555", new Members("길현욱","000000","010-3456-6789", 555555));
-        map.put("666666", new Members("김수환","000000","010-4567-8901", 666666));
+        map.put("111111", new Members("채다선","961023-2","010-1234-5678", 111111));
+        map.put("222222", new Members("이윤수","950106-1","010-2345-6789", 222222));
+        map.put("333333", new Members("최혜인","970000-2","010-3456-6789", 333333));
+        map.put("444444", new Members("강혜성","970000-1","010-4567-8901", 444444));
+        map.put("555555", new Members("길현욱","000000-1","010-3456-6789", 555555));
+        map.put("666666", new Members("김수환","000000-1","010-4567-8901", 666666));
 
 
         try
@@ -133,12 +145,7 @@ public class Reserve_list
             {
                 System.out.println(map.get(str));						//-- 회원정보출력
                 System.out.println("\n객실 구매창으로 이동합니다.");	//-- 회원이므로 객실 구매창(객실 선택)으로 이동**삭제해야함
-                ChooseRoom chooseRoom = new ChooseRoom(roomMap);
-                chooseRoom.inputSukbakInwon();
-                chooseRoom.toChangeRoomEmpty();
-                chooseRoom.printRoom();
-                chooseRoom.inputRoomNum();
-                chooseRoom.putRoom();
+                i = 1;
             }
         }
         catch (Exception ee)
@@ -151,7 +158,7 @@ public class Reserve_list
                     System.out.println("1. 다시 입력\t 2. 이전 메뉴\n");
                     System.out.print("원하는 번호를 입력해주세요. : ");
                     n = Integer.parseInt(br.readLine());
-                    if (n == 2)									//-- 이전 메뉴(2)를 클릭했을 때
+                    if (n == 2)											//-- 이전 메뉴(2)를 클릭했을 때
                         member();
                     else if (n == 1)
                         memberCheck();
@@ -176,7 +183,7 @@ public class Reserve_list
 
         do
         {
-            System.out.print("\n이름 전화번호를 입력해주세요(공백구분) : ");
+            System.out.print("\n이름 전화번호(010-xxxx-xxxx)를 입력해주세요(공백구분) : ");
             name = sc.next();
             tel = sc.next();
 
@@ -273,7 +280,7 @@ public class Reserve_list
                         System.out.println("\n1. 다시 입력\t 2. 이전 메뉴");
                         System.out.print("원하는 번호를 입력해주세요 : ");
                         n = Integer.parseInt(br.readLine());
-                        if (n==2)									//-- 이전 메뉴(2)를 클릭했을 때 예약여부확인으로 돌아가기**변경해야함
+                        if (n==2)									//-- 이전 메뉴(2)를 클릭했을 때 메인화면으로 돌아가기
                         {
                             System.out.println("메인화면으로...");								// 메인화면으로 가는게 좋음
                         }
@@ -310,7 +317,6 @@ public class Reserve_list
                 calMember.add(Calendar.YEAR,19);
                 Calendar cal = Calendar.getInstance();			// 시스템 날짜
 
-
                 int todayY = cal.get(Calendar.YEAR);
                 int todayM = cal.get(Calendar.MONTH);
                 int todayD = cal.get(Calendar.DATE);
@@ -318,13 +324,8 @@ public class Reserve_list
                 // 성인일 경우
                 if (cal.compareTo(calMember) == 1 || cal.compareTo(calMember) == 0)
                 {
-                    System.out.println("\n객실 정보 출력창으로 이동합니다.");	//-- 성인이므로 객실 구매창(객실 선택)으로 이동**삭제해야함
-                    ChooseRoom chooseRoom = new ChooseRoom(roomMap);
-                    chooseRoom.inputSukbakInwon();
-                    chooseRoom.toChangeRoomEmpty();
-                    chooseRoom.printRoom();
-                    chooseRoom.inputRoomNum();
-                    chooseRoom.putRoom();
+                    System.out.println("\n객실 정보 출력창으로 이동합니다.");	//-- 성인이므로 객실 구매창(객실 선택)으로 이동
+                    i = 1;
                 }
 
                 // 미성년자일 경우
@@ -332,9 +333,17 @@ public class Reserve_list
                 {
                     System.out.println("\n미성년자이므로 객실 예약이 불가합니다.\n데스크에 문의 바랍니다.\n");
                     System.out.println("메인화면으로..");
+                    //**
                 }
             }
         }
     } // end jumin()
+
+    public void putInfo()
+    {
+        reGuest.put(reNum, new Reserves(name, birth, tel));	// **객실 구매 후 예약번호 생성 시 받아와야함
+
+    } // end putInfo()
+
 
 } // end class
