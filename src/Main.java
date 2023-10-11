@@ -38,7 +38,7 @@ public class Main{
         switch (S){  // SemiAdmin custommode에서 선택결과에 따라
             case 1: R = reList.reserve();                                // 1번이면 회원인지 예약인지 확인
                 reNum = choose.ChooseRoomRun();     break;               // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
-            case 2: reNum = rechoose.ReChooseRoomRun(); break;           // 2번이면 예약 시작으로 이동 후 예약번호 받아옴
+            case 2: reNum = choose.ChooseRoomRun(); break;           // 2번이면 예약 시작으로 이동 후 예약번호 받아옴
         }
 
         reList.setReNum(reNum);                                          // 예약번호 reList객체에 넣어주기
