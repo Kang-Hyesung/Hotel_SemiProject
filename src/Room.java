@@ -110,6 +110,10 @@ public class Room implements Serializable {
         return inwon;
     }
 
+    public int getDays() {
+        return days;
+    }
+
     public void checkCon(int num){
         if(this.num >= num)
             System.out.println("인원수 : 가능");

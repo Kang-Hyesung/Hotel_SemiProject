@@ -259,18 +259,19 @@ public class SemiAdmin
     int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
     public void toChangeRoomEmpty(){
         // 오늘 날짜와 객실 객체의 숙박시작 ~ 종료날짜를 비교하여 방이 비어 있는지 여부를 true false로 변경
-        Iterator<String> it = roomMap.keySet().iterator();
-        while(it.hasNext())
-        {
-            String key = it.next();
-            if(todayDate >= (roomMap.get(key).getIntEndDate())){
-                roomMap.get(key).setRoomRe(false);
+            Iterator<String> it = roomMap.keySet().iterator();
+            if (it.hasNext()) {
+                while (it.hasNext()) {
+                    String key = it.next();
+                    if (todayDate >= (roomMap.get(key).getIntEndDate())) {
+                        roomMap.get(key).setRoomRe(false);
+                    }
+                    if (todayDate == (roomMap.get(key).getIntStartDate())) {
+                        roomMap.get(key).setRoomRe(true);
+                    }
+                    System.out.println();
+                }
             }
-            if(todayDate == (roomMap.get(key).getIntStartDate())) {
-                roomMap.get(key).setRoomRe(true);
-            }
-            System.out.println();
-        }
     } //toChangeRoomEmpty end
 
     public void adminReservation(Hashtable<String, Room> roomMap) throws IOException

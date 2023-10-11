@@ -4,14 +4,14 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class ReChooseRoom{
-    private int sukbak;             // 숙박일수
-    private String inwon;              // 인원
-    private int roomNum;            // 방 호수
-    private int afDay;              // 며칠뒤부터 시작?
-    private String afDate;          // afDay 스트링형
-    private int column;             // 층
-    private int row;                // 호수
-    private String reNum;           // 예약 번호
+    private int sukbak;                                  // 숙박일수
+    private String inwon;                                // 인원
+    private int roomNum;                                 // 방 호수
+    private int afDay;                                   // 며칠뒤부터 시작?
+    private String afDate;                               // afDay 스트링형
+    private int column;                                  // 층
+    private int row;                                     // 호수
+    private String reNum;                                // 예약 번호
     Hashtable<String, Room> roomMap;                     // 예약번호, 객실 객체 자료 구조
     Set<String> reNumList = new HashSet<>();             // 예약번호 담을 자료구조
     Calendar today = Calendar.getInstance();
@@ -43,7 +43,12 @@ public class ReChooseRoom{
             System.out.print("몇 박? : ");
             sukbak = Integer.parseInt(br.readLine());
 
-            System.out.printf("인원수? : ");
+            if(afDay + sukbak >= 29){
+                System.out.println("28일 뒤까지만 예약 가능 숙박일 다시 입력");
+                inputSukbakInwon();
+            }
+
+            System.out.print("인원수? : ");
             inwon = br.readLine();
         }
         catch (Exception e){
@@ -53,18 +58,20 @@ public class ReChooseRoom{
     }
 
     public void toChangeRoomEmpty(){
-        Iterator<String> it = roomMap.keySet().iterator();
-        while(it.hasNext())
-        {
-            String key = it.next();
-            if(todayDate >= (roomMap.get(key).getIntEndDate())){
-                roomMap.get(key).setRoomRe(false);
+        // 오늘 날짜와 객실 객체의 숙박시작 ~ 종료날짜를 비교하여 방이 비어 있는지 여부를 true false로 변경
+            Iterator<String> it = roomMap.keySet().iterator();
+            if (it.hasNext()) {
+                while (it.hasNext()) {
+                    String key = it.next();
+                    if (todayDate >= (roomMap.get(key).getIntEndDate())) {
+                        roomMap.get(key).setRoomRe(false);
+                    }
+                    if (todayDate == (roomMap.get(key).getIntStartDate())) {
+                        roomMap.get(key).setRoomRe(true);
+                    }
+                    System.out.println();
+                }
             }
-            if(todayDate == (roomMap.get(key).getIntStartDate())) {
-                roomMap.get(key).setRoomRe(true);
-            }
-            System.out.println();
-        }
     } //toChangeRoomEmpty end
 
     public void printRoom(){  // 자료구조, 몇 박, 인원 수
@@ -193,12 +200,14 @@ public class ReChooseRoom{
         }
 
 
+
+
         int afterYear = Integer.parseInt(afDate.substring(0, 4));
         int afterMonth = Integer.parseInt(afDate.substring(5, 7));
         int afterDay = Integer.parseInt(afDate.substring(8, 10));
         int afterDate = Integer.parseInt(String.format("%d%02d%02d", afterYear, afterMonth, afterDay));
 
-        for(int i = 1; i <= 30; i++){
+        for(int i = 1; i <= 28; i++){
             today.add(Calendar.DATE, 1);
             int todayYear = today.get(Calendar.YEAR);
             int todayMonth = today.get(Calendar.MONTH) + 1;
@@ -208,6 +217,10 @@ public class ReChooseRoom{
             if (todayDate == afterDate) {
                 afDay = i;
                 break;
+            }
+            if(i == 28){
+                System.out.println("체크인 날짜는 27일 후 까지 가능");
+                afterDay();
             }
         }
     }

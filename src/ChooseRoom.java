@@ -39,7 +39,10 @@ public class ChooseRoom {
         try {
             System.out.print("몇 박? : ");
             sukbak = Integer.parseInt(br.readLine());
-
+            if(sukbak >= 29) {
+                System.out.println("저희 호텔은 28일까지 투숙하실 수 있습니다. 다시 입력해 주세요");
+                inputSukbakInwon();
+            }
             System.out.printf("인원수를 숫자형태로? :  예)3" );
             inwon = br.readLine();
         }
@@ -51,18 +54,20 @@ public class ChooseRoom {
 
     public void toChangeRoomEmpty(){
         // 오늘 날짜와 객실 객체의 숙박시작 ~ 종료날짜를 비교하여 방이 비어 있는지 여부를 true false로 변경
-        Iterator<String> it = roomMap.keySet().iterator();
-        while(it.hasNext())
-        {
-            String key = it.next();
-            if(todayDate >= (roomMap.get(key).getIntEndDate())){
-                roomMap.get(key).setRoomRe(false);
+
+            Iterator<String> it = roomMap.keySet().iterator();
+            if (it.hasNext()) {
+                while (it.hasNext()) {
+                    String key = it.next();
+                    if (todayDate >= (roomMap.get(key).getIntEndDate())) {
+                        roomMap.get(key).setRoomRe(false);
+                    }
+                    if (todayDate == (roomMap.get(key).getIntStartDate())) {
+                        roomMap.get(key).setRoomRe(true);
+                    }
+                    System.out.println();
+                }
             }
-            if(todayDate == (roomMap.get(key).getIntStartDate())) {
-                roomMap.get(key).setRoomRe(true);
-            }
-            System.out.println();
-        }
     } //toChangeRoomEmpty end
 
     public void printRoom(){  // 구매 시점의 숙박 가능 여부 출력 □ ■
