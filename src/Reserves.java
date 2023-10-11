@@ -1,4 +1,6 @@
-public class Reserves
+import java.io.Serializable;
+
+public class Reserves implements Serializable
 {
     private String reName;
     private String reBirth;
@@ -45,7 +47,7 @@ public class Reserves
 
     public void setGender()
     {
-        if (reBirth.charAt(8) == '1' || reBirth.charAt(8) == '3')
+        if (reBirth.charAt(7) == '1' || reBirth.charAt(7) == '3')
         {
             gender = 'M';
         }
@@ -53,8 +55,7 @@ public class Reserves
             gender = 'F';
     }
 
-    public char getGender()
-    {
+    public char getGender() {
         return gender;
     }
 

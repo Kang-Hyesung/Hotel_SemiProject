@@ -5,8 +5,17 @@ public class FileInputOutput {
     Hashtable<String, Room> roomMap;
 
     public Hashtable<String, Room> fileIn1() throws IOException, ClassNotFoundException {
+//        String appDir = System.getProperty("user.dir");
+//        File f0 = new File(appDir, "test.ser1");
+//
+//        if(!f0.exists()){
+//
+//        }     파일이 없으면 만드는 과정 진행중..
+
         FileInputStream fis = new FileInputStream("test.ser1");
         ObjectInputStream in = new ObjectInputStream(fis);
+
+
         Hashtable<String, Room> roomMap = (Hashtable<String, Room>) in.readObject();
         in.close();
         fis.close();

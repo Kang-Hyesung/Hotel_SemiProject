@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Hashtable;
 
 
@@ -17,6 +16,11 @@ public class Reserve_list
     private String reNum;												//-- 예약번호
     private String res;													//-- 응답확인 변수 Y/N
     private String name, birth, tel;									//-- (비회원모드) 이름, 주민번호, 전화번호
+    private String[] strPutInfo = {name, birth, tel};
+
+    public String[] getStrPutInfo() {
+        return strPutInfo;
+    }
 
     int n = 0;													// 다시 입력, 돌아가기 값 받는 곳
     int i;
@@ -342,8 +346,11 @@ public class Reserve_list
     public void putInfo()
     {
         reGuest.put(reNum, new Reserves(name, birth, tel));	// **객실 구매 후 예약번호 생성 시 받아와야함
-
     } // end putInfo()
+
+    public void setReNum(String reNum){
+        this.reNum = reNum;
+    }
 
 
 } // end class

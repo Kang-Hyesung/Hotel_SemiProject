@@ -39,11 +39,13 @@ public class SemiAdmin
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     Scanner sc = new Scanner(System.in);
     public Hashtable<String, Room> roomMap;
+    Hashtable<String, Reserves> reGuest;
 
-
-    public SemiAdmin(int[] stockArray)
+    public SemiAdmin(int[] stockArray, Hashtable<String, Room> roomMap, Hashtable<String, Reserves> reGuest)
     {
         this.stockArray = stockArray;
+        this.roomMap = roomMap;
+        this.reGuest = reGuest;
     }
 
 
@@ -258,66 +260,105 @@ public class SemiAdmin
 
     public void adminReservation(Hashtable<String, Room> roomMap) throws IOException
     {
-
-
         Iterator<String> it = roomMap.keySet().iterator();
-        Calendar today = Calendar.getInstance();
-        int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH)+1, today.get(Calendar.DATE)));
 
+        System.out.print("1. 남녀평균\n2. 객실타입별 예약현황\n");
+        System.out.println("원하는 예약현황 번호를 눌러주세요 : ");
+        int res = Integer.parseInt(br.readLine());
+        int M=0, F=0;
 
-        while (it.hasNext())
+        if (res == 1)
         {
-            String key = it.next();
+            while(it.hasNext())
+            {
+                String key = it.next();
+                if(roomMap.get(key).isRoomRe())
+                {
+                    if (reGuest.get(key).getGender() == 'M')
+                        M += 1;
+                    else if (reGuest.get(key).getGender() == 'F')
+                        F += 1;
+                }
+            }
+            System.out.println("남성 이용비율 : "+M+"\n"+"여성 이용비율 : "+F+"\n");
+
+            System.out.println("관리자 모드 초기 화면으로 돌아가시겠습니까?(Y/N)");
 
 
-            if (todayDate >= (roomMap.get(key).getIntStartDate()) && todayDate < (roomMap.get(key).getIntEndDate()))
+            String a = sc.next();
 
 
-                if ("Deluxe".equals(roomMap.get(key).getGrade()))
-                    countReRoomDeluxe += 1;
-                else if ("Superior".equals(roomMap.get(key).getGrade()))
-                    countReRoomSuperior += 1;
-                else if ("Family".equals(roomMap.get(key).getGrade()))
-                    countReRoomFamily += 1;
-                else if ("Suite".equals(roomMap.get(key).getGrade()))
-                    countReRoomSuite += 1;
+            if (a.equals("Y") || a.equals("y"))
+            {
+                menuDisp();
+                adminPassword();
+                adminSel();
+                adminRun(roomMap);
+            }
+            else
+                System.out.println("프로그램을 종료합니다.");
         }
 
-
-        int countReRoom = countReRoomDeluxe + countReRoomSuperior + countReRoomFamily + countReRoomSuite;
-
-
-        System.out.println("======= 객실 예약 현황 =======");
-        System.out.printf("* 기준 일자(당일) : %d년 %d월 %d일 *\n\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
-        if (countReRoom != 0) {
-            System.out.printf("당일 예약된 총 객실의 수    : %d\n", countReRoom);
-            System.out.printf("예약된 Deluxe 객실의 수   : %d\n", countReRoomDeluxe);
-            System.out.printf("예약된 Superior 객실의 수 : %d\n", countReRoomSuperior);
-            System.out.printf("예약된 Family 객실의 수   : %d\n", countReRoomFamily);
-            System.out.printf("예약된 Suite 객실의 수    : %d\n", countReRoomSuite);
-        }
-        else
-            System.out.print("당일 예약된 방이 없습니다.\n");
-        System.out.println("==========================");
-
-
-
-
-        System.out.println("관리자 모드 초기 화면으로 돌아가시겠습니까?(Y/N)");
-
-
-        String a = sc.next();
-
-
-        if (a.equals("Y") || a.equals("y"))
+        if (res == 2)
         {
-            menuDisp();
-            adminPassword();
-            adminSel();
-            adminRun(roomMap);
+            Calendar today = Calendar.getInstance();
+            int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH)+1, today.get(Calendar.DATE)));
+
+
+            while (it.hasNext())
+            {
+                String key = it.next();
+
+
+                if (todayDate >= (roomMap.get(key).getIntStartDate()) && todayDate < (roomMap.get(key).getIntEndDate()))
+
+
+                    if ("Deluxe".equals(roomMap.get(key).getGrade()))
+                        countReRoomDeluxe += 1;
+                    else if ("Superior".equals(roomMap.get(key).getGrade()))
+                        countReRoomSuperior += 1;
+                    else if ("Family".equals(roomMap.get(key).getGrade()))
+                        countReRoomFamily += 1;
+                    else if ("Suite".equals(roomMap.get(key).getGrade()))
+                        countReRoomSuite += 1;
+            }
+
+
+            int countReRoom = countReRoomDeluxe + countReRoomSuperior + countReRoomFamily + countReRoomSuite;
+
+
+            System.out.println("======= 객실 예약 현황 =======");
+            System.out.printf("* 기준 일자(당일) : %d년 %d월 %d일 *\n\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
+            if (countReRoom != 0) {
+                System.out.printf("당일 예약된 총 객실의 수    : %d\n", countReRoom);
+                System.out.printf("예약된 Deluxe 객실의 수   : %d\n", countReRoomDeluxe);
+                System.out.printf("예약된 Superior 객실의 수 : %d\n", countReRoomSuperior);
+                System.out.printf("예약된 Family 객실의 수   : %d\n", countReRoomFamily);
+                System.out.printf("예약된 Suite 객실의 수    : %d\n", countReRoomSuite);
+            }
+            else
+                System.out.print("당일 예약된 방이 없습니다.\n");
+            System.out.println("==========================");
+
+
+
+
+            System.out.println("관리자 모드 초기 화면으로 돌아가시겠습니까?(Y/N)");
+
+
+            String a = sc.next();
+
+
+            if (a.equals("Y") || a.equals("y"))
+            {
+                menuDisp();
+                adminPassword();
+                adminSel();
+                adminRun(roomMap);
+            }
+            else
+                System.out.println("프로그램을 종료합니다.");
         }
-        else
-            System.out.println("프로그램을 종료합니다.");
     }
 
 

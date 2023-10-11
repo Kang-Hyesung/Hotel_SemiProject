@@ -48,7 +48,7 @@ public class BuyAmenity {
     int[] stockArray;
     String reNum;
     Hashtable<String, Room> roomMap;
-    int inwon = Integer.parseInt(roomMap.get(reNum).getInwon());
+    int inwon = Integer.parseInt(roomMap.get(reNum).getInwon());                // 오류 있음!!!!!!!!!!!!
 
     int total;              //총 금액
 
