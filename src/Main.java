@@ -9,9 +9,9 @@ public class Main{
         Hashtable<String, Reserves> reGuest = inOut.fileIn3();
 
         // 자료구조 초기화해주기
-        //Hashtable<String, Room> roomMap = new Hashtable<>();
-        //Hashtable<String, Reserves> reGuest = new Hashtable<>();
-        //int[] stockArray = {0, 0, 0, 0};        // 직렬화 해야함
+//        Hashtable<String, Room> roomMap = new Hashtable<>();
+//        Hashtable<String, Reserves> reGuest = new Hashtable<>();
+//        int[] stockArray = {0, 0, 0, 0};        // 직렬화 해야함
 
         // 관리자모드 나와서 회원이냐 묻는 메소드 반복해야 함
         SemiAdmin admin = new SemiAdmin(stockArray,roomMap,reGuest);

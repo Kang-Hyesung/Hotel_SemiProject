@@ -16,11 +16,8 @@ public class Reserve_list
     private String reNum;												//-- 예약번호
     private String res;													//-- 응답확인 변수 Y/N
     private String name, birth, tel;									//-- (비회원모드) 이름, 주민번호, 전화번호
-    private String[] strPutInfo = {name, birth, tel};
 
-    public String[] getStrPutInfo() {
-        return strPutInfo;
-    }
+
 
     int n = 0;													// 다시 입력, 돌아가기 값 받는 곳
     int i;

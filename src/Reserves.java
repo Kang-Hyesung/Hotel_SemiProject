@@ -2,6 +2,7 @@ import java.io.Serializable;
 
 public class Reserves implements Serializable
 {
+    private static final long serialVersionUID = -5632753118030590391l;
     private String reName;
     private String reBirth;
     private String reTel;

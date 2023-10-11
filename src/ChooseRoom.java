@@ -181,36 +181,5 @@ public class ChooseRoom {
         reNumList.remove(reNum);
     }
 
-    public void checkRoomGrade(){               // 당일 기준 객실 구매 현황 (일주일 등으로 기간 변경 가능)
-        Iterator<String> it = roomMap.keySet().iterator();
-        int deluxe = 0;
-        int superior = 0;
-        int family = 0;
-        int suite = 0;
-
-        while (it.hasNext()){
-            String key = it.next();
-            if (roomMap.get(key).isRoomRe() == true){
-                if(roomMap.get(key).getGrade().equals("Deluxe")){
-                    deluxe++;
-                } else if (roomMap.get(key).getGrade().equals("Superior")) {
-                    superior++;
-                } else if (roomMap.get(key).getGrade().equals("Family")) {
-                    family++;
-                }else if (roomMap.get(key).getGrade().equals("Suite")) {
-                    suite++;
-                }
-            }
-        }
-
-        System.out.println("당일 기준");
-        System.out.println("Deluxe등급" + " " + deluxe);
-        System.out.println("Superior등급" + " " + superior);
-        System.out.println("Family등급" + " " + family);
-        System.out.println("Suite등급" + " " + suite);
-    }//end CheckRoomGrade
-
-
-
 
 }
