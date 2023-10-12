@@ -95,6 +95,7 @@ public class Reserve_list
                     if (res.equals("Y"))
                     {
                         System.out.println("\t어메니티구매창으로..");
+                        i = 1;
                     }
                     else if (res.equals("N"))
                     {
@@ -135,7 +136,7 @@ public class Reserve_list
     } // end reserveCheck()
 
     // 회원 여부(Y/N) 확인
-    public void member() throws IOException
+    public int member() throws IOException
     {
         do
         {
@@ -160,6 +161,7 @@ public class Reserve_list
             if (res.equals("Y"))									//-- Y (회원일 때)
             {
                 memberCheck();										//-- 회원모드로 이동
+
             }
             else if (res.equals("N"))								//-- N (비회원일 때)
             {
@@ -167,6 +169,7 @@ public class Reserve_list
             }
         }
         while (!res.equals("Y") && !res.equals("N"));				//-- Y나 N이 아닌 다른 문자나 숫자를 입력했을 경우..
+        return i;
     } // end member()
 
 
@@ -198,7 +201,7 @@ public class Reserve_list
                 {
                     System.out.println(map.get(str));						//-- 회원정보출력
                     System.out.println("\n\t객실 구매창으로 이동합니다.");	//-- 회원이므로 객실 구매창(객실 선택)으로 이동**삭제해야함
-                    i = 1;
+                    i = 2;
                 }
 
             }
@@ -380,7 +383,7 @@ public class Reserve_list
                 if (cal.compareTo(calMember) == 1 || cal.compareTo(calMember) == 0)
                 {
                     System.out.println("\n\t객실 정보 출력창으로 이동합니다.");	//-- 성인이므로 객실 구매창(객실 선택)으로 이동
-                    i = 1;
+                    i = 3;
                 }
 
                 // 미성년자일 경우
@@ -388,7 +391,7 @@ public class Reserve_list
                 {
                     System.out.println("\n\t미성년자이므로 객실 예약이 불가합니다.\n데스크에 문의 바랍니다.\n");
                     System.out.println("\t메인화면으로..");
-                    //**
+                    i = 0;
                 }
             }
         }
