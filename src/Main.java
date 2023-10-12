@@ -29,9 +29,10 @@ public class Main{
 
 
         switch (S){  // SemiAdmin custommode에서 선택결과에 따라
-            case 1: reList.reserve();                                   // S가 1번이면 예약인지 확인 후 어매니티 구매로 이동
+            case 1: R = reList.reserve();                               // S가 1번이면 예약인지 확인 후 어매니티 구매로 이동
                     // 예약 없을 때만 chooseRoom가도록 변수 받아와야함
-                    reNum = choose.ChooseRoomRun();                     // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
+                    if(R == 10)
+                        reNum = choose.ChooseRoomRun();                 // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
                     buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum); break;
 
             //현장구매

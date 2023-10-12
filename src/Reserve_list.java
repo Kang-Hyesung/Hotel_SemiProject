@@ -36,10 +36,23 @@ public class Reserve_list
     {
         do
         {
-            System.out.print("예약을 하셨습니까?(Y/N) : ");
+            System.out.println("\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            System.out.println("\t┃                                  SS HOTEL ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃            예약을 하셨습니까?             ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃         ┌──────┐        ┌──────┐          ┃");
+            System.out.println("\t┃         │   Y  │        │   N  │          ┃");
+            System.out.println("\t┃         └──────┘        └──────┘          ┃");
+            System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             res = br.readLine().toUpperCase();						//-- 입력한 답이 대문자로 비교될 수 있도록...
             if (!res.equals("Y") && !res.equals("N"))
-                System.out.println("\n=======Y/N 중 선택해주세요.=======\n");
+                System.out.println("\n\t=======Y/N 중 선택해주세요.=======\n");
 
             if (res.equals("Y"))									//-- Y (예약했을 때)
             {
@@ -62,37 +75,56 @@ public class Reserve_list
     {
         do
         {
-            System.out.print("\n예약 번호(숫자 8자리)를 입력해주세요 : ");
+            System.out.print("\n\t▶예약 번호(숫자 8자리)를 입력해주세요 : ");
             String inputNum = br.readLine();						//-- 사용자가 입력한 예약번호
 
             if (inputNum.equals(reNum))
             {
-                System.out.println("객실정보 예약번호 : "+reNum+"\n"+"\n"+ roomMap.get(reNum));		// 정보출력예시
-                System.out.println("예약자정보 예약번호 : "+reNum+"\n"+"\n"+ reGuest.get(reNum));
-                i = 1;
+                System.out.println("\t예약번호 : "+reNum);
+                System.out.println("\t예약자정보 : "+reGuest.get(reNum));
+                System.out.println("\t객실정보 : "+roomMap.get(reNum));
+                do
+                {
+                    System.out.println("\t출력된 예약정보가 맞습니까?(Y/N) : ");
+                    res = br.readLine().toUpperCase();
+                    if (!res.equals("Y") && !res.equals("N"))
+                        System.out.println("\n\t=======Y/N 중 선택해주세요.=======\n");
+
+                    if (res.equals("Y"))
+                    {
+                        System.out.println("\t어메니티구매창으로..");
+                    }
+                    else if (res.equals("N"))
+                    {
+                        member();
+                        i = 10;
+                    }
+                }
+                while (!res.equals("Y") && !res.equals("N"));
             }
+
             else
             {
-                System.out.println("\n=======일치하는 예약번호가 없습니다.=======\n");
+                System.out.println("\n\t=======일치하는 예약번호가 없습니다.=======\n");
                 try
                 {
                     do
                     {
-                        System.out.println("1. 다시 입력\t 2. 이전 메뉴\n");
-                        System.out.print("원하는 번호를 입력해주세요. : ");
+                        System.out.println("\t1. 다시 입력\t 2. 이전 메뉴\n");
+                        System.out.print("\t원하는 번호를 입력해주세요. : ");
                         n = Integer.parseInt(br.readLine());
                         if (n == 2)									//-- 이전 메뉴(2)를 클릭했을 때 메인홈으로 돌아가기
-                            System.out.println("메인홈으로...");
-                        else if(n != 1 && n!= 2)
+                            reserve();
+                        if(n != 1 && n!= 2)
                         {
-                            System.out.println("\n=======1. 다시 입력 2. 이전 메뉴 중 선택해주세요.=======\n");
+                            System.out.println("\n\t=======1. 다시 입력 2. 이전 메뉴 중 선택해주세요.=======\n");
                         }
                     }
                     while (n != 1 && n!= 2);
                 }
                 catch (NumberFormatException e)
                 {
-                    System.out.println("\n=======숫자를 입력해주세요.=======\n");
+                    System.out.println("\n\t=======숫자를 입력해주세요.=======\n");
                 }
             }
         }
@@ -105,10 +137,23 @@ public class Reserve_list
     {
         do
         {
-            System.out.print("회원이십니까?(Y/N) : ");
+            System.out.println("\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            System.out.println("\t┃                                  SS HOTEL ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                회원이십니까?              ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃         ┌──────┐        ┌──────┐          ┃");
+            System.out.println("\t┃         │   Y  │        │   N  │          ┃");
+            System.out.println("\t┃         └──────┘        └──────┘          ┃");
+            System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
             res = br.readLine().toUpperCase();						//-- 입력한 답이 대문자로 비교될 수 있도록...
             if (!res.equals("Y") && !res.equals("N"))
-                System.out.println("\n=======Y/N 중 선택해주세요.=======\n");
+                System.out.println("\n\t=======Y/N 중 선택해주세요.=======\n");
 
             if (res.equals("Y"))									//-- Y (회원일 때)
             {
@@ -129,47 +174,54 @@ public class Reserve_list
         HashMap<String, Members> map = new HashMap<String, Members>();
 
         // 회원명단
-        map.put("111111", new Members("채다선","961023-2","010-1234-5678", 111111));
-        map.put("222222", new Members("이윤수","950106-1","010-2345-6789", 222222));
-        map.put("333333", new Members("최혜인","970000-2","010-3456-6789", 333333));
-        map.put("444444", new Members("강혜성","970000-1","010-4567-8901", 444444));
-        map.put("555555", new Members("길현욱","000000-1","010-3456-6789", 555555));
-        map.put("666666", new Members("김수환","000000-1","010-4567-8901", 666666));
+        map.put("110101", new Members("채다선","960101-2440198","010-1234-5678", 110101));
+        map.put("121225", new Members("이윤수","951225-1385624","010-2345-6789", 121225));
+        map.put("131225", new Members("최혜인","971225-2426900","010-3456-6789", 131225));
+        map.put("141010", new Members("강혜성","971010-1898442","010-4567-8901", 141010));
+        map.put("150224", new Members("길현욱","990224-1873336","010-3456-6789", 150224));
+        map.put("161111", new Members("김수환","951111-1068870","010-4567-8901", 161111));
 
 
         try
         {
-            System.out.print("\n회원번호(숫자 6자리)를 입력하세요 : ");
+            System.out.print("\n\t▶회원번호(숫자 6자리)를 입력하세요 : ");
             String str = br.readLine();
             int inputNum = Integer.parseInt(str);
 
             if (map.get(str).getMemberNum() == inputNum)
             {
-                System.out.println(map.get(str));						//-- 회원정보출력
-                System.out.println("\n객실 구매창으로 이동합니다.");	//-- 회원이므로 객실 구매창(객실 선택)으로 이동**삭제해야함
-                i = 1;
+                System.out.print("\n\t▶주민번호 뒷자리(숫자 7자리)를 입력하세요 : ");
+                String rnum = br.readLine();
+
+                if (rnum.equals(map.get(str).getMemberBirth().substring(7)))
+                {
+                    System.out.println(map.get(str));						//-- 회원정보출력
+                    System.out.println("\n\t객실 구매창으로 이동합니다.");	//-- 회원이므로 객실 구매창(객실 선택)으로 이동**삭제해야함
+                    i = 1;
+                }
+
             }
         }
         catch (Exception ee)
         {
-            System.out.println("\n=======일치하는 회원번호가 없습니다.=======\n");
+            System.out.println("\n\t=======일치하는 회원번호가 없습니다.=======\n");
             do
             {
                 try
                 {
-                    System.out.println("1. 다시 입력\t 2. 이전 메뉴\n");
-                    System.out.print("원하는 번호를 입력해주세요. : ");
+                    System.out.println("\t1. 다시 입력\t 2. 이전 메뉴\n");
+                    System.out.print("\t원하는 번호를 입력해주세요. : ");
                     n = Integer.parseInt(br.readLine());
                     if (n == 2)											//-- 이전 메뉴(2)를 클릭했을 때
                         member();
                     else if (n == 1)
                         memberCheck();
                     else if(n != 1 && n!= 2)
-                        System.out.println("\n=======1. 다시 입력 2. 이전 메뉴 중 선택해주세요.=======\n");
+                        System.out.println("\n\t=======1. 다시 입력 2. 이전 메뉴 중 선택해주세요.=======\n");
                 }
                 catch (Exception e)
                 {
-                    System.out.println("\n=======숫자를 입력해주세요.=======\n");
+                    System.out.println("\n\t=======숫자를 입력해주세요.=======\n");
                 }
             }
             while (n != 1 && n!= 2);
@@ -185,14 +237,14 @@ public class Reserve_list
 
         do
         {
-            System.out.print("\n이름 전화번호(010-xxxx-xxxx)를 입력해주세요(공백구분) : ");
+            System.out.print("\n\t▶이름 전화번호(010-xxxx-xxxx)를 입력해주세요(공백구분) : ");
             name = sc.next();
             tel = sc.next();
 
             try
             {
-                System.out.println("\n1. 다시 입력\t 2. 이전 메뉴\t 3. 다음 메뉴\n");
-                System.out.print("원하는 번호를 입력해주세요 : ");
+                System.out.println("\n\t1. 다시 입력\t 2. 이전 메뉴\t 3. 다음 메뉴\n");
+                System.out.print("\t원하는 번호를 입력해주세요 : ");
                 n = Integer.parseInt(br.readLine());
                 if (n==2)										//-- 이전 메뉴(2)를 클릭했을 때 예약여부확인으로 돌아가기**변경해야함
                 {
@@ -206,12 +258,12 @@ public class Reserve_list
                 }
                 else if (n !=1)
                 {
-                    System.out.print("\n=======1. 다시 입력 2. 이전 메뉴 3. 다음 메뉴 중 선택해주세요.=======\n");
+                    System.out.print("\n\t=======1. 다시 입력 2. 이전 메뉴 3. 다음 메뉴 중 선택해주세요.=======\n");
                 }
             }
             catch (NumberFormatException o)
             {
-                System.out.println("\n=======숫자를 입력해주세요.=======\n");
+                System.out.println("\n\t=======숫자를 입력해주세요.=======\n");
             }
         }
         while (n == 1);
@@ -225,7 +277,7 @@ public class Reserve_list
         // 주민번호 유효성 검사
         int[] bir = {2, 3, 4, 5, 6, 7, 0, 8, 9, 2, 3, 4, 5};
         int tot = 0;
-        System.out.print("\n주민번호(xxxxxx-xxxxxx)를 입력해주세요 : ");
+        System.out.print("\n\t▶주민번호(xxxxxx-xxxxxx)를 입력해주세요 : ");
         birth = br.readLine();
 
         if (birth.length() != 14)
@@ -234,10 +286,10 @@ public class Reserve_list
             {
                 try
                 {
-                    System.out.println("\n=======주민번호를 다시 확인해주세요.=======\n");
+                    System.out.println("\n\t=======주민번호를 다시 확인해주세요.=======\n");
 
-                    System.out.println("1. 다시 입력\t 2. 이전 메뉴\n");
-                    System.out.print("원하는 번호를 입력해주세요 : ");
+                    System.out.println("\t1. 다시 입력\t 2. 이전 메뉴\n");
+                    System.out.print("\t원하는 번호를 입력해주세요 : ");
                     n = Integer.parseInt(br.readLine());
                     if (n==1)										//-- 다시 입력(1)을 클릭했을 때 주민번호입력(성인인증)으로 돌아가기
                     {
@@ -248,11 +300,11 @@ public class Reserve_list
                         reserve();
                     }
                     else
-                        System.out.print("\n=======1. 다시 입력 2. 이전 메뉴 중 선택해주세요.=======\n");
+                        System.out.print("\n\t=======1. 다시 입력 2. 이전 메뉴 중 선택해주세요.=======\n");
                 }
                 catch (NumberFormatException u)
                 {
-                    System.out.println("\n=======숫자를 입력해주세요.=======\n");
+                    System.out.println("\n\t=======숫자를 입력해주세요.=======\n");
                 }
             }
             while (n != 1 && n!= 2);
@@ -273,25 +325,25 @@ public class Reserve_list
             // 유효하지 않은 주민번호일 경우
             if (su != Integer.parseInt(birth.substring(13)))
             {
-                System.out.println("\n=======잘못된 주민번호입니다.=======\n");
+                System.out.println("\n\t=======잘못된 주민번호입니다.=======\n");
 
                 do
                 {
                     try
                     {
-                        System.out.println("\n1. 다시 입력\t 2. 이전 메뉴");
-                        System.out.print("원하는 번호를 입력해주세요 : ");
+                        System.out.println("\n\t1. 다시 입력\t 2. 이전 메뉴");
+                        System.out.print("\t원하는 번호를 입력해주세요 : ");
                         n = Integer.parseInt(br.readLine());
                         if (n==2)									//-- 이전 메뉴(2)를 클릭했을 때 메인화면으로 돌아가기
                         {
-                            System.out.println("메인화면으로...");								// 메인화면으로 가는게 좋음
+                            System.out.println("\t메인화면으로...");								// 메인화면으로 가는게 좋음
                         }
                         else
-                            System.out.print("\n=======1. 다시 입력 2. 이전 메뉴 중 선택해주세요.=======\n");
+                            System.out.print("\n\t=======1. 다시 입력 2. 이전 메뉴 중 선택해주세요.=======\n");
                     }
                     catch (NumberFormatException a)
                     {
-                        System.out.println("\n=======숫자를 입력해주세요.=======\n");
+                        System.out.println("\n\t=======숫자를 입력해주세요.=======\n");
                     }
                 }
                 while (n != 1 && n!= 2);
@@ -326,15 +378,15 @@ public class Reserve_list
                 // 성인일 경우
                 if (cal.compareTo(calMember) == 1 || cal.compareTo(calMember) == 0)
                 {
-                    System.out.println("\n객실 정보 출력창으로 이동합니다.");	//-- 성인이므로 객실 구매창(객실 선택)으로 이동
+                    System.out.println("\n\t객실 정보 출력창으로 이동합니다.");	//-- 성인이므로 객실 구매창(객실 선택)으로 이동
                     i = 1;
                 }
 
                 // 미성년자일 경우
                 else
                 {
-                    System.out.println("\n미성년자이므로 객실 예약이 불가합니다.\n데스크에 문의 바랍니다.\n");
-                    System.out.println("메인화면으로..");
+                    System.out.println("\n\t미성년자이므로 객실 예약이 불가합니다.\n데스크에 문의 바랍니다.\n");
+                    System.out.println("\t메인화면으로..");
                     //**
                 }
             }
