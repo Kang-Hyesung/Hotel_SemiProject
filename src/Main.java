@@ -36,8 +36,8 @@ public class Main{
                         buy.startProgram();                 break;              // 확인하고 어매니티 구매로 이동
                     } else if (R == 2) {
                         reNum = choose.ChooseRoomRun();                         // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
-                        //buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
-                        //buy.startProgram();                                          // 확인하고 어매니티 구매로 이동
+                        buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
+                        buy.startProgram();                                          // 확인하고 어매니티 구매로 이동
                         reList.setReNum(reNum);
                         reList.putMemberInfo(reNum);       break;                    // 회원인 경우) 예약번호, 예약자 객체 생성
                     } else if (R == 3) {
@@ -58,12 +58,12 @@ public class Main{
                     reNum = rechoose.ReChooseRoomRun();                 // 예약으로 이동
                 if(R == 2) {
                     reList.setReNum(reNum);
-                    reList.putMemberInfo(reNum);                        // 회원인 경우) 예약번호, 예약자 객체 생성
+                    reList.putMemberInfo(reNum);    break;              // 회원인 경우) 예약번호, 예약자 객체 생성
                 }
                 else if (R == 3) {
                     reList.setReNum(reNum);
-                    reList.putInfo();                                   // 비회원인 경우) 예약번호, 예약자 객체 생성
-                } break;
+                    reList.putInfo();               break;              // 비회원인 경우) 예약번호, 예약자 객체 생성
+                }
         }
         System.out.println(reNum);
 

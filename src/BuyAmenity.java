@@ -175,74 +175,59 @@ public class BuyAmenity {
         return false;
     }
 
-//    public void addAmenity() throws IOException {
-//
-//        do {
-//            System.out.print("칫솔치약, 샤워타올, 면도기, 슬리퍼 중 하나를 입력하세요 : ");
-//            itemName = br.readLine();
-//
-//            if (itemName.equals("V")) {
-//                break;
-//            }
-//            //입력값이 유효한 지 확인
-//            if(isValidAmenity(itemName)) {
-//                System.out.print("원하는 수량을 입력하세요 : ");
-//                try {
-//                    num = Integer.parseInt(br.readLine());
-//                } catch (NumberFormatException e) {
-//                    System.out.println("숫자형태로 입력해주세요");
-//                    addAmenity();
-//                }
-//
-//                boolean itemTrue = false;
-//
-//                for (Amenity_kinds amenity : vt) {
-//                    if (amenity.name.equalsIgnoreCase(itemName)) {
-//                        amenity.Amenity_Number += num;
-//
-//                        if (itemName.equals("칫솔치약")){
-//                            cusAmenity[0] += num;
-//                        } else if (itemName.equals("샤워타올")){
-//                            cusAmenity[1] += num;
-//                        } else if (itemName.equals("면도기")){
-//                            cusAmenity[2] += num;
-//                        } else if (itemName.equals("슬리퍼")){
-//                            cusAmenity[3] += num;
-//                        }
-//                        itemTrue = true;
-//                        break;
-//                    }
-//                }
-//
-//                if (!itemTrue) {
-//                    Amenity_kinds amenity = new Amenity_kinds(itemName, num);
-//                    vt.add(amenity);
-//                }
-//                System.out.print("계속 추가하시겠습니까?(Y/N) : ");
-//                con = br.readLine().toUpperCase();
-//            }
-//            else {
-//                System.out.println("선택하신 상품이 없습니다.");
-//                return;
-//            }
-//
-//        }while(con.equals("Y"));
-//    }
+    public void addAmenity() throws IOException {
 
-    public void addAmenity2() throws IOException{
-        System.out.print("칫솔치약, 샤워타올, 면도기, 슬리퍼 중 하나를 입력하세요 : ");
-        System.out.println("0 1 2 3");
-        int i = Integer.parseInt(br.readLine());
-        System.out.print("추가할 숫자를 입력하세요");
-        int j = Integer.parseInt(br.readLine());
+        do {
+            System.out.print("칫솔치약, 샤워타올, 면도기, 슬리퍼 중 하나를 입력하세요 : ");
+            itemName = br.readLine();
 
-        switch (i){
-            case 0: cusAmenity[0] += j;
-            case 1: cusAmenity[1] += j;
-            case 2: cusAmenity[2] += j;
-            case 3: cusAmenity[3] += j;
-        }
+            if (itemName.equals("V")) {
+                break;
+            }
+            //입력값이 유효한 지 확인
+            if(isValidAmenity(itemName)) {
+                System.out.print("원하는 수량을 입력하세요 : ");
+                try {
+                    num = Integer.parseInt(br.readLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("숫자형태로 입력해주세요");
+                    addAmenity();
+                }
+
+                boolean itemTrue = false;
+
+                for (Amenity_kinds amenity : vt) {
+                    if (amenity.name.equalsIgnoreCase(itemName)) {
+                        amenity.Amenity_Number += num;
+                        if (itemName.equals("칫솔치약")){
+                            cusAmenity[0] += num;
+                        } else if (itemName.equals("샤워타올")){
+                            cusAmenity[1] += num;
+                        } else if (itemName.equals("면도기")){
+                            cusAmenity[2] += num;
+                        } else if (itemName.equals("슬리퍼")){
+                            cusAmenity[3] += num;
+                        }
+                        itemTrue = true;
+                        break;
+                    }
+                }
+
+                if (!itemTrue) {
+                    Amenity_kinds amenity = new Amenity_kinds(itemName, num);
+                    vt.add(amenity);
+                }
+                System.out.print("계속 추가하시겠습니까?(Y/N) : ");
+                con = br.readLine().toUpperCase();
+            }
+            else {
+                System.out.println("선택하신 상품이 없습니다.");
+                return;
+            }
+
+        }while(con.equals("Y"));
     }
+
     public void ChBreakfast() throws IOException {
         if (cusAmenity[4] == inwon*roomMap.get(reNum).getDays()) {
             System.out.println("이미 모든 인원이 조식을 선택하셨습니다.");

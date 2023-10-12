@@ -76,11 +76,14 @@ public class Reserve_list
     {
         do
         {
-            System.out.print("\n\t▶예약 번호(숫자 8자리)를 입력해주세요 : ");
+            System.out.print("\n\t▶예약 번호(숫자 12자리)를 입력해주세요 : ");
             String inputNum = br.readLine();						//-- 사용자가 입력한 예약번호
 
-            if (inputNum.equals(reNum))
+            roomMap.containsKey(inputNum);
+
+            if (roomMap.containsKey(inputNum))
             {
+                reNum = inputNum;
                 System.out.println("\t예약번호 : "+reNum);
                 System.out.println("\t예약자정보 : "+reGuest.get(reNum));
                 System.out.println("\t객실정보 : "+roomMap.get(reNum));
@@ -406,6 +409,10 @@ public class Reserve_list
                         System.out.println("\n\t1. 다시 입력\t 2. 이전 메뉴");
                         System.out.print("\t원하는 번호를 입력해주세요 : ");
                         n = Integer.parseInt(br.readLine());
+                        if (n==1)
+                        {
+                            jumin();
+                        }
                         if (n==2)									//-- 이전 메뉴(2)를 클릭했을 때 메인화면으로 돌아가기
                         {
                             System.out.println("\t메인화면으로...");								// 메인화면으로 가는게 좋음
