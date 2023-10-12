@@ -208,16 +208,16 @@ public class ReChooseRoom{
         int afterDate = Integer.parseInt(String.format("%d%02d%02d", afterYear, afterMonth, afterDay));
 
         for(int i = 1; i <= 28; i++){
+            if (todayDate == afterDate) {
+                afDay = i;
+                break;
+            }
             today.add(Calendar.DATE, 1);
             int todayYear = today.get(Calendar.YEAR);
             int todayMonth = today.get(Calendar.MONTH) + 1;
             int todayDay = today.get(Calendar.DATE);
             todayDate = Integer.parseInt(String.format("%d%02d%02d", todayYear, todayMonth, todayDay));
 
-            if (todayDate == afterDate) {
-                afDay = i;
-                break;
-            }
             if(i == 28){
                 System.out.println("체크인 날짜는 27일 후 까지 가능");
                 afterDay();

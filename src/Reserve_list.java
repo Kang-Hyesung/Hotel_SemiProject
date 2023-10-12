@@ -24,6 +24,8 @@ public class Reserve_list
 
     public Hashtable<String,Room> roomMap;
     public Hashtable<String,Reserves> reGuest;
+    HashMap<String, Members> map = new HashMap<String, Members>();
+    String str;
 
     Reserve_list(Hashtable<String,Room> roomMap, Hashtable<String,Reserves> reGuest)
     {
@@ -171,7 +173,6 @@ public class Reserve_list
     // 회원모드
     public void memberCheck() throws IOException
     {
-        HashMap<String, Members> map = new HashMap<String, Members>();
 
         // 회원명단
         map.put("110101", new Members("채다선","960101-2440198","010-1234-5678", 110101));
@@ -185,7 +186,7 @@ public class Reserve_list
         try
         {
             System.out.print("\n\t▶회원번호(숫자 6자리)를 입력하세요 : ");
-            String str = br.readLine();
+            str = br.readLine();
             int inputNum = Integer.parseInt(str);
 
             if (map.get(str).getMemberNum() == inputNum)
@@ -397,6 +398,9 @@ public class Reserve_list
     {
         reGuest.put(reNum, new Reserves(name, birth, tel));	// **객실 구매 후 예약번호 생성 시 받아와야함
     } // end putInfo()
+    public void putMemberInfo(String reNum){
+        reGuest.put(reNum, new Reserves(map.get(str).getMemberName(), map.get(str).getMemberBirth(), map.get(str).getMemberTel()));
+    }
 
     public void setReNum(String reNum){
         this.reNum = reNum;

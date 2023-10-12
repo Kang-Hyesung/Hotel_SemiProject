@@ -1106,7 +1106,7 @@ public class SemiAdmin
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        i = 2;
+        i = 4;
     } //resersvationSystem
 
     // 어메니티 및 식사 구매 모드 전환

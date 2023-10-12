@@ -52,10 +52,11 @@ public class Main{
         }
 
         reList.setReNum(reNum);                                         // 예약번호 reList객체에 넣어주기
-        reList.putInfo();                                               // 예약번호, 예약자 객체 생성
+        reList.putMemberInfo(reNum);                                    // 회원인 경우) 예약번호, 예약자 객체 생성
+        reList.putInfo();                                               // 비회원인 경우) 예약번호, 예약자 객체 생성
 
         // 폐이클래스 해줘야 함
-
+        //Pay pay = new Pay(roomMap, cusArray, reNum);
 
         // 파일 직렬화
         inOut.fileOut1(roomMap);
