@@ -3,7 +3,7 @@ import java.util.Hashtable;
 public class Main{
     public static void main(String[] args) throws Exception {
         FileInputOutput inOut = new FileInputOutput();
-        // 역직렬화로 Hashtable 가져오기
+        // 역직렬화로 데이터 가져오기
         Hashtable<String, Room> roomMap = inOut.fileIn1();                // 예약번호, 객실 객체
         int[] stockArray = inOut.fileIn2();                               // 호텔의 재고를 int형 배열로 나타냄
         Hashtable<String, Reserves> reGuest = inOut.fileIn3();            // 예약번호, 예약자 객체
@@ -35,9 +35,12 @@ public class Main{
                         reNum = choose.ChooseRoomRun();                 // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
                     buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum); break;
 
+
             //현장구매
             case 2: reList.member();                                    // S가 2번이면 회원인지 확인 후 아니면 개인정보 입력 후 객실 구매로 이동
-                    reNum = choose.ChooseRoomRun();     break;          // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
+                    reNum = choose.ChooseRoomRun();                     // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
+                    buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
+                    buy.startProgram();                 break;          // 확인하고 어매니티 구매로 이동
 
             case 3: reList.reserveCheck();                              // 예약번호 확인
                     buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
@@ -45,18 +48,16 @@ public class Main{
 
             // 예약하는 경우
             case 4: reList.member();                                    // 회원인지 확인 후 객실 예약으로 이동
-                    reNum = rechoose.ReChooseRoomRun();                 // 예약으로 이동
-                    buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
-                    buy.startProgram();                                 // 확인하고 어매니티 구매로 이동
+                    reNum = rechoose.ReChooseRoomRun();  break;         // 예약으로 이동
 
         }
 
         reList.setReNum(reNum);                                         // 예약번호 reList객체에 넣어주기
-        reList.putMemberInfo(reNum);                                    // 회원인 경우) 예약번호, 예약자 객체 생성
+        //reList.putMemberInfo(reNum);                                  // 회원인 경우) 예약번호, 예약자 객체 생성
         reList.putInfo();                                               // 비회원인 경우) 예약번호, 예약자 객체 생성
 
         // 폐이클래스 해줘야 함
-        //Pay pay = new Pay(roomMap, cusArray, reNum);
+        //Pay pay = new Pay(roomMap, cusArray, stockArray, reNum);
 
         // 파일 직렬화
         inOut.fileOut1(roomMap);

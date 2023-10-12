@@ -79,7 +79,10 @@ public class BuyAmenity {
 
     private int num; // 몇개를 고를건지에 대한 수량
 
-    private int dayMeal;
+    private int dayMeal; // 날 수를 입력 받는 변수
+    private int people; // 몇 명이서 먹을지에 대한 변수
+
+    private int subitem; // 식사권을 몇개를 뺄 건지
 
     //private int[] brinwontotal = new int [10]; // 하루 다녀간 아침 총인원 아니면 날짜별로 기록할지?
     //private int[] deinwontotal = new int [10]; // 하루 다녀간 저녁 총인원 아니면 날짜별로 기록할지는 물어봐야알듯!
@@ -90,8 +93,9 @@ public class BuyAmenity {
     // [1] = 샤워타올
     // [2] = 면도기
     // [3] = 슬리퍼
-    // [4] = 조식 인원
-    // [5] = 디너 인원
+
+
+
 
     private  String itemName; // 상품 입력
 
@@ -154,10 +158,10 @@ public class BuyAmenity {
             case 6 : exit(); break;
         }
     }
-
+    // String[] validItems = {"칫솔치약", "샤워타올", "면도기", "슬리퍼"};
     public boolean isValidAmenity(String itemName) {
         // 유효한 항목 리스트
-        String[] validItems = {"칫솔치약", "샤워타올", "면도기", "슬리퍼"};
+        String[] validItems = {"a", "b", "c", "d"};
 
         // 입력값이 유효한 항목인지 확인
         for(String item : validItems) {
@@ -213,28 +217,27 @@ public class BuyAmenity {
     }
 
     public void ChBreakfast() throws IOException {
-        if (cusAmenity[4] == inwon) {
+        if (cusAmenity[4] == inwon*roomMap.get(reNum).getDays()) {
             System.out.println("이미 모든 인원이 조식을 선택하셨습니다.");
             return;
         }
 
-        System.out.print("조식 신청하시겠습니까? (Y/N): ");
+        System.out.print("조식 식권을 신청하시겠습니까? (Y/N) : ");
         do {
             con = br.readLine().toUpperCase();
 
             if (con.equals("Y")) {
-                System.out.printf("조식 먹을 일 수를 입력하세요 : ");
+                int total = inwon*roomMap.get(reNum).getDays();
+                System.out.printf("조식 식권을 몇개 살건지 입력하세요 [최대 %d]: ",total);
                 dayMeal = Integer.parseInt(br.readLine()); // 원하는 일 수
 
-                //
-                if ((cusAmenity[4] + inwon*dayMeal) > inwon*roomMap.get(reNum).getDays()) {
-                    System.out.println("그 만큼의 인원을 추가할 수 없습니다.");
-                } else {
+                if (dayMeal > inwon*roomMap.get(reNum).getDays()) {
+                    System.out.println("그 만큼의 식권을 추가 할 수 없습니다.");
+                }  else {
                     breakfastcheck = "조식을 선택했습니다.";
                     cusAmenity[4] += dayMeal;
                     hasBreakfast = true;
-                    System.out.printf("%d일 ", dayMeal);
-                    System.out.println();
+                    System.out.println("조식 사용권 : " +dayMeal);
                 }
             } else if (con.equals("V")) {
                 break;
@@ -245,28 +248,30 @@ public class BuyAmenity {
         } while (con.length() <= 0);
     }
 
+
     public void ChDinner_bar() throws IOException {
-        if (cusAmenity[5] == inwon) {
+        if (cusAmenity[5] == inwon*roomMap.get(reNum).getDays()) {
             System.out.println("이미 모든 인원이 디너 & 바를 선택하셨습니다.");
             return;
         }
 
-        System.out.print("디너&바를 신청하시겠습니까? (Y/N): ");
+        System.out.print("조식 식권을 신청하시겠습니까? (Y/N) : ");
         do {
             con = br.readLine().toUpperCase();
 
             if (con.equals("Y")) {
-                System.out.print("디너&바 먹을 사람을 입력하세요 : ");
+                int total = inwon*roomMap.get(reNum).getDays();
+                System.out.printf("조식 식권을 몇개 살건지 입력하세요 [최대 %d]: ",total);
                 dayMeal = Integer.parseInt(br.readLine()); // 원하는 인원 수
 
                 // 이미 선택한 인원과 신청한 인원을 합친 총 인원이 inwon을 초과하면 추가로 선택할 수 없음
-                if ((cusAmenity[5] + inwon*dayMeal) > inwon*roomMap.get(reNum).getDays()) {
-                    System.out.println("그 만큼의 인원을 추가할 수 없습니다.");
+                if (dayMeal > inwon*roomMap.get(reNum).getDays()) {
+                    System.out.println("그 만큼의 식권을 추가할 수 없습니다.");
                 } else {
                     dinner_bar = "디너 & 바를 선택하셨습니다.";
                     hasdinner_bar = true;
                     cusAmenity[5] += dayMeal;
-                    System.out.printf("%d일 수 ", dayMeal);
+                    System.out.println("디너 & 바 사용권 : " +dayMeal);
                     System.out.println();
                 }
             } else if (con.equals("V")) {
@@ -334,11 +339,11 @@ public class BuyAmenity {
             con = br.readLine().toUpperCase();
 
             if (con.equals("Y")) {
-                System.out.print("며칠 분을 제외하시겠습니까? : ");
+                System.out.print("조식 사용권 몇개를 삭제하시겠습니까? : ");
                 dayMeal = Integer.parseInt(br.readLine());
 
-                if (inwon*dayMeal <= cusAmenity[4]) {
-                    cusAmenity[4] -= inwon*dayMeal; //하루동안 먹은 조식 총 인원
+                if (dayMeal < cusAmenity[4]) {
+                    cusAmenity[4] -= dayMeal; //하루동안 먹은 조식 총 인원
                     System.out.println("조식을 제외했습니다.");
                     breakfastcheck = "조식을 선택하지 않았습니다";
                     hasBreakfast = false;
@@ -355,9 +360,9 @@ public class BuyAmenity {
 
             if (con.equals("Y")) {
                 System.out.print("며칠 분을 제외하시겠습니까? : ");
-                dayMeal = Integer.parseInt(br.readLine());
+                subitem = Integer.parseInt(br.readLine());
 
-                if (inwon*dayMeal <= cusAmenity[5]) {
+                if (inwon*dayMeal < cusAmenity[5]) {
                     cusAmenity[5] -= inwon*dayMeal; //하루동안 디너 & 바 먹은 총 인원
                     System.out.println("디너 & 바를 제외했습니다.");
                     dinner_bar = "디너 & 바를 신청하지 않았습니다.";
@@ -380,8 +385,8 @@ public class BuyAmenity {
             System.out.println(str);
         }
 
-        System.out.println("선택한 조식 여부: " + breakfastcheck + "총 인분 : "+ cusAmenity[4]);
-        System.out.println("선택한 디너 & 바 여부: " + dinner_bar+ "총 인분 : "+ cusAmenity[5]);
+        System.out.println("선택한 조식 여부: " + breakfastcheck + "조식 식권 수 : "+ cusAmenity[4]);
+        System.out.println("선택한 디너 & 바 여부: " + dinner_bar+ "디너 & 바 식권 수 : "+ cusAmenity[5]);
 
     }
 
