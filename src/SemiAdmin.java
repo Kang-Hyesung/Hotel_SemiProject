@@ -14,6 +14,7 @@ class AdminMenus
     public static final int ADMIN_STOCK = 1;
     public static final int ADMIN_RESERVATION = 2;
     public static final int ADMIN_SELL = 3;
+    public static final int ADMIN_EXIT = 4;
 }
 
 
@@ -125,6 +126,12 @@ public class SemiAdmin
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
     }
 
+    // 프로그램 종료 메소드
+    public void adminExit()
+    {
+        System.exit(-1);
+    }
+
 
 
     // 관리자 메뉴 선택 메소드
@@ -137,13 +144,13 @@ public class SemiAdmin
                 System.out.print("\t▶ 이동하고자 하는 메뉴 번호를 입력해주세요 : ");
                 adminSel = Integer.parseInt(br.readLine());
                 System.out.println();
-                if (adminSel < 1 || adminSel > 3)
+                if (adminSel < 1 || adminSel > 4)
                 {
                     System.out.println("\t*** 1 ~ 3에 해당하는 번호를 입력해주세요 ***");
                     System.out.println();
                 }
             }
-            while (adminSel < 1 || adminSel > 3);
+            while (adminSel < 1 || adminSel > 4);
         }
         catch (Exception e)
         {
@@ -164,6 +171,7 @@ public class SemiAdmin
             case AdminMenus.ADMIN_STOCK : adminStock(); break;
             case AdminMenus.ADMIN_RESERVATION : adminReservationDisp(); break;
             case AdminMenus.ADMIN_SELL : adminSellDisp(); break;
+            case AdminMenus.ADMIN_EXIT : adminExit(); break;
         }
     }
 
@@ -185,15 +193,15 @@ public class SemiAdmin
         System.out.println("\t┃ │ stock setting mode │                    ┃");
         System.out.println("\t┃ └────────────────────┘                    ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.printf("\t┃  ※ 현재 치약&칫솔 재고 수량 : %2d개       ┃\n" , stockArray[0]);
+        System.out.printf("\t┃  ※ 현재 칫솔&치약 재고 수량 : %2d개       ┃\n" , stockArray[0]);
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃    치약&칫솔의 재고를 보충하시겠습니까?   ┃");
+        System.out.println("\t┃    칫솔&치약의 재고를 보충하시겠습니까?   ┃");
         System.out.println("\t┃         ┌──────┐        ┌──────┐          ┃");
         System.out.println("\t┃         │   Y  │        │   N  │          ┃");
         System.out.println("\t┃         └──────┘        └──────┘          ┃");
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.print("\t▶ 치약&칫솔 재고 보충 여부 : ");
+        System.out.print("\t▶ 칫솔&치약 재고 보충 여부 : ");
         String a = sc.next();
         if (a.equals("Y") || a.equals("y"))
         {
@@ -205,7 +213,7 @@ public class SemiAdmin
 
     public void stockTeethY()
     {
-        System.out.print("\t▶ 치약&칫솔 재고 보충 수량을 입력하세요. : ");
+        System.out.print("\t▶ 칫솔&치약 재고 보충 수량을 입력하세요. : ");
         try
         {
             int res = Integer.parseInt(br.readLine());
@@ -218,11 +226,11 @@ public class SemiAdmin
             System.out.println("\t┃ │ stock setting mode │                    ┃");
             System.out.println("\t┃ └────────────────────┘                    ┃");
             System.out.println("\t┃                                           ┃");
-            System.out.printf("\t┃  [ 치약&칫솔 재고가 %2d개 보충되었습니다. ]┃\n" , res);
+            System.out.printf("\t┃  [ 칫솔&치약 재고가 %2d개 보충되었습니다. ]┃\n" , res);
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
-            System.out.printf("\t┃  ※ 보충 후 치약&칫솔의 재고 수량 : %2d개 ┃\n", stockArray[0]);
+            System.out.printf("\t┃  ※ 보충 후 칫솔&치약의 재고 수량 : %2d개  ┃\n", stockArray[0]);
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
@@ -246,7 +254,7 @@ public class SemiAdmin
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃ ※ 치약&칫솔의 재고를 보충하지 않습니다.  ┃");
+        System.out.println("\t┃ ※ 칫솔&치약의 재고를 보충하지 않습니다.  ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
@@ -301,7 +309,7 @@ public class SemiAdmin
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
-            System.out.printf("\t┃   ※ 보충 후 면도기의 재고 수량 : %2d개    ┃\n", stockArray[0]);
+            System.out.printf("\t┃   ※ 보충 후 면도기의 재고 수량 : %2d개    ┃\n", stockArray[1]);
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
@@ -457,7 +465,7 @@ public class SemiAdmin
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
-            System.out.printf("\t┃ ※ 보충 후 객실 슬리퍼의 재고 수량 : %2d개 ┃\n", stockArray[0]);
+            System.out.printf("\t┃ ※ 보충 후 객실 슬리퍼의 재고 수량 : %2d개 ┃\n", stockArray[3]);
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
@@ -1055,18 +1063,18 @@ public class SemiAdmin
         System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.printf("\t┃   %d년 %d월 %d일               SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
         System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
         System.out.println("\t┃           Welcome to SS Hotel :)          ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃   1. 예약 조회                            ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃   2. 현장 구매                            ┃");
+        System.out.println("\t┃   1. 객실 예약 조회 및 현장 구매          ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃   3. 어메니티 및 식사 구매                ┃");
+        System.out.println("\t┃   2. 어메니티 및 식사 구매                ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃     ※현금 결제 & 미성년자 사용 불가※    ┃");
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.print("\t○ 이동하고자 하는 메뉴 번호를 입력해주세요. : ");
+        System.out.print("\t● 이동하고자 하는 메뉴 번호를 입력해주세요. : ");
 
         try
         {
@@ -1075,10 +1083,8 @@ public class SemiAdmin
             if (reserveModeSel == 1)
                 i = 1;
             else if (reserveModeSel == 2)
-                i = 2;										// 현장구매 클래스로 이동해야함
-            else if (reserveModeSel == 3)
             {
-                i = 3;
+                i = 2;
                 buyAmenityMeal();
             }
         }
@@ -1089,7 +1095,7 @@ public class SemiAdmin
     } //reserveMode end
 
 
-    // 예약 시스템 모드 전환 (아고다, 호텔컴바인 같은,,,,)
+    // 예약 시스템 모드 전환 (아고다, 호텔스컴바인 같은,,,,)
     public void resersvationSystem()
     {
         System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -1106,7 +1112,7 @@ public class SemiAdmin
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        i = 4;
+        i = 3;
     } //resersvationSystem
 
     // 어메니티 및 식사 구매 모드 전환
@@ -1117,8 +1123,8 @@ public class SemiAdmin
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃※ 해당 메뉴는 투숙객만 이용 가능합니다 ※ ┃");
-        System.out.println("\t┃		                                   ┃");
-        System.out.println("\t┃		                                   ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃     ==============================        ┃");
         System.out.println("\t┃        예약 번호를 입력해주세요.          ┃");
@@ -1126,7 +1132,6 @@ public class SemiAdmin
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.print("\t○ 예약 번호 입력 : ");
     }
 }
 

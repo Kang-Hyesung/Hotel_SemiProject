@@ -7,6 +7,7 @@ public class Reserves implements Serializable
     private String reBirth;
     private String reTel;
     private char gender;
+    private String reNum;
 
     public Reserves(String reName, String reBirth, String reTel)
     {

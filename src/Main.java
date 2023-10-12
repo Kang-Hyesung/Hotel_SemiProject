@@ -36,16 +36,17 @@ public class Main{
                         buy.startProgram();                 break;              // 확인하고 어매니티 구매로 이동
                     } else if (R == 2) {
                         reNum = choose.ChooseRoomRun();                         // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
-                        buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
-                        buy.startProgram();                                          // 확인하고 어매니티 구매로 이동
+                        //buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
+                        //buy.startProgram();                                          // 확인하고 어매니티 구매로 이동
                         reList.setReNum(reNum);
-                        reList.putMemberInfo(reNum);                                  // 회원인 경우) 예약번호, 예약자 객체 생성
+                        reList.putMemberInfo(reNum);       break;                    // 회원인 경우) 예약번호, 예약자 객체 생성
                     } else if (R == 3) {
                         reNum = choose.ChooseRoomRun();                         // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
                         buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
                         buy.startProgram();                                          // 확인하고 어매니티 구매로 이동
                         reList.setReNum(reNum);
                         reList.putInfo();                                               // 비회원인 경우) 예약번호, 예약자 객체 생성
+                        System.out.println(reNum);       break;
                     }
 
             case 2: reList.reserveCheck();                              // 예약번호 확인
@@ -62,13 +63,17 @@ public class Main{
                 else if (R == 3) {
                     reList.setReNum(reNum);
                     reList.putInfo();                                   // 비회원인 경우) 예약번호, 예약자 객체 생성
-                }
+                } break;
         }
+        System.out.println(reNum);
 
 
 
         // 폐이클래스 해줘야 함
-        //Pay pay = new Pay(roomMap, cusArray, stockArray, reNum);
+        Pay pay = new Pay(roomMap, cusArray, stockArray, reNum);
+        pay.printCartRoom();
+        pay.printCartAmenity();
+        pay.payRun();
 
         // 파일 직렬화
         inOut.fileOut1(roomMap);

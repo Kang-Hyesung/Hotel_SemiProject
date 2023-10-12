@@ -3,71 +3,77 @@ import java.util.*;
 import java.io.*;
 
 
-import static java.lang.Integer.parseInt;
-
-
 public class Pay {
     public Hashtable<String, Room> roomMap;
+    public Hashtable<String, int[]> cusArray;
+    int[] stockArray;
     String reNum;
     Scanner sc = new Scanner(System.in);
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+    int totalPriceR, totalPriceA, totalPriceAll;
 
-    public Pay(Hashtable<String, Room> roomMap, String reNum) {
+    public Pay(Hashtable<String, Room> roomMap, Hashtable<String, int[]>cusArray, int[] stockArray, String reNum) {
         this.roomMap = roomMap;
+        this.cusArray = cusArray;
+        this.stockArray = stockArray;
         this.reNum = reNum;
     }
 
-
-    public void PayRun()
+    public void payRun()
     {
-        printCartTotal();
+        printFirst();
+
+        totalPriceAll = totalPriceR + totalPriceA;
+        printLast();
         payment();
     }
 
-
-
-
-    public void printCartTotal()                // 장바구니 내역 출력 (객실 구매 + 부가 서비스  예약 구매고객일 경우 객실 구매는 결제 x)
+    // 객실 구매 내역 정보
+    public void printCartRoom()
     {
-        System.out.println(reNum);
-        System.out.println("테스트 : " + parseInt(reNum.substring(8,9)) );
-        System.out.println("\n\n========= 최종 결제 내역 확인 =========");
-        System.out.println("[객실 구매 정보]");
-
-
         Room room = this.roomMap.get(reNum);
+        System.out.println("[객실 구매 정보]");
+        System.out.println("객실 등급 : " + room.getGrade());
+        System.out.println("침대 타입 : " + room.getBedType());
+        System.out.println("객실 가격 : " + room.getRoomPrice() + "원");
+        totalPriceR = room.getRoomPrice();
+    }
 
+    // 어메니티 및 식사 구매 내역 정보
+    public void printCartAmenity()
+    {
+        System.out.println("[어메니티 및 식사 구매 정보]");
 
-        if (parseInt(reNum.substring(8,9)) < 5 ) {
-
-
-            if (roomMap.containsKey(reNum)) {
-                System.out.println("객실 등급 : " + room.getGrade());
-                System.out.println("침대 타입 : " + room.getBedType());
-                System.out.println("객실 가격 : " + room.getRoomPrice() + "원");
-            } else
-                System.out.println("해당 예약번호를 찾을 수 없습니다.");
-        }
-        else if (parseInt(reNum.substring(8,9)) > 4)
+        for (int i=0; i<6 ;i++)
         {
-            System.out.println("장바구니 내역만 출력할게요~");
+            if (cusArray.get(reNum)[i] != 0)
+            {
+                if (i == 0)
+                    System.out.println("칫솔&치약 : " + cusArray.get(reNum)[i]);
+                if (i == 1)
+                    System.out.println("면도기 : " + cusArray.get(reNum)[i]);
+                if (i == 2)
+                    System.out.println("샤워 타월 : " + cusArray.get(reNum)[i]);
+                if (i == 3)
+                    System.out.println("객실 슬리퍼 : " + cusArray.get(reNum)[i]);
+                if (i == 4)
+                    System.out.println("조식 이용권 : " + cusArray.get(reNum)[i]);
+                if (i == 5)
+                    System.out.println("디너&바 이용권 : " + cusArray.get(reNum)[i]);
+            }
         }
+    }
 
+    public void printFirst()
+    {
+        System.out.println("\n\n========= 최종 결제 내역 확인 =========");
+    }
 
+    public void printLast()
+    {
         System.out.println("==================================");
-
-
-
-
-        System.out.print("장바구니 내역의 결제를 진행 하시겠습니까? (Y/N) ");
-        String answer = sc.next();
-
-
-        if (answer.equals("Y")) {
-            System.out.println("결제를 진행합니다.");
-        } else
-            System.out.println("객실 구매 창으로 이동합니다.");
+        System.out.println("최종 결제 금액 : " + totalPriceAll + "원");
     }
 
 
@@ -82,20 +88,32 @@ public class Pay {
             System.out.println("문자를 입력해주세요.");
         }
 
-
         System.out.print("\n카드 번호 뒷 4자리를 입력해주세요. : ");
         try
         {
-            int cardBackNumber = parseInt(br.readLine());
+            int cardBackNumber = Integer.parseInt(br.readLine());
         }
         catch (Exception e)
         {
             System.out.println("정수 형태로 입력해주세요.");
         }
+        System.out.println("결제가 완료되었습니다:)");
+        System.out.println("예약 번호는 [ " + reNum + " ] 입니다.");
 
-
-        System.out.println("결제가 완료되었습니다. 체크인 시간은 오후 3시부터 입니다 :)");
+        for (int i=0; i<6 ;i++)
+        {
+            if (cusArray.get(reNum)[i] != 0)
+            {
+                if (i == 0)
+                    stockArray[i] -= cusArray.get(reNum)[i];
+                if (i == 1)
+                    stockArray[i] -= cusArray.get(reNum)[i];
+                if (i == 2)
+                    stockArray[i] -= cusArray.get(reNum)[i];
+                if (i == 3)
+                    stockArray[i] -= cusArray.get(reNum)[i];
+            }
+        }
     }
 }
-
 
