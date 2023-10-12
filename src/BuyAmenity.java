@@ -199,18 +199,19 @@ public class BuyAmenity {
                 for (Amenity_kinds amenity : vt) {
                     if (amenity.name.equalsIgnoreCase(itemName)) {
                         amenity.Amenity_Number += num;
-                        if (itemName.equals("칫솔치약")){
-                            cusAmenity[0] += num;
-                        } else if (itemName.equals("샤워타올")){
-                            cusAmenity[1] += num;
-                        } else if (itemName.equals("면도기")){
-                            cusAmenity[2] += num;
-                        } else if (itemName.equals("슬리퍼")){
-                            cusAmenity[3] += num;
-                        }
                         itemTrue = true;
                         break;
                     }
+                }
+
+                if (itemName.equals("칫솔치약")){
+                    cusAmenity[0] += num;
+                } else if (itemName.equals("샤워타올")){
+                    cusAmenity[1] += num;
+                } else if (itemName.equals("면도기")){
+                    cusAmenity[2] += num;
+                } else if (itemName.equals("슬리퍼")){
+                    cusAmenity[3] += num;
                 }
 
                 if (!itemTrue) {
@@ -325,6 +326,15 @@ public class BuyAmenity {
                             //} else if (itemName.equals("슬리퍼")){ // 슬리퍼 제거
                             //  stockArray[3] += count;
                             //}
+                            if (itemName.equals("치약칫솔")){
+                                cusAmenity[0] -= count;
+                            } else if (itemName.equals("샤워타올")){
+                                cusAmenity[1] -= count;
+                            } else if (itemName.equals("면도기")){
+                                cusAmenity[2] -= count;
+                            } else if (itemName.equals("슬리퍼")){
+                                cusAmenity[3] -= count;
+                            }
                         } else {
                             System.out.println("그 만큼의 수량을 선택하지 않았습니다.");
                         }
@@ -377,7 +387,7 @@ public class BuyAmenity {
             con = br.readLine().toUpperCase();
 
             if (con.equals("Y")) {
-                System.out.print("며칠 분을 제외하시겠습니까? : ");
+                System.out.print("디너 & 바 이용권을 몇개 제외하시겠습니까? : ");
                 dayMeal = Integer.parseInt(br.readLine());
 
                 if (dayMeal <= cusAmenity[5]) {

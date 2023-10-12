@@ -24,29 +24,42 @@ public class Main{
         ChooseRoom choose = new ChooseRoom(roomMap);
         ReChooseRoom rechoose = new ReChooseRoom(roomMap);
         BuyAmenity buy;
+        Pay pay;
         //reserve에서 회원이면 회원정보를 예약자 객체로 넘겨야 함. and 결제할 때 5%할인
 
 
 
         switch (S){  // SemiAdmin custommode에서 선택결과에 따라
-            case 1: R = reList.reserve();                                   // S가 1번이면 예약인지 확인 후 어매니티 구매로 이동
+            case 1: String[] outRenum = reList.reserve();               // S가 1번이면 예약인지 확인 후 어매니티 구매로 이동
+                    R = Integer.parseInt(outRenum[0]);
+                    reNum = outRenum[1];
                     // 예약 없을 때만 chooseRoom가도록 변수 받아와야함
                     if(R == 1){
                         buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
-                        buy.startProgram();                 break;              // 확인하고 어매니티 구매로 이동
+                        buy.startProgram();                              // 확인하고 어매니티 구매로 이동
+                        pay = new Pay(roomMap, cusArray, stockArray, reNum);
+                        pay.payAmnity();
+                        break;
+
                     } else if (R == 2) {
                         reNum = choose.ChooseRoomRun();                         // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
                         buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
                         buy.startProgram();                                          // 확인하고 어매니티 구매로 이동
                         reList.setReNum(reNum);
-                        reList.putMemberInfo(reNum);       break;                    // 회원인 경우) 예약번호, 예약자 객체 생성
+                        reList.putMemberInfo(reNum);                             // 회원인 경우) 예약번호, 예약자 객체 생성
+                        pay = new Pay(roomMap, cusArray, stockArray, reNum);
+                        pay.payRoom();
+                        break;
+
                     } else if (R == 3) {
                         reNum = choose.ChooseRoomRun();                         // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
                         buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
                         buy.startProgram();                                          // 확인하고 어매니티 구매로 이동
                         reList.setReNum(reNum);
                         reList.putInfo();                                               // 비회원인 경우) 예약번호, 예약자 객체 생성
-                        System.out.println(reNum);       break;
+                        pay = new Pay(roomMap, cusArray, stockArray, reNum);
+                        pay.payRoom();
+                        break;
                     }
 
             case 2: reList.reserveCheck();                              // 예약번호 확인
@@ -58,22 +71,22 @@ public class Main{
                     reNum = rechoose.ReChooseRoomRun();                 // 예약으로 이동
                 if(R == 2) {
                     reList.setReNum(reNum);
-                    reList.putMemberInfo(reNum);    break;              // 회원인 경우) 예약번호, 예약자 객체 생성
+                    reList.putMemberInfo(reNum);                        // 회원인 경우) 예약번호, 예약자 객체 생성
+                    pay = new Pay(roomMap, cusArray, stockArray, reNum);
+                    pay.payRoom();
+                    break;
                 }
                 else if (R == 3) {
                     reList.setReNum(reNum);
-                    reList.putInfo();               break;              // 비회원인 경우) 예약번호, 예약자 객체 생성
+                    reList.putInfo();                                  // 비회원인 경우) 예약번호, 예약자 객체 생성
+                    pay = new Pay(roomMap, cusArray, stockArray, reNum);
+                    pay.payRoom();
+                    break;
                 }
         }
-        System.out.println(reNum);
-
-
-
         // 폐이클래스 해줘야 함
-        Pay pay = new Pay(roomMap, cusArray, stockArray, reNum);
-        pay.printCartRoom();
-        pay.printCartAmenity();
-        pay.payRun();
+
+
 
         // 파일 직렬화
         inOut.fileOut1(roomMap);

@@ -22,7 +22,6 @@ public class Pay {
 
     public void payRun()
     {
-        printFirst();
 
         totalPriceAll = totalPriceR + totalPriceA;
         printLast();
@@ -50,19 +49,21 @@ public class Pay {
             if (cusArray.get(reNum)[i] != 0)
             {
                 if (i == 0)
-                    System.out.println("칫솔&치약 : " + cusArray.get(reNum)[i]);
+                    System.out.println("칫솔&치약 : " + cusArray.get(reNum)[i] * 1000 + "원");
                 if (i == 1)
-                    System.out.println("면도기 : " + cusArray.get(reNum)[i]);
+                    System.out.println("면도기 : " + cusArray.get(reNum)[i] * 1000 + "원");
                 if (i == 2)
-                    System.out.println("샤워 타월 : " + cusArray.get(reNum)[i]);
+                    System.out.println("샤워 타월 : " + cusArray.get(reNum)[i] * 1000 + "원");
                 if (i == 3)
-                    System.out.println("객실 슬리퍼 : " + cusArray.get(reNum)[i]);
+                    System.out.println("객실 슬리퍼 : " + cusArray.get(reNum)[i] * 1000 + "원");
                 if (i == 4)
-                    System.out.println("조식 이용권 : " + cusArray.get(reNum)[i]);
+                    System.out.println("조식 이용권 : " + cusArray.get(reNum)[i] * 50000 + "원");
                 if (i == 5)
-                    System.out.println("디너&바 이용권 : " + cusArray.get(reNum)[i]);
+                    System.out.println("디너&바 이용권 : " + cusArray.get(reNum)[i]  * 80000 + "원");
             }
         }
+        totalPriceA = ((cusArray.get(reNum)[0] * 1000) + (cusArray.get(reNum)[1] * 1000) + (cusArray.get(reNum)[2] * 1000) + (cusArray.get(reNum)[3] * 1000)
+                + (cusArray.get(reNum)[4] * 50000) + (cusArray.get(reNum)[5]  * 80000));
     }
 
     public void printFirst()
@@ -114,6 +115,18 @@ public class Pay {
                     stockArray[i] -= cusArray.get(reNum)[i];
             }
         }
+    }
+
+    public void payRoom(){
+        printFirst();
+        printCartRoom();
+        printCartAmenity();
+        payRun();
+    }
+    public void payAmnity(){
+        printFirst();
+        printCartAmenity();
+        payRun();
     }
 }
 

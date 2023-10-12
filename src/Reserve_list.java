@@ -30,9 +30,9 @@ public class Reserve_list
         this.roomMap = roomMap;
         this.reGuest = reGuest;
     }
-
+String[] outRenum = new String[2];
     // 예약 여부(Y/N) 확인
-    public int reserve() throws IOException
+    public String[] reserve() throws IOException
     {
         do
         {
@@ -66,7 +66,7 @@ public class Reserve_list
         }
         while (!res.equals("Y") && !res.equals("N"));				//-- Y나 N이 아닌 다른 문자나 숫자를 입력했을 경우..
 
-        return i;
+        return outRenum;
 
     } // end reserve()
 
@@ -97,7 +97,8 @@ public class Reserve_list
                     if (res.equals("Y"))
                     {
                         System.out.println("\t어메니티구매창으로..");
-                        i = 1;
+                        outRenum[0] = "1";
+                        outRenum[1] = reNum;
                     }
                     else if (res.equals("N"))
                     {
@@ -203,7 +204,7 @@ public class Reserve_list
                 {
                     System.out.println(map.get(str));						//-- 회원정보출력
                     System.out.println("\n\t객실 구매창으로 이동합니다.");	//-- 회원이므로 객실 구매창(객실 선택)으로 이동**삭제해야함
-                    i = 2;
+                    outRenum[0] = "2";
                 }
 
             }
@@ -472,7 +473,7 @@ public class Reserve_list
                     System.out.println("\t┃                                           ┃");
                     System.out.println("\t┃                                           ┃");
                     System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-                    i = 3;
+                    outRenum[0] = "3";
                 }
 
                 // 미성년자일 경우
@@ -493,7 +494,7 @@ public class Reserve_list
                     System.out.println("\t┃                                           ┃");
                     System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
                     System.out.println("\t메인화면으로..");
-                    i = 0;
+                    outRenum[0] = "0";
                     //**
                 }
             }
