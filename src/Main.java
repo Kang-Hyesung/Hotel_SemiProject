@@ -9,23 +9,13 @@ public class Main{
         Hashtable<String, Reserves> reGuest = inOut.fileIn3();            // 예약번호, 예약자 객체
         Hashtable<String, int[]> cusArray = inOut.fileIn4();              // 예약변호, 고객이 구매한 물건 수량을 표현한 int형 배열
 
-        // stockArray에서는 빼야 함(구매되면)
-        // 인원 * 숙박 일수 만큼 조식 디너 구매가능(마지막 날은 조식만 구매가능)
-        // cusAmenity 에는 더해야 함(구매되면)
-
-
-
-        // 자료구조 초기화해주기
-//        Hashtable<String, Room> roomMap = new Hashtable<>();
-//        Hashtable<String, Reserves> reGuest = new Hashtable<>();
-//        int[] stockArray = {0, 0, 0, 0};        // 직렬화 해야함
 
 
 
         // 관리자모드 나와서 회원이냐 묻는 메소드 반복해야 함
         SemiAdmin admin = new SemiAdmin(stockArray,roomMap,reGuest);
 
-        int S = admin.AdminRun(roomMap);                                 // SemiAdmin custommode에서 선택결과(1 = 키오스크 모드, 2 = 예약 시작)
+        int S = admin.AdminRun(roomMap);                                 // SemiAdmin custommode에서 선택결과(1 = 예약 조회 2 = 현장 구매 3= 어매니티 식사 구매)
         int R = 0;                                                       // reList.reserve() 반환값 담을 변수
         String reNum = "";                                               // 객실 선택 후 부여된 예약 번호
 
@@ -33,27 +23,37 @@ public class Main{
         Reserve_list reList = new Reserve_list(roomMap,reGuest);
         ChooseRoom choose = new ChooseRoom(roomMap);
         ReChooseRoom rechoose = new ReChooseRoom(roomMap);
+        BuyAmenity buy;
+        //reserve에서 회원이면 회원정보를 예약자 객체로 넘겨야 함. and 결제할 때 5%할인
+
 
 
         switch (S){  // SemiAdmin custommode에서 선택결과에 따라
-            case 1: R = reList.reserve();                                // 1번이면 회원인지 예약인지 확인
-                reNum = choose.ChooseRoomRun();     break;               // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
-            case 2: reNum = choose.ChooseRoomRun(); break;           // 2번이면 예약 시작으로 이동 후 예약번호 받아옴
+            case 1: reList.reserve();                                   // S가 1번이면 예약인지 확인 후 어매니티 구매로 이동
+                    // 예약 없을 때만 chooseRoom가도록 변수 받아와야함
+                    reNum = choose.ChooseRoomRun();                     // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
+                    buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum); break;
+
+            //현장구매
+            case 2: reList.member();                                    // S가 2번이면 회원인지 확인 후 아니면 개인정보 입력 후 객실 구매로 이동
+                    reNum = choose.ChooseRoomRun();     break;          // 확인한 후에 객실 구매로 이동 후 예약번호 받아옴
+
+            case 3: reList.reserveCheck();                              // 예약번호 확인
+                    buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
+                    buy.startProgram();                 break;          // 확인하고 어매니티 구매로 이동
+
+            // 예약하는 경우
+            case 4: reList.member();                                    // 회원인지 확인 후 객실 예약으로 이동
+                    reNum = rechoose.ReChooseRoomRun();                 // 예약으로 이동
+                    buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
+                    buy.startProgram();                                 // 확인하고 어매니티 구매로 이동
+
         }
 
-        reList.setReNum(reNum);                                          // 예약번호 reList객체에 넣어주기
-        reList.putInfo();                                                // 예약번호, 예약자 객체 생성
+        reList.setReNum(reNum);                                         // 예약번호 reList객체에 넣어주기
+        reList.putInfo();                                               // 예약번호, 예약자 객체 생성
 
-        System.out.println(reGuest.get(reNum));
-
-
-
-        BuyAmenity buy = new BuyAmenity(roomMap, cusArray, stockArray ,reNum);
-        buy.startProgram();
-
-
-
-
+        // 폐이클래스 해줘야 함
 
 
         // 파일 직렬화

@@ -67,8 +67,9 @@ public class Reserve_list
 
             if (inputNum.equals(reNum))
             {
-                System.out.println("예약번호 : "+reNum+"\n"+"\n"+"객실정보출력 : \n");		// 정보출력예시
-                break;
+                System.out.println("객실정보 예약번호 : "+reNum+"\n"+"\n"+ roomMap.get(reNum));		// 정보출력예시
+                System.out.println("예약자정보 예약번호 : "+reNum+"\n"+"\n"+ reGuest.get(reNum));
+                i = 1;
             }
             else
             {

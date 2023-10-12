@@ -185,7 +185,7 @@ public class SemiAdmin
         System.out.println("\t┃ │ stock setting mode │                    ┃");
         System.out.println("\t┃ └────────────────────┘                    ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.printf("\t┃  ※ 현재 치약&칫솔 재고 수량 : %d개       ┃\n" , stockArray[0]);
+        System.out.printf("\t┃  ※ 현재 치약&칫솔 재고 수량 : %2d개       ┃\n" , stockArray[0]);
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃    치약&칫솔의 재고를 보충하시겠습니까?   ┃");
@@ -218,11 +218,11 @@ public class SemiAdmin
             System.out.println("\t┃ │ stock setting mode │                    ┃");
             System.out.println("\t┃ └────────────────────┘                    ┃");
             System.out.println("\t┃                                           ┃");
-            System.out.printf("\t┃  [ 치약&칫솔 재고가 %d개 보충되었습니다. ]┃\n" , res);
+            System.out.printf("\t┃  [ 치약&칫솔 재고가 %2d개 보충되었습니다. ]┃\n" , res);
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
-            System.out.printf("\t┃  ※ 보충 후 치약&칫솔의 재고 수량 : %d개  ┃\n", stockArray[0]);
+            System.out.printf("\t┃  ※ 보충 후 치약&칫솔의 재고 수량 : %2d개 ┃\n", stockArray[0]);
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
@@ -264,7 +264,7 @@ public class SemiAdmin
         System.out.println("\t┃ │ stock setting mode │                    ┃");
         System.out.println("\t┃ └────────────────────┘                    ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.printf("\t┃  ※ 현재 면도기 재고 수량 : %d개          ┃\n" , stockArray[1]);
+        System.out.printf("\t┃  ※ 현재 면도기 재고 수량 : %2d개          ┃\n" , stockArray[1]);
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃    면도기의 재고를 보충하시겠습니까?      ┃");
@@ -297,11 +297,11 @@ public class SemiAdmin
             System.out.println("\t┃ │ stock setting mode │                    ┃");
             System.out.println("\t┃ └────────────────────┘                    ┃");
             System.out.println("\t┃                                           ┃");
-            System.out.printf("\t┃   [ 면도기 재고가 %d개 보충되었습니다. ]  ┃\n" , res);
+            System.out.printf("\t┃   [ 면도기 재고가 %2d개 보충되었습니다. ]  ┃\n" , res);
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
-            System.out.printf("\t┃   ※ 보충 후 면도기의 재고 수량 : %d개    ┃\n", stockArray[0]);
+            System.out.printf("\t┃   ※ 보충 후 면도기의 재고 수량 : %2d개    ┃\n", stockArray[0]);
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
@@ -343,7 +343,7 @@ public class SemiAdmin
         System.out.println("\t┃ │ stock setting mode │                    ┃");
         System.out.println("\t┃ └────────────────────┘                    ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.printf("\t┃  ※ 현재 샤워타올 재고 수량 : %d개        ┃\n" , stockArray[2]);
+        System.out.printf("\t┃  ※ 현재 샤워타올 재고 수량 : %2d개        ┃\n" , stockArray[2]);
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃    샤워타올의 재고를 보충하시겠습니까?    ┃");
@@ -375,11 +375,11 @@ public class SemiAdmin
             System.out.println("\t┃ │ stock setting mode │                    ┃");
             System.out.println("\t┃ └────────────────────┘                    ┃");
             System.out.println("\t┃                                           ┃");
-            System.out.printf("\t┃  [ 샤워타올 재고가 %d개 보충되었습니다. ] ┃\n" , res);
+            System.out.printf("\t┃  [ 샤워타올 재고가 %2d개 보충되었습니다. ] ┃\n" , res);
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
-            System.out.printf("\t┃  ※ 보충 후 샤워타올의 재고 수량 : %d개   ┃\n", stockArray[2]);
+            System.out.printf("\t┃  ※ 보충 후 샤워타올의 재고 수량 : %2d개   ┃\n", stockArray[2]);
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
@@ -420,7 +420,7 @@ public class SemiAdmin
         System.out.println("\t┃ │ stock setting mode │                    ┃");
         System.out.println("\t┃ └────────────────────┘                    ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.printf("\t┃  ※ 현재 객실 슬리퍼 재고 수량 : %d개     ┃\n" , stockArray[3]);
+        System.out.printf("\t┃  ※ 현재 객실 슬리퍼 재고 수량 : %2d개     ┃\n" , stockArray[3]);
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃   객실 슬리퍼의 재고를 보충하시겠습니까?  ┃");
@@ -453,11 +453,11 @@ public class SemiAdmin
             System.out.println("\t┃ │ stock setting mode │                    ┃");
             System.out.println("\t┃ └────────────────────┘                    ┃");
             System.out.println("\t┃                                           ┃");
-            System.out.printf("\t┃ [ 객실 슬리퍼 재고가 %d개 보충되었습니다 ]┃\n" , res);
+            System.out.printf("\t┃ [ 객실 슬리퍼 재고가 %2d개 보충되었습니다 ]┃\n" , res);
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
-            System.out.printf("\t┃ ※ 보충 후 객실 슬리퍼의 재고 수량 : %d개 ┃\n", stockArray[0]);
+            System.out.printf("\t┃ ※ 보충 후 객실 슬리퍼의 재고 수량 : %2d개 ┃\n", stockArray[0]);
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
@@ -1013,16 +1013,6 @@ public class SemiAdmin
     }
 
 
-
-
-
-
-
-
-
-
-
-
     // 고객용 화면으로 전환할 수 있는 메소드
     public void customerMode()
     {
@@ -1048,7 +1038,7 @@ public class SemiAdmin
             if (customerModeSel == 1)
                 reserveMode();
             else if (customerModeSel == 2)
-                i = 2;
+                resersvationSystem();
             else if (customerModeSel == 3)
                 AdminRun(roomMap);
         }
@@ -1065,18 +1055,18 @@ public class SemiAdmin
         System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.printf("\t┃   %d년 %d월 %d일               SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
         System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃           Welcome to SS Hotel :)          ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃   Self Check-in System                    ┃");
+        System.out.println("\t┃   1. 예약 조회                            ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃   ○ 원하시는 번호를 입력해주세요.        ┃");
+        System.out.println("\t┃   2. 현장 구매                            ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃   ┌─────────────┐       ┌─────────────┐   ┃");
-        System.out.println("\t┃   │ 1. 예약 확인│       │ 2. 현장 구매│   ┃");
-        System.out.println("\t┃   └─────────────┘       └─────────────┘   ┃");
+        System.out.println("\t┃   3. 어메니티 및 식사 구매                ┃");
+        System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃     ※현금 결제 & 미성년자 사용 불가※    ┃");
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.println("\t○ 번호 입력 : ");
+        System.out.print("\t○ 이동하고자 하는 메뉴 번호를 입력해주세요. : ");
 
         try
         {
@@ -1085,11 +1075,59 @@ public class SemiAdmin
             if (reserveModeSel == 1)
                 i = 1;
             else if (reserveModeSel == 2)
-                i = 2;   // 현장구매 클래스로 이동해야함
+                i = 2;										// 현장구매 클래스로 이동해야함
+            else if (reserveModeSel == 3)
+            {
+                i = 3;
+                buyAmenityMeal();
+            }
         }
         catch (Exception e)
         {
             System.out.println("\t숫자 형태를 입력해주세요.");
         }
     } //reserveMode end
+
+
+    // 예약 시스템 모드 전환 (아고다, 호텔컴바인 같은,,,,)
+    public void resersvationSystem()
+    {
+        System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("\t┃                                  SS HOTEL ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃           Welcome to SS Hotel :)          ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃		                                   ┃");
+        System.out.println("\t┃		                                   ┃");
+        System.out.println("\t┃  안녕하세요,                              ┃");
+        System.out.println("\t┃  SS HOTEL 온라인 예약 페이지입니다.       ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+        i = 2;
+    } //resersvationSystem
+
+    // 어메니티 및 식사 구매 모드 전환
+    public void buyAmenityMeal()
+    {
+        System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.printf("\t┃   %d년 %d월 %d일               SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃※ 해당 메뉴는 투숙객만 이용 가능합니다 ※ ┃");
+        System.out.println("\t┃		                                   ┃");
+        System.out.println("\t┃		                                   ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃     ==============================        ┃");
+        System.out.println("\t┃        예약 번호를 입력해주세요.          ┃");
+        System.out.println("\t┃     ==============================        ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+        System.out.print("\t○ 예약 번호 입력 : ");
+    }
 }
+
+

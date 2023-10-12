@@ -91,7 +91,7 @@ public class Room implements Serializable {
     }
 
     public int getRoomPrice() {
-        return roomPrice;
+        return roomPrice * days;
     }
 
     public void setRoomPrice(int roomPrice) {
