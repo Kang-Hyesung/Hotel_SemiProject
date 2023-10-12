@@ -414,10 +414,13 @@ public class BuyAmenity {
             System.out.println("선택한 상품이 없습니다.");
         }
 
-        for (Amenity_kinds str : vt) {
-            System.out.println(str);
-        }
-
+//        for (Amenity_kinds str : vt) {
+//            System.out.println(str);
+//        }
+        System.out.println(cusAmenity[0]);
+        System.out.println(cusAmenity[1]);
+        System.out.println(cusAmenity[2]);
+        System.out.println(cusAmenity[3]);
         System.out.println("선택한 조식 여부: " + breakfastcheck + "조식 식권 수 : "+ cusAmenity[4]);
         System.out.println("선택한 디너 & 바 여부: " + dinner_bar+ "디너 & 바 식권 수 : "+ cusAmenity[5]);
 
@@ -429,7 +432,6 @@ public class BuyAmenity {
         strCheck_Menu();
 
     }
-    // 프로그램 종료 메소드 => 지금은 그렇지만 합칠때는 돌아가기로 구현 할 것
     public void exit() {
         System.out.print("\n프로그램 종료");
         putAmenity();

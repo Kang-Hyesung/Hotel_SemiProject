@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Hashtable;
 
 public class Main{
@@ -11,6 +13,13 @@ public class Main{
         Hashtable<String, int[]> cusArray = inOut.fileIn4();              // 예약변호, 고객이 구매한 물건 수량을 표현한 int형 배열
 
 
+//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+//        System.out.println("예약번호입력");
+//        String abc = br.readLine();
+//
+//        for(int i = 0; i < 5; i++) {
+//            System.out.println(cusArray.get(abc)[i]);
+//        }           // 여기서는 정상적으로 나옴
 
         // 관리자모드 나와서 회원이냐 묻는 메소드 반복해야 함
         SemiAdmin admin = new SemiAdmin(stockArray,roomMap,reGuest);
