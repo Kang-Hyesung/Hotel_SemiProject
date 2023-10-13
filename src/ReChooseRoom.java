@@ -127,6 +127,7 @@ public class ReChooseRoom implements BuyRoom{
                 boolean flag = false;
                 Iterator<String> it = roomMap.keySet().iterator();
                 Calendar start = Calendar.getInstance();
+                start.add(Calendar.DATE,afDay);
                 int startDate = Integer.parseInt(String.format("%d%02d%02d", start.get(Calendar.YEAR), start.get(Calendar.MONTH) + 1, start.get(Calendar.DATE)));
                 start.add(Calendar.DATE, sukbak);
                 int endDate = Integer.parseInt(String.format("%d%02d%02d", start.get(Calendar.YEAR), start.get(Calendar.MONTH) + 1, start.get(Calendar.DATE)));
@@ -278,7 +279,7 @@ public class ReChooseRoom implements BuyRoom{
             today.add(Calendar.DATE, 1);
             int todayYear = today.get(Calendar.YEAR);
             int todayMonth = today.get(Calendar.MONTH) + 1;
-            int todayDay = today.get(Calendar.DATE);
+            int todayDay = today.get(Calendar.DATE) - 1;
             todayDate = Integer.parseInt(String.format("%d%02d%02d", todayYear, todayMonth, todayDay));
 
             if(i == 28){

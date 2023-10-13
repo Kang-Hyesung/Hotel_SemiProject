@@ -104,6 +104,7 @@ public class Pay {
         }
         System.out.println("\t결제가 완료되었습니다:)");
         System.out.println("\t예약 번호는 [ " + reNum + " ] 입니다.");
+        System.out.println(roomMap.get(reNum));
 
     }
 

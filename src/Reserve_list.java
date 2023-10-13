@@ -114,7 +114,7 @@ public class Reserve_list
                         }
                         else if (res.equals("N"))
                         {
-                            System.out.println("\t메인홈으로..");
+                            reserve();
                         }
                     }
                     while (!res.equals("Y") && !res.equals("N"));
@@ -135,8 +135,10 @@ public class Reserve_list
                         {
                             reserveCheck();
                         }
-                        else if (n == 2)
+                        else if (n == 2) {
                             System.out.println("\t메인홈으로..");
+                            reserve();
+                        }
                         else
                         {
                             System.out.println("\n\t=======1. 다시 입력 2. 이전 메뉴 중 선택해 주세요.=======\n");
@@ -270,6 +272,12 @@ public class Reserve_list
                     outRenum[0] ="2";
                 }
 
+                else{
+                    System.out.println("회원정보에 등록된 주민번호 뒷자리와 일치하지 않습니다");
+                    System.out.println("예약확인 초기화면으로 이동합니다");
+                    reserve();
+                }
+
             }
         }
         catch (Exception ee)
@@ -296,7 +304,7 @@ public class Reserve_list
                     System.out.print("\t● 이동하고자 하는 메뉴 번호를 입력해주세요 : ");
                     n = Integer.parseInt(br.readLine());
                     if (n == 2)											//-- 이전 메뉴(2)를 클릭했을 때
-                        member();
+                        reserve();
                     else if (n == 1)
                         memberCheck();
                     else
@@ -441,7 +449,7 @@ public class Reserve_list
                     }
                     else if (n==2)									//-- 이전 메뉴(2)를 클릭했을 때 예약여부확인으로 돌아가기
                     {
-                        reserve();
+                        memberCheck();
                     }
                     else
                         System.out.print("\n\t=======1. 다시 입력 2. 이전 메뉴 중 선택해주세요.=======\n");

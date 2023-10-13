@@ -1064,7 +1064,7 @@ public class SemiAdmin
                 buyAmenityMeal();
                 return 2;
             }
-            else if(reserveModeSel == 10){
+            else if(reserveModeSel == 0){
                 Main.CODE = 1;
             }
         }
