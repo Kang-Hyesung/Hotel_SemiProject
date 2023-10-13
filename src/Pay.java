@@ -105,6 +105,9 @@ public class Pay {
         System.out.println("\t결제가 완료되었습니다:)");
         System.out.println("\t예약 번호는 [ " + reNum + " ] 입니다.");
 
+    }
+
+    public void getCusArrayList(){
         for (int i=0; i<6 ;i++)
         {
             if (cusArray.get(reNum)[i] != 0)
@@ -131,6 +134,7 @@ public class Pay {
         printFirst();
         printCartAmenity();
         payRun();
+        getCusArrayList();
     }
 
     public void payRoomOnly(){

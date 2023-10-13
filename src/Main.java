@@ -1,10 +1,9 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.Hashtable;
 
 public class Main{
 
-        static int CODE;
+    static int CODE;
+
 
     public static void main(String[] args) throws Exception {
         Firstprint first = new Firstprint();
@@ -22,7 +21,13 @@ public class Main{
 
         int S = admin.AdminRun(roomMap);                                 // 3으로 나오면 예약 시스템 모드로 진입해야 함
 
-        //while(CODE == 0) {
+        while(CODE == 0) {
+            // 역직렬화로 데이터 가져오기
+            roomMap = inOut.fileIn1();                // 예약번호, 객실 객체
+            inOut.fileIn2();                               // 호텔의 재고를 int형 배열로 나타냄
+            reGuest = inOut.fileIn3();            // 예약번호, 예약자 객체
+            cusArray = inOut.fileIn4();              // 예약변호, 고객이 구매한 물건 수량을 표현한 int형 배열
+
             if (S != 3)
                 S = admin.kioskMode();                                       // SemiAdmin custommode에서 선택결과(1 = 예약 조회 및 현장 구매 2= 어매니티 식사 구매)
             int R = 0;                                                       // reList.reserve() 반환값 담을 변수
@@ -103,6 +108,6 @@ public class Main{
             inOut.fileOut2(stockArray);
             inOut.fileOut3(reGuest);
             inOut.fileOut4(cusArray);
-        //}
+        }
     }
 }
