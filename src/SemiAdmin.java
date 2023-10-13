@@ -748,43 +748,8 @@ public class SemiAdmin
         }
     } //adminReservationGrade end
 
-    // 매출 현황 메뉴 선택 메소드
-    public void adminSellDisp()
-    {
-        System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.println("\t┃                                  SS HOTEL ┃");
-        System.out.println("\t┃ ┌───────────────┐                         ┃");
-        System.out.println("\t┃ │  Sales Status │                         ┃");
-        System.out.println("\t┃ └───────────────┘                         ┃");
-        System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃   1. 객실 매출 현황                       ┃");
-        System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃   2. 어메니티 매출 현황                   ┃");
-        System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃   3. 부가서비스 매출 현황                 ┃");
-        System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃                                           ┃");
-        System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.print("\t▶ 이동하고자 하는 메뉴 번호를 입력해주세요 : ");
-
-        try
-        {
-            int res = Integer.parseInt(br.readLine());
-            if (res == 1)
-                adminSellRoomDisp();
-            //else if (res == 2)
-            //		adminSellRoomAmenity(roomMap);
-            //	else if (res == 3)
-            //		adminSellRoomDMeal(roomMap);
-        }
-        catch (Exception e)
-        {
-            System.out.println("\t*** 숫자 형태로 입력해주세요. ***");
-        }
-    } //adminSellDisp end
-
     // 객실 매출 현황 메뉴 선택
-    public void adminSellRoomDisp()
+    public void adminSellDisp()
     {
         System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("\t┃                                  SS HOTEL ┃");
@@ -799,6 +764,7 @@ public class SemiAdmin
         System.out.println("\t┃   3. 연령별 객실 매출 현황                ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃   4. 객실 타입별 매출 현황                ┃");
+        System.out.println("\t┃                                           ┃");
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
         System.out.print("\t▶ 이동하고자 하는 메뉴 번호를 입력해주세요 : ");
 
@@ -817,6 +783,7 @@ public class SemiAdmin
         catch (Exception e)
         {
             System.out.println("\t*** 숫자 형태로 입력해주세요. ***");
+            adminSellDisp();
         }
     }// adminSellRoomDisp end
 
@@ -1145,3 +1112,4 @@ public class SemiAdmin
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
     }
 }
+

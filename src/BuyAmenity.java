@@ -176,7 +176,7 @@ public class BuyAmenity {
     // String[] validItems = {"칫솔치약", "샤워타올", "면도기", "슬리퍼"};
     public boolean isValidAmenity(String itemName) {
         // 유효한 항목 리스트
-        String[] validItems = {"칫솔치약", "샤워타월", "면도기", "슬리퍼"};
+        String[] validItems = {"칫솔치약", "샤워타월", "면도기", "객실 슬리퍼"};
 
         // 입력값이 유효한 항목인지 확인
         for(String item : validItems) {
