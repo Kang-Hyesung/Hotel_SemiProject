@@ -20,29 +20,29 @@ class AdminMenus
 
 public class SemiAdmin
 {
-    int adminSel;
-    int teethBrushPaste, roomSlipper, razor, showerTowel;
-    int totalPrice;
-    int password;
-    int countReRoomDeluxe;           // 당일 예약된 방을 보여주는 변수 (디럭스)
-    int countReRoomSuperior;            // 당일 예약된 방을 보여주는 변수 (슈페리어)
-    int countReRoomFamily;              // 당일 예약된 방을 보여주는 변수 (패밀리)
-    int countReRoomSuite;               // 당일 예약된 방을 보여주는 변수 (스위트)
-    int[] stockArray;      // 어메니티 재고를 담아둘 int형 배열
+    private int adminSel;
+    private int teethBrushPaste, roomSlipper, razor, showerTowel;
+    private int totalPrice;
+    private int password;
+    private int countReRoomDeluxe;           // 당일 예약된 방을 보여주는 변수 (디럭스)
+    private int countReRoomSuperior;            // 당일 예약된 방을 보여주는 변수 (슈페리어)
+    private int countReRoomFamily;              // 당일 예약된 방을 보여주는 변수 (패밀리)
+    private int countReRoomSuite;               // 당일 예약된 방을 보여주는 변수 (스위트)
+    private int[] stockArray;      // 어메니티 재고를 담아둘 int형 배열
     // int 형 배열에 들어가는 재고 수량.
     // stockArray[0] = teethBrushPaste;
     // stockArray[1] = razor;
     // stockArray[2] = showerTowel;
     // stockArray[3] = roomSlipper;
-    int i;          // 메소드 이동을 위한 임의 변수
-    Calendar today = Calendar.getInstance();
-    int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
+    private int i;          // 메소드 이동을 위한 임의 변수
+    private Calendar today = Calendar.getInstance();
+    private int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
 
 
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    Scanner sc = new Scanner(System.in);
-    public Hashtable<String, Room> roomMap;
-    Hashtable<String, Reserves> reGuest;
+    private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private Scanner sc = new Scanner(System.in);
+    private Hashtable<String, Room> roomMap;
+    private Hashtable<String, Reserves> reGuest;
 
     public SemiAdmin(int[] stockArray, Hashtable<String, Room> roomMap, Hashtable<String, Reserves> reGuest)
     {

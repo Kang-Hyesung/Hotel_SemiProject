@@ -7,6 +7,7 @@ public class Pay {
     public Hashtable<String, Room> roomMap;
     public Hashtable<String, int[]> cusArray;
     int[] stockArray;
+    private int[] cusAmenity;
     String reNum;
     Scanner sc = new Scanner(System.in);
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -18,6 +19,9 @@ public class Pay {
         this.cusArray = cusArray;
         this.stockArray = stockArray;
         this.reNum = reNum;
+        if(cusArray.get(reNum) == null){
+            this.cusAmenity = new int[6];
+        };
     }
 
     public void payRun()
@@ -126,6 +130,12 @@ public class Pay {
     public void payAmnity(){
         printFirst();
         printCartAmenity();
+        payRun();
+    }
+
+    public void payRoomOnly(){
+        printFirst();
+        printCartRoom();
         payRun();
     }
 }

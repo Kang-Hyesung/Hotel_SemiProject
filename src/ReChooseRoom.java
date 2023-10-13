@@ -240,6 +240,8 @@ public class ReChooseRoom implements BuyRoom{
     }
 
     public void afterDay() {
+        Calendar today = Calendar.getInstance();
+        int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
 
         System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("\t┃                                  SS HOTEL ┃");

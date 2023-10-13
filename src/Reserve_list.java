@@ -18,12 +18,12 @@ public class Reserve_list
     private String name, birth, tel;									//-- (비회원모드) 이름, 주민번호, 전화번호
     private String str;
 
-    int n = 0;													// 다시 입력, 돌아가기 값 받는 곳
-    int i;
+    private int n = 0;													// 다시 입력, 돌아가기 값 받는 곳
+    private int i;
 
-    public Hashtable<String,Room> roomMap;
-    public Hashtable<String,Reserves> reGuest;
-    HashMap<String, Members> map = new HashMap<String, Members>();
+    private Hashtable<String,Room> roomMap;
+    private Hashtable<String,Reserves> reGuest;
+    private HashMap<String, Members> map = new HashMap<String, Members>();
 
     Reserve_list(Hashtable<String,Room> roomMap, Hashtable<String,Reserves> reGuest)
     {
@@ -182,10 +182,12 @@ public class Reserve_list
             if (res.equals("Y"))									//-- Y (회원일 때)
             {
                 memberCheck();										//-- 회원모드로 이동
+                return 2;
             }
             else if (res.equals("N"))								//-- N (비회원일 때)
             {
                 nonMemberCheck();									//-- 비회원모드로 이동
+                return 3;
             }
         }
         while (!res.equals("Y") && !res.equals("N"));				//-- Y나 N이 아닌 다른 문자나 숫자를 입력했을 경우..

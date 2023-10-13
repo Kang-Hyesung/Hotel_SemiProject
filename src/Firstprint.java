@@ -2,8 +2,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class Firstprint {
-    int password;
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private int password;
+    private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public void password(){
         adminPasswordDisp();

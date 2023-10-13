@@ -22,7 +22,7 @@ public class Main{
 
         int S = admin.AdminRun(roomMap);                                 // 3으로 나오면 예약 시스템 모드로 진입해야 함
 
-        while(CODE == 0) {
+        //while(CODE == 0) {
             if (S != 3)
                 S = admin.kioskMode();                                       // SemiAdmin custommode에서 선택결과(1 = 예약 조회 및 현장 구매 2= 어매니티 식사 구매)
             int R = 0;                                                       // reList.reserve() 반환값 담을 변수
@@ -85,16 +85,17 @@ public class Main{
                         reList.setReNum(reNum);
                         reList.putMemberInfo(reNum);                        // 회원인 경우) 예약번호, 예약자 객체 생성
                         pay = new Pay(roomMap, cusArray, stockArray, reNum);
-                        pay.payRoom();
+                        pay.payRoomOnly();
                         break;
                     } else if (R == 3) {
                         reList.setReNum(reNum);
                         reList.putInfo();                                  // 비회원인 경우) 예약번호, 예약자 객체 생성
                         pay = new Pay(roomMap, cusArray, stockArray, reNum);
-                        pay.payRoom();
+                        pay.payRoomOnly();
                         break;
                     }
             }
+
 
 
             // 파일 직렬화
@@ -102,6 +103,6 @@ public class Main{
             inOut.fileOut2(stockArray);
             inOut.fileOut3(reGuest);
             inOut.fileOut4(cusArray);
-        }
+        //}
     }
 }

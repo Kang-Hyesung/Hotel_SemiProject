@@ -15,15 +15,15 @@ public class ChooseRoom implements BuyRoom{
         return reNum;
     }
 
-    static Hashtable<String, Room> roomMap;                     // 예약번호, 객실 객체 자료 구조
-    Set<String> reNumList = new HashSet<>();             // 예약번호 담을 자료구조
-    Calendar today = Calendar.getInstance();
-    int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
-    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    boolean[][] roomCheck = new boolean[4][10];
+    private Hashtable<String, Room> roomMap;                     // 예약번호, 객실 객체 자료 구조
+    private Set<String> reNumList = new HashSet<>();             // 예약번호 담을 자료구조
+    private Calendar today = Calendar.getInstance();
+    private int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
+    private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    private boolean[][] roomCheck = new boolean[4][10];
 
     ChooseRoom(Hashtable<String, Room> roomMap){                 // 생성자로 자료구조 받아오기
-        ChooseRoom.roomMap = roomMap;
+        this.roomMap = roomMap;
     }
 
     public String ChooseRoomRun(){
