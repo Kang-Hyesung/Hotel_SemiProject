@@ -68,7 +68,28 @@ public class Members
     @Override
     public String toString()
     {
-        return "\n회원번호 : "+memberNum+"\n이    름 : "+memberName+"\n생년월일 : "+memberBirth+"\n전화번호 : "+memberTel+"\n";
+        return "\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n" +
+                "\t┃                                  SS HOTEL ┃\n" +
+                "\t┃                                           ┃\n" +
+                "\t┃             [ 회원 정보 확인 ]            ┃\n" +
+                "\t┃                                           ┃\n" +
+                "\t┃ ▷ 회원 번호 : " + memberNum + "                     ┃\n" +
+                "\t┃                                           ┃\n" +
+                "\t┃ ▷ 이름      : " + memberName + "                     ┃\n" +
+                "\t┃                                           ┃\n" +
+                "\t┃ ▷ 생년월일  : " + memberBirth + "             ┃\n" +
+                "\t┃                                           ┃\n" +
+                "\t┃ ▷ 전화번호  : " + memberTel + "              ┃\n" +
+                "\t┃                                           ┃\n" +
+                "\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";
+
+
+
+
+
+
+
+        //"\n회원번호 : "+memberNum+"\n이    름 : "+memberName+"\n생년월일 : "+memberBirth+"\n전화번호 : "+memberTel+"\n";
     }
 
 }

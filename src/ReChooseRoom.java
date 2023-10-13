@@ -40,50 +40,88 @@ public class ReChooseRoom{
 
     public void inputSukbakInwon(){                             // 숙박일수와 인원수 받는 메소드
         try {
-            System.out.print("몇 박? : ");
+            System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            System.out.printf("\t┃   %d년 %d월 %d일               SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃================객실 구매==================┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃ ▷ 숙박하실 일 수를 입력해 주세요.        ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+            System.out.print("\t● 숙박 일 수 입력(숫자) : ");
+
             sukbak = Integer.parseInt(br.readLine());
 
             if(afDay + sukbak >= 29){
-                System.out.println("28일 뒤까지만 예약 가능 숙박일 다시 입력");
+                System.out.println("\t*** 28일 이상의 장기 숙박은 프론트로 문의해 주세요. ***");
+                System.out.println("\t*** 숙박하실 일 수를 다시 입력해 주세요. ***");
                 inputSukbakInwon();
             }
 
-            System.out.print("인원수? : ");
+            System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            System.out.printf("\t┃   %d년 %d월 %d일               SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃================객실 구매==================┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.printf("\t┃ ▷ 숙박 일 수 : %2d일                      ┃\n",sukbak);
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃ ▷ 숙박 인원 수를 입력해 주세요.          ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+            System.out.printf("\t● 숙박 인원 입력(숫자) : " );
+
             inwon = br.readLine();
         }
         catch (Exception e){
-            System.out.println("정수 형태로 입력해 주세요");
+            System.out.println("*** 정수 형태로 입력해 주세요. ***");
             inputSukbakInwon();
         }
     }
 
     public void toChangeRoomEmpty(){
         // 오늘 날짜와 객실 객체의 숙박시작 ~ 종료날짜를 비교하여 방이 비어 있는지 여부를 true false로 변경
-            Iterator<String> it = roomMap.keySet().iterator();
-            if (it.hasNext()) {
-                while (it.hasNext()) {
-                    String key = it.next();
-                    if (todayDate >= (roomMap.get(key).getIntEndDate())) {
-                        roomMap.get(key).setRoomRe(false);
-                    }
-                    if (todayDate == (roomMap.get(key).getIntStartDate())) {
-                        roomMap.get(key).setRoomRe(true);
-                    }
-                    System.out.println();
+        Iterator<String> it = roomMap.keySet().iterator();
+        if (it.hasNext()) {
+            while (it.hasNext()) {
+                String key = it.next();
+                if (todayDate >= (roomMap.get(key).getIntEndDate())) {
+                    roomMap.get(key).setRoomRe(false);
                 }
+                if (todayDate == (roomMap.get(key).getIntStartDate())) {
+                    roomMap.get(key).setRoomRe(true);
+                }
+                System.out.println();
             }
+        }
     } //toChangeRoomEmpty end
 
     public void printRoom(){  // 자료구조, 몇 박, 인원 수
-        for (int i = 1; i <= 4; i++){
+        System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.printf("\t┃   %d년 %d월 %d일                         SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
+        System.out.println("\t┃                                                     ┃");
+        System.out.println("\t┃======================객실 선택======================┃");
+        System.out.println("\t┃                                                     ┃");
+
+        for (int i = 1; i <= 4; i++)
+        {
             if(i == 1)
-                System.out.println("Deluxe (2인 기준)");
+                System.out.println("\t┃   Deluxe (2인 기준)                                 ┃ ");
             if(i == 2)
-                System.out.println("Superior (2 ~ 3인 기준)");
+                System.out.println("\t┃   Superior (2 ~ 3인 기준)                           ┃");
             if(i == 3)
-                System.out.println("Family (4 ~ 6인 기준)");
+                System.out.println("\t┃   Family (4 ~ 6인 기준)                             ┃");
             if(i == 4)
-                System.out.println("Suite (2 ~ 3인 기준)");
+                System.out.println("\t┃   Suite (2 ~ 3인 기준)                              ┃");
 
             for(int j = 1; j <= 10; j++){
                 boolean flag = false;
@@ -99,7 +137,7 @@ public class ReChooseRoom{
                     if(roomMap.get(key).getRoomNum() == 100 * i + j)
                     {
                         if( (startDate >= (roomMap.get(key).getIntStartDate()) && startDate < (roomMap.get(key).getIntEndDate())) ||
-                                (endDate >= (roomMap.get(key).getIntStartDate()) && endDate < (roomMap.get(key).getIntEndDate()))) {
+                                (endDate > (roomMap.get(key).getIntStartDate()) && endDate <= (roomMap.get(key).getIntEndDate()))) {
                             System.out.print(" ■  ");
                             roomCheck[i - 1][j - 1] = true;
                             flag = true;
@@ -107,51 +145,63 @@ public class ReChooseRoom{
                     }
                 }
 
-                if(!flag)
+                if(!flag) {
+                    if (j == 1)
+                        System.out.print("\t┃  ");
                     System.out.print(" □  ");
+                    if (j == 10)
+                        System.out.print(" ┃");
+                }
             }
-
             System.out.println();
 
-            for (int j = 1; j <= 10; j++){
-                System.out.printf("%d ", 100 * i + j);
+            for (int j = 1; j <= 10; j++)
+            {
+                if (j == 1)
+                    System.out.printf("\t┃  ");
+                System.out.printf("%d  ", 100 * i + j);
+                if (j == 10)
+                    System.out.print(" ┃");
             }
-            System.out.println("\n");
-
+            System.out.println();
+            System.out.println("\t┃                                                     ┃");
         }
+        System.out.println("\t┃ ▷ 원하시는 객실의 호수를 입력해 주세요.            ┃");
+        System.out.println("\t┃                                                     ┃");
+        System.out.println("\t└━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┘");
     }
 
     public void inputRoomNum(){
         try {
-            System.out.print("객실번호를 선택하세요 : ");
+            System.out.print("\t● 객실 호수 입력 (숫자 형태) : ");
             roomNum = Integer.parseInt(br.readLine());
             column = roomNum / 100;               // 층
             row    = roomNum % 100;               // 호수
 
             if(roomCheck[column - 1][row - 1]){
-                System.out.println("이미 선택된 객실입니다 다시 선택하세요");
+                System.out.println("\t\n=====이미 선택된 객실입니다. 다시 입력해 주세요.====");
                 inputRoomNum();
             }
 
             if((roomNum / 100 == 1) &&  Integer.parseInt(inwon) > 2){
-                System.out.println("Deluxe등급의 객실은 2인까지 가능");
+                System.out.println("\t\n=====Deluxe등급의 객실은 2인까지 숙박이 가능합니다.=====");
                 inputRoomNum();
             }
             else if((roomNum / 100 == 2) &&  Integer.parseInt(inwon) > 3){
-                System.out.println("Superior등급의 객실은 3인까지 가능");
+                System.out.println("\t\n=====Superior등급의 객실은 3인까지 숙박이 가능합니다.=====");
                 inputRoomNum();
             }
             else if((roomNum / 100 == 3) &&  Integer.parseInt(inwon) > 6){
-                System.out.println("Family등급의 객실은 6인까지 가능");
+                System.out.println("\t\n=====Family등급의 객실은 6인까지 숙박이 가능합니다.=====");
                 inputRoomNum();
             }
             else if((roomNum / 100 == 4) &&  Integer.parseInt(inwon) > 3){
-                System.out.println("Suite등급의 객실은 3인까지 가능");
+                System.out.println("\t\n=====Suite등급의 객실은 3인까지 숙박이 가능합니다.=====");
                 inputRoomNum();
             }
         }
         catch (Exception e){
-            System.out.println("정수 형태로 입력해 주세요");
+            System.out.println("*** 정수 형태로 입력해 주세요. ***");
             inputRoomNum();
         }
     }
@@ -189,18 +239,28 @@ public class ReChooseRoom{
     }
 
     public void afterDay() {
-        System.out.println("체크인 날짜를 입력하세요");
-        System.out.println("예)2000-08-04");
 
+        System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("\t┃                                  SS HOTEL ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃  ▷ 체크인 하실 날짜를 입력해 주세요.     ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃      * 예) 2023-08-04                     ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+        System.out.print("\t● 날짜 입력 : ");
         try {
-        afDate = br.readLine();
+            afDate = br.readLine();
         }
         catch (Exception e){
             afterDay();
         }
-
-
-
 
         int afterYear = Integer.parseInt(afDate.substring(0, 4));
         int afterMonth = Integer.parseInt(afDate.substring(5, 7));
@@ -229,176 +289,4 @@ public class ReChooseRoom{
         roomMap.remove(reNum);
         reNumList.remove(reNum);
     }
-
-
-
-//    int startYear,startMonth,startDay;
-//
-//    // 방 예약
-//
-//    public Hashtable<String, Room> buyRoom(Hashtable<String, Room> roomMap) throws IOException {
-//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//        toChangeRoomEmpty(roomMap);
-//        int afDay = afterDay();
-//
-//
-//        System.out.print("몇 박? : ");
-//        int days = Integer.parseInt(br.readLine());
-//
-//        System.out.print("인원수? : ");
-//        int num = Integer.parseInt(br.readLine());
-//
-//        printRoom(roomMap, days, num);                                // 객실 출력 □ ■
-//        System.out.print("객실번호를 선택하세요 : ");
-//        String roomNum = br.readLine();
-//        checkRoomCondition(roomMap, days, roomNum);
-//
-//        System.out.print("침대 타입을 선택하세요 : ");
-//        String bedType = br.readLine();
-//
-//        Calendar cal = Calendar.getInstance();
-//        cal.add(Calendar.DATE, afDay);
-//        int year = cal.get(Calendar.YEAR);
-//        int month = cal.get(Calendar.MONTH) + 1;
-//        int day = cal.get(Calendar.DATE);
-//        Random rd = new Random();
-//
-//        String reNum;
-//        do {
-//            int i = rd.nextInt(8999) + 1000;
-//            reNum = String.format("%d%02d%02d%03d", year, month, day,i);
-//        }
-//        while (roomMap.put(reNum, new Deluxe(roomNum, bedType, days, afDay)) != null);
-//
-//        roomMap.get(reNum).setRoomRe(true);
-//        System.out.println(roomMap.get(reNum));     // 객체 정보(애약/구매 내역) 확인
-//
-//        return roomMap;
-//    } // reRoom end
-//
-//    public void toChangeRoomEmpty(Hashtable<String, Room> roomMap){
-//        Iterator<String> it = roomMap.keySet().iterator();
-//        Calendar today = Calendar.getInstance();
-//        int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
-//        while(it.hasNext())
-//        {
-//            String key = it.next();
-//            if(todayDate >= (roomMap.get(key).getIntEndDate())){
-//                roomMap.get(key).setRoomRe(false);
-//            }
-//            if(todayDate == (roomMap.get(key).getIntStartDate())) {
-//                roomMap.get(key).setRoomRe(true);
-//            }
-//            System.out.println(roomMap.get(key));
-//            System.out.println();
-//        }
-//    } //toChangeRoomEmpty end
-//
-//
-//    public void printRoom(Hashtable<String, Room> roomMap, int days, int num){
-//        for (int i = 1; i <= 4; i++){
-//            if(i == 1)
-//                System.out.println("Deluxe");
-//            if(i == 2)
-//                System.out.println("Superior");
-//            if(i == 3)
-//                System.out.println("Family");
-//            if(i == 4)
-//                System.out.println("Suite");
-//
-//            for(int j = 1; j <= 10; j++){
-//                boolean flag = false;
-//                Iterator<String> it = roomMap.keySet().iterator();
-//                Calendar today = Calendar.getInstance();
-//                int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
-//
-//                while(it.hasNext())
-//                {
-//                    String key = it.next();
-//                    if(Integer.parseInt(roomMap.get(key).getRoomNum()) == 100 * i + j)
-//                    {
-//                        if(todayDate >= (roomMap.get(key).getIntStartDate()) && todayDate < (roomMap.get(key).getIntEndDate())) {
-//                            System.out.print(" ■  ");
-//                            flag = true;
-//                            continue;
-//                        }
-//                        System.out.println();
-//                    }
-//                }
-//
-//                if(!flag)
-//                    System.out.print(" □  ");
-//            }
-//
-//            System.out.println();
-//
-//            for (int j = 1; j <= 10; j++){
-//                System.out.printf("%d ", 100 * i + j);
-//            }
-//            System.out.println("\n");
-//        }
-//    }
-//
-//    public int afterDay() throws IOException {
-//        int afDay = 0;
-//        Calendar now = Calendar.getInstance();
-//        startYear = now.get(Calendar.YEAR);
-//        startMonth = now.get(Calendar.MONTH) + 1;
-//        startDay = now.get(Calendar.DATE);
-//        int todayDate = Integer.parseInt(String.format("%d%02d%02d", now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DATE)));
-//
-//
-//        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//
-//        System.out.println("체크인 날짜를 입력하세요");
-//        System.out.println("예)2000년 08월 04일");
-//        String afDate = br.readLine();
-//        int afterYear = Integer.parseInt(afDate.substring(0, 4));
-//        int afterMonth = Integer.parseInt(afDate.substring(6, 8));
-//        int afterDay = Integer.parseInt(afDate.substring(10, 12));
-//        int afterDate = Integer.parseInt(String.format("%d%02d%02d", afterYear, afterMonth, afterDay));
-//
-//        for(int i = 1; i <= 30; i++){
-//            now.add(Calendar.DATE, 1);
-//            startYear = now.get(Calendar.YEAR);
-//            startMonth = now.get(Calendar.MONTH);
-//            startDay = now.get(Calendar.DATE);
-//            todayDate = Integer.parseInt(String.format("%d%02d%02d", now.get(Calendar.YEAR), now.get(Calendar.MONTH) + 1, now.get(Calendar.DATE)));
-//
-//            if (todayDate == afterDate) {
-//                afDay = i;
-//            }
-//        }
-//        return afDay;
-//    }
-//
-//    public void checkRoomCondition(Hashtable<String, Room> roomMap, int days, String roomNum) throws IOException{  // 해쉬 테이블, 몇 박, 방 호수
-//        for (int i = 1; i <= 4; i++){
-//            for(int j = 1; j <= 10; j++){
-//                boolean flag = false;
-//                Iterator<String> it = roomMap.keySet().iterator();
-//                Calendar today = Calendar.getInstance();
-//                int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
-//                today.add(Calendar.DATE, days);
-//                int endDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
-//
-//                while(it.hasNext())
-//                {
-//                    String key = it.next();
-//                    if(roomMap.get(key).getRoomNum() == roomNum)
-//                    {
-//                        if( (todayDate >= (roomMap.get(key).getIntStartDate()) && todayDate < (roomMap.get(key).getIntEndDate())) ||
-//                                (endDate >= (roomMap.get(key).getIntStartDate()) && endDate < (roomMap.get(key).getIntEndDate()))) {
-//                            System.out.println("선택이 불가합니다.");
-//                            buyRoom(roomMap);
-//                        }
-//                    }
-//                }
-//
-//            }
-//        }
-//
-//    }
-//
-//
 }

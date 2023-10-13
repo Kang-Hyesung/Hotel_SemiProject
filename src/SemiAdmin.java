@@ -79,7 +79,10 @@ public class SemiAdmin
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 
     }
-
+    public void password(){
+        adminPasswordDisp();
+        adminPassword();
+    }
     // 관리자 비밀번호 입력 메소드
     public void adminPassword()
     {
@@ -93,8 +96,10 @@ public class SemiAdmin
                 System.out.println();
 
 
-                if (password != 1234)
+                if (password != 1234){
                     System.out.println("\t*** 관리자 비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요. ***");
+                    adminPassword();
+                }
                 System.out.println();
             }
             while (password != 1234);
@@ -123,6 +128,7 @@ public class SemiAdmin
         System.out.println("\t┃   3. 매출 현황                            ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃   4. 프로그램 종료                        ┃");
+        System.out.println("\t┃                                           ┃");
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
     }
 
@@ -949,7 +955,7 @@ public class SemiAdmin
         System.out.println("\t┃   │ 1. 관리자 홈│       │ 2. 매출 현황│   ┃");
         System.out.println("\t┃   └─────────────┘       └─────────────┘   ┃");
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.print("\t▶ 이동하고자 하는 메뉴 번호를 입력해주세요 : ");
+        System.out.print("\t▶ 이동하고자 하는 메뉴 번호를 입력해 주세요 : ");
 
         int a = Integer.parseInt(br.readLine());
 
@@ -1003,7 +1009,7 @@ public class SemiAdmin
         System.out.println("\t┃   │ 1. 관리자 홈│       │ 2. 구매 현황│   ┃");
         System.out.println("\t┃   └─────────────┘       └─────────────┘   ┃");
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.print("\t▶ 이동하고자 하는 메뉴 번호를 입력해주세요 : ");
+        System.out.print("\t▶ 이동하고자 하는 메뉴 번호를 입력해 주세요 : ");
 
         try
         {
@@ -1016,7 +1022,7 @@ public class SemiAdmin
         }
         catch (Exception e)
         {
-            System.out.println("숫자 형태로 입력해주세요.");
+            System.out.println("*** 숫자 형태로 입력해 주세요. ***");
         }
     }
 
@@ -1038,7 +1044,7 @@ public class SemiAdmin
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.print("\t▶ 이동하고자 하는 메뉴 번호를 입력해주세요 : ");
+        System.out.print("\t▶ 이동하고자 하는 메뉴 번호를 입력해 주세요 : ");
         try
         {
             int customerModeSel = Integer.parseInt(br.readLine());
@@ -1052,7 +1058,7 @@ public class SemiAdmin
         }
         catch (Exception e)
         {
-            System.out.println("\t숫자 형태를 입력해주세요.");
+            System.out.println("\t*** 숫자 형태를 입력해주세요. ***");
         }
 
     }// customerMode end
@@ -1061,8 +1067,11 @@ public class SemiAdmin
     public void reserveMode()
     {
         System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.printf("\t┃   %d년 %d월 %d일               SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
+        System.out.printf("\t┃  %d년 %d월 %d일                SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
         System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃ ┌───────────┐                             ┃");
+        System.out.println("\t┃ │ Kiosk mode│                             ┃");
+        System.out.println("\t┃ └───────────┘                             ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃           Welcome to SS Hotel :)          ┃");
         System.out.println("\t┃                                           ┃");
@@ -1074,7 +1083,7 @@ public class SemiAdmin
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃     ※현금 결제 & 미성년자 사용 불가※    ┃");
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-        System.out.print("\t● 이동하고자 하는 메뉴 번호를 입력해주세요. : ");
+        System.out.print("\t● 이동하고자 하는 메뉴 번호를 입력해 주세요. : ");
 
         try
         {
@@ -1090,7 +1099,7 @@ public class SemiAdmin
         }
         catch (Exception e)
         {
-            System.out.println("\t숫자 형태를 입력해주세요.");
+            System.out.println("\t*** 숫자 형태를 입력해 주세요. ***");
         }
     } //reserveMode end
 
@@ -1105,9 +1114,9 @@ public class SemiAdmin
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃		                                   ┃");
         System.out.println("\t┃		                                   ┃");
-        System.out.println("\t┃  안녕하세요,                              ┃");
+        System.out.println("\t┃  안녕하세요!                              ┃");
+        System.out.println("\t┃		                                   ┃");
         System.out.println("\t┃  SS HOTEL 온라인 예약 페이지입니다.       ┃");
-        System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
@@ -1127,12 +1136,10 @@ public class SemiAdmin
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃     ==============================        ┃");
-        System.out.println("\t┃        예약 번호를 입력해주세요.          ┃");
+        System.out.println("\t┃        예약 번호를 입력해 주세요.         ┃");
         System.out.println("\t┃     ==============================        ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
     }
 }
-
-

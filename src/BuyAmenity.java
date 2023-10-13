@@ -58,6 +58,7 @@ public class BuyAmenity {
         this.roomMap = roomMap;
         inwon = Integer.parseInt(roomMap.get(reNum).getInwon()); // 숙박 인원
         this.cusArray = cusArray; //소비자가 담은 재고량
+        this.cusAmenity = cusArray.get(reNum);
     }
 
     // 주요 속성 구성 --> 완료
@@ -92,8 +93,8 @@ public class BuyAmenity {
 
     private int[] cusAmenity = new int[6]; //소비자가 담은 변수
 
-    // [0] = 치약 칫솔
-    // [1] = 샤워타올
+    // [0] = 치약칫솔
+    // [1] = 샤워타월
     // [2] = 면도기
     // [3] = 슬리퍼
 
@@ -140,14 +141,23 @@ public class BuyAmenity {
 
     // 메뉴 출력 메소드
     public void menuDisp() {
-        System.out.println("[장바구니]================");
-        System.out.println("1.어메니티 추가");
-        System.out.println("2.조식 여부");
-        System.out.println("3.디너 & Bar 이용 여부");
-        System.out.println("4.선택한 장바구니 확인하기");
-        System.out.println("5.종료");
-        System.out.println("========================");
-        System.out.print("메뉴선택 (1~5) : ");
+        System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("\t┃                                  SS HOTEL ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃===========어메니티 및 식사 구매===========┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃ 1. 추가 어메니티 구매                     ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃ 2. 조식 이용권 구매                       ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃ 3. 디너 & 바 이용권 구매                  ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃ 4. 선택한 항목 및 수량 확인               ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃ 5. 어메니티 및 식사 구매 종료             ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+        System.out.print("\t● 이동하고자 하는 메뉴 번호를 입력해주세요 : ");
     }
 
     // 선택된 메뉴 실행에 따른 기능 호출 메소드
@@ -164,7 +174,7 @@ public class BuyAmenity {
     // String[] validItems = {"칫솔치약", "샤워타올", "면도기", "슬리퍼"};
     public boolean isValidAmenity(String itemName) {
         // 유효한 항목 리스트
-        String[] validItems = {"칫솔치약", "샤워타올", "면도기", "슬리퍼"};
+        String[] validItems = {"칫솔치약", "샤워타월", "면도기", "슬리퍼"};
 
         // 입력값이 유효한 항목인지 확인
         for(String item : validItems) {
@@ -178,7 +188,21 @@ public class BuyAmenity {
     public void addAmenity() throws IOException {
 
         do {
-            System.out.print("칫솔치약, 샤워타올, 면도기, 슬리퍼 중 하나를 입력하세요 : ");
+            System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+            System.out.println("\t┃                                  SS HOTEL ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃ [칫솔치약, 샤워타월, 면도기, 객실 슬리퍼] ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃ 위 4가지 항목 중                          ┃");
+            System.out.println("\t┃ 구매를 원하는 제품명 하나를 입력해 주세요.┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┃                                           ┃");
+            System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+            System.out.print("\t● 제품명 입력 : ");
             itemName = br.readLine();
 
             if (itemName.equals("V")) {
@@ -186,7 +210,22 @@ public class BuyAmenity {
             }
             //입력값이 유효한 지 확인
             if(isValidAmenity(itemName)) {
-                System.out.print("원하는 수량을 입력하세요 : ");
+                System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+                System.out.println("\t┃                                  SS HOTEL ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.printf("\t┃ ▷ 선택한 어메니티 : %6s           ┃\n", itemName);
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃ ▷ 구매를 원하는 수량을 입력해 주세요.    ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+                System.out.print("\t● 수량 입력 (숫자 형태) : ");
+
                 try {
                     num = Integer.parseInt(br.readLine());
                 } catch (NumberFormatException e) {
@@ -206,7 +245,7 @@ public class BuyAmenity {
 
                 if (itemName.equals("칫솔치약")){
                     cusAmenity[0] += num;
-                } else if (itemName.equals("샤워타올")){
+                } else if (itemName.equals("샤워타월")){
                     cusAmenity[1] += num;
                 } else if (itemName.equals("면도기")){
                     cusAmenity[2] += num;
@@ -218,7 +257,21 @@ public class BuyAmenity {
                     Amenity_kinds amenity = new Amenity_kinds(itemName, num);
                     vt.add(amenity);
                 }
-                System.out.print("계속 추가하시겠습니까?(Y/N) : ");
+                System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+                System.out.println("\t┃                                  SS HOTEL ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.printf("\t┃ ▷ 선택한 어메니티 : %6s           ┃\n", itemName);
+                System.out.println("\t┃                                           ┃");
+                System.out.printf("\t┃ ▷ 입력한 수량 : %2d                      ┃\n", num);
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃ ▷ 추가 구매를 진행하시겠습니까?          ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+                System.out.print("\t● 추가 구매 진행 여부 (Y/N) : ");
                 con = br.readLine().toUpperCase();
             }
             else {
@@ -235,7 +288,21 @@ public class BuyAmenity {
             return;
         }
 
-        System.out.print("조식 식권을 신청하시겠습니까? (Y/N) : ");
+        System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("\t┃                                  SS HOTEL ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃    ▷ 조식 이용권을 구매하시겠습니까?     ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃         ┌──────┐        ┌──────┐          ┃");
+        System.out.println("\t┃         │   Y  │        │   N  │          ┃");
+        System.out.println("\t┃         └──────┘        └──────┘          ┃");
+        System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+        System.out.print("\t● 조식 구매 여부 (Y/N) : : ");
         do {
             con = br.readLine().toUpperCase();
 
@@ -243,7 +310,22 @@ public class BuyAmenity {
 
                 total = inwon*roomMap.get(reNum).getDays();
 
-                System.out.printf("조식 식권을 몇개 살건지 입력하세요 [최대 %d]: ", total);
+                System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+                System.out.println("\t┃                                  SS HOTEL ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃ ▷ 구매 원하시는 조식 이용권의            ┃");
+                System.out.println("\t┃    수량을 입력해 주세요.                  ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.printf("\t┃    * 구매 가능한 최대 수량 : %2d        ┃\n", total);
+                System.out.println("\t┃      ( 숙박 인원 * 숙박 일 수 )           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+                System.out.print("\t● 조식 이용권 구매 수량 : : ");
+
                 dayMeal = Integer.parseInt(br.readLine()); // 원하는 일 수
 
                 if (dayMeal + cusAmenity[4]> inwon*roomMap.get(reNum).getDays()) {
@@ -252,7 +334,7 @@ public class BuyAmenity {
                     breakfastcheck = "조식을 선택했습니다.";
                     cusAmenity[4] += dayMeal;
                     hasBreakfast = true;
-                    System.out.println("조식 사용권 : " +dayMeal);
+                    //System.out.println("조식 사용권 : " +dayMeal);
                 }
             } else if (con.equals("V")) {
                 break;
@@ -270,13 +352,43 @@ public class BuyAmenity {
             return;
         }
 
-        System.out.print("디너 & 바 식권을 신청하시겠습니까? (Y/N) : ");
+        System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+        System.out.println("\t┃                                  SS HOTEL ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃  ▷ 디너 & 바 이용권을 구매하시겠습니까?  ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃         ┌──────┐        ┌──────┐          ┃");
+        System.out.println("\t┃         │   Y  │        │   N  │          ┃");
+        System.out.println("\t┃         └──────┘        └──────┘          ┃");
+        System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+        System.out.print("\t● 디너 & 바 구매 여부 (Y/N) : : ");
+
         do {
             con = br.readLine().toUpperCase();
 
             if (con.equals("Y")) {
                 total = inwon*roomMap.get(reNum).getDays();
-                System.out.printf("디너 & 바 식권을 몇개 살건지 입력하세요 [최대 %d]: ",total);
+
+                System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+                System.out.println("\t┃                                  SS HOTEL ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃ ▷ 구매 원하시는 디너 & 바 이용권의       ┃");
+                System.out.println("\t┃    수량을 입력해 주세요.                  ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.printf("\t┃    * 구매 가능한 최대 수량 : %2d        ┃\n", total);
+                System.out.println("\t┃      ( 숙박 인원 * 숙박 일 수 )           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┃                                           ┃");
+                System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+                System.out.print("\t● 디너 & 바 이용권 구매 수량 : : ");
 
                 dayMeal = Integer.parseInt(br.readLine()); // 원하는 일 수
 
@@ -286,7 +398,7 @@ public class BuyAmenity {
                     dinner_bar = "디너 & 바를 선택했습니다.";
                     cusAmenity[5] += dayMeal;
                     hasdinner_bar = true;
-                    System.out.println("디너 & 바 사용권 : " +dayMeal);
+                    //System.out.println("디너 & 바 사용권 : " +dayMeal);
                 }
             } else if (con.equals("V")) {
                 break;
@@ -300,17 +412,17 @@ public class BuyAmenity {
     public void strCheck_Menu() throws IOException {
 
         if (!vt.isEmpty()){
-            System.out.print("빼고 싶은 물품이 있습니까?(Y/N) : ");
+            System.out.print("장바구니 내역 중 삭제하고 싶은 항목이 있습니까? (Y/N) : ");
             con = br.readLine().toUpperCase();
 
             if (con.equals("Y")) {
-                System.out.print("물품 이름을 입력하세요 : ");
+                System.out.print("제품명을 입력해 주세요 : ");
                 itemName = br.readLine();
 
                 for (int i = 0; i < vt.size(); i++) {
                     Amenity_kinds amenity = vt.get(i);
                     if (amenity.name.equals(itemName)) {
-                        System.out.print("몇개를 빼시겠습니까? : ");
+                        System.out.print("취소하고 싶은 수량을 입력해 주세요. : ");
                         count = Integer.parseInt(br.readLine());
 
                         // 뺄 수량 확인
@@ -326,9 +438,9 @@ public class BuyAmenity {
                             //} else if (itemName.equals("슬리퍼")){ // 슬리퍼 제거
                             //  stockArray[3] += count;
                             //}
-                            if (itemName.equals("치약칫솔")){
+                            if (itemName.equals("칫솔치약")){
                                 cusAmenity[0] -= count;
-                            } else if (itemName.equals("샤워타올")){
+                            } else if (itemName.equals("샤워타월")){
                                 cusAmenity[1] -= count;
                             } else if (itemName.equals("면도기")){
                                 cusAmenity[2] -= count;
