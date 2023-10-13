@@ -578,7 +578,8 @@ public class SemiAdmin
         toChangeRoomEmpty();
         Iterator<String> it = roomMap.keySet().iterator();
 
-        int M=0, F=0, all=0, MR=0, FR=0;
+        int M=0, F=0, all=0;
+        double MR, FR;
         while(it.hasNext())
         {
             String key = it.next();
@@ -589,10 +590,10 @@ public class SemiAdmin
                 else if (reGuest.get(key).getGender() == 'F')
                     F += 1;
             }
-            all = M + F;
-            MR = (M / all)*100 ;
-            FR = (F / all)*100 ;
         }
+        all = M + F;
+        MR = ((double)M / all)*100 ;
+        FR = ((double)F / all)*100 ;
         System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.println("\t┃                                  SS HOTEL ┃");
         System.out.println("\t┃ ┌───────────────────┐                     ┃");
@@ -601,8 +602,8 @@ public class SemiAdmin
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃  [ 남녀별 당일 이용 현황 ]  * 구매자 기준 ┃ ");
         System.out.println("\t┃                                           ┃");
-        System.out.printf("\t┃   * 남성 : %2d명, %3d%%                     ┃\n",M,MR);
-        System.out.printf("\t┃   * 여성 : %2d명, %3d%%                     ┃\n",F,FR);
+        System.out.printf("\t┃   * 남성 : %2d명, %3.1f%%                     ┃\n",M,MR);
+        System.out.printf("\t┃   * 여성 : %2d명, %3.1f%%                     ┃\n",F,FR);
         System.out.println("\t┃   ┌─────────────┐       ┌─────────────┐   ┃");
         System.out.println("\t┃   │ 1. 관리자 홈│       │ 2. 이용 현황│   ┃");
         System.out.println("\t┃   └─────────────┘       └─────────────┘   ┃");
