@@ -3,26 +3,30 @@ import java.io.InputStreamReader;
 import java.util.Hashtable;
 
 public class Main{
-    static String CODE;
+
+        static int CODE;
+
     public static void main(String[] args) throws Exception {
         Firstprint first = new Firstprint();
         first.password();
 
+        FileInputOutput inOut = new FileInputOutput();
+        // 역직렬화로 데이터 가져오기
+        Hashtable<String, Room> roomMap = inOut.fileIn1();                // 예약번호, 객실 객체
+        int[] stockArray = inOut.fileIn2();                               // 호텔의 재고를 int형 배열로 나타냄
+        Hashtable<String, Reserves> reGuest = inOut.fileIn3();            // 예약번호, 예약자 객체
+        Hashtable<String, int[]> cusArray = inOut.fileIn4();              // 예약변호, 고객이 구매한 물건 수량을 표현한 int형 배열
 
-        while(!CODE.equals("00")) {
-            FileInputOutput inOut = new FileInputOutput();
-            // 역직렬화로 데이터 가져오기
-            Hashtable<String, Room> roomMap = inOut.fileIn1();                // 예약번호, 객실 객체
-            int[] stockArray = inOut.fileIn2();                               // 호텔의 재고를 int형 배열로 나타냄
-            Hashtable<String, Reserves> reGuest = inOut.fileIn3();            // 예약번호, 예약자 객체
-            Hashtable<String, int[]> cusArray = inOut.fileIn4();              // 예약변호, 고객이 구매한 물건 수량을 표현한 int형 배열
-
-            SemiAdmin admin = new SemiAdmin(stockArray, roomMap, reGuest);
+        SemiAdmin admin = new SemiAdmin(stockArray, roomMap, reGuest);
 
 
-            int S = admin.AdminRun(roomMap);                                 // SemiAdmin custommode에서 선택결과(1 = 예약 조회 2 = 현장 구매 3= 어매니티 식사 구매)
+        int S = admin.AdminRun(roomMap);                                 // 3으로 나오면 예약 시스템 모드로 진입해야 함
+
+        while(CODE == 0) {
+            if (S != 3)
+                S = admin.kioskMode();                                       // SemiAdmin custommode에서 선택결과(1 = 예약 조회 및 현장 구매 2= 어매니티 식사 구매)
             int R = 0;                                                       // reList.reserve() 반환값 담을 변수
-            String reNum = "";                                               // 객실 선택 후 부여된 예약 번호
+            String reNum = "";                                               // 예약 번호
 
             // 각 클래스의 객체 생성
             Reserve_list reList = new Reserve_list(roomMap, reGuest);
@@ -91,7 +95,6 @@ public class Main{
                         break;
                     }
             }
-            // 폐이클래스 해줘야 함
 
 
             // 파일 직렬화
@@ -99,7 +102,6 @@ public class Main{
             inOut.fileOut2(stockArray);
             inOut.fileOut3(reGuest);
             inOut.fileOut4(cusArray);
-            inOut = null;
         }
     }
 }

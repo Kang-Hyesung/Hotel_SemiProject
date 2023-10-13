@@ -58,7 +58,9 @@ public class BuyAmenity {
         this.roomMap = roomMap;
         inwon = Integer.parseInt(roomMap.get(reNum).getInwon()); // 숙박 인원
         this.cusArray = cusArray; //소비자가 담은 재고량
-        this.cusAmenity = cusArray.get(reNum);
+        if(cusArray.get(reNum) == null){
+            this.cusAmenity = new int[6];
+        };
     }
 
     // 주요 속성 구성 --> 완료
@@ -91,7 +93,7 @@ public class BuyAmenity {
     //private int[] brinwontotal = new int [10]; // 하루 다녀간 아침 총인원 아니면 날짜별로 기록할지?
     //private int[] deinwontotal = new int [10]; // 하루 다녀간 저녁 총인원 아니면 날짜별로 기록할지는 물어봐야알듯!
 
-    private int[] cusAmenity = new int[6]; //소비자가 담은 변수
+    private int[] cusAmenity; //소비자가 담은 변수
 
     // [0] = 치약칫솔
     // [1] = 샤워타월

@@ -1050,7 +1050,7 @@ public class SemiAdmin
             int customerModeSel = Integer.parseInt(br.readLine());
 
             if (customerModeSel == 1)
-                reserveMode();
+                System.out.println("키오스크 모드로 진입합니다");
             else if (customerModeSel == 2)
                 resersvationSystem();
             else if (customerModeSel == 3)
@@ -1064,7 +1064,7 @@ public class SemiAdmin
     }// customerMode end
 
     // 키오스크 모드 전환
-    public void reserveMode()
+    public int kioskMode()
     {
         System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.printf("\t┃  %d년 %d월 %d일                SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
@@ -1090,17 +1090,18 @@ public class SemiAdmin
             int reserveModeSel = Integer.parseInt(br.readLine());
 
             if (reserveModeSel == 1)
-                i = 1;
+                return 1;
             else if (reserveModeSel == 2)
             {
-                i = 2;
                 buyAmenityMeal();
+                return 2;
             }
         }
         catch (Exception e)
         {
             System.out.println("\t*** 숫자 형태를 입력해 주세요. ***");
         }
+        return 0;
     } //reserveMode end
 
 

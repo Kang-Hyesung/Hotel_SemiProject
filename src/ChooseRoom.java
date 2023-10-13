@@ -3,7 +3,7 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 //현장구매 클래스
-public class ChooseRoom {
+public class ChooseRoom implements BuyRoom{
     private int sukbak;             // 숙박일수
     private String inwon;              // 인원
     private int roomNum;            // 방 호수
@@ -125,6 +125,9 @@ public class ChooseRoom {
                 start.add(Calendar.DATE, sukbak);
                 int endDate = Integer.parseInt(String.format("%d%02d%02d", start.get(Calendar.YEAR), start.get(Calendar.MONTH) + 1, start.get(Calendar.DATE)));
 
+                if (j == 1)
+                    System.out.print("\t┃  ");
+
                 while(it.hasNext())
                 {
                     String key = it.next();
@@ -140,8 +143,6 @@ public class ChooseRoom {
                 }
 
                 if(!flag) {
-                    if (j == 1)
-                        System.out.print("\t┃  ");
                     System.out.print(" □  ");
                     if (j == 10)
                         System.out.print(" ┃");
