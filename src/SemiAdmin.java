@@ -1018,7 +1018,7 @@ public class SemiAdmin
             int customerModeSel = Integer.parseInt(br.readLine());
 
             if (customerModeSel == 1)
-                System.out.println("/t키오스크 모드로 진입합니다");
+                System.out.println("\t키오스크 모드로 진입합니다");
             else if (customerModeSel == 2)
                 resersvationSystem();
             else if (customerModeSel == 3)
