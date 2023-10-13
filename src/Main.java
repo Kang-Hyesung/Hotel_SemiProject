@@ -24,9 +24,11 @@ public class Main{
         while(CODE == 0) {
             // 역직렬화로 데이터 가져오기
             roomMap = inOut.fileIn1();                // 예약번호, 객실 객체
-            inOut.fileIn2();                               // 호텔의 재고를 int형 배열로 나타냄
+            stockArray = inOut.fileIn2();                               // 호텔의 재고를 int형 배열로 나타냄
             reGuest = inOut.fileIn3();            // 예약번호, 예약자 객체
             cusArray = inOut.fileIn4();              // 예약변호, 고객이 구매한 물건 수량을 표현한 int형 배열
+
+            admin = new SemiAdmin(stockArray, roomMap, reGuest);
 
             if (S != 3)
                 S = admin.kioskMode();                                       // SemiAdmin custommode에서 선택결과(1 = 예약 조회 및 현장 구매 2= 어매니티 식사 구매)
@@ -77,7 +79,7 @@ public class Main{
                     }
 
                 case 2:
-                    reList.reserveCheck();                              // 예약번호 확인
+                    reNum =  reList.reserveCheck();                              // 예약번호 확인
                     buy = new BuyAmenity(roomMap, cusArray, stockArray, reNum);
                     buy.startProgram();
                     break;          // 확인하고 어매니티 구매로 이동

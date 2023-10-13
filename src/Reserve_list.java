@@ -74,7 +74,7 @@ public class Reserve_list
 
 
     // 예약 번호 확인
-    public void reserveCheck() throws IOException
+    public String reserveCheck() throws IOException
     {
         do
         {
@@ -154,7 +154,7 @@ public class Reserve_list
             }
         }
         while (n == 1);												//-- 다시 입력(1)을 클릭했을 때 예약번호입력으로 돌아가기
-
+        return reNum;
     } // end reserveCheck()
 
     // 회원 여부(Y/N) 확인
