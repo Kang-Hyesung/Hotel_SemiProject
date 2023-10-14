@@ -5,7 +5,7 @@ public class Firstprint {
     private int password;
     private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    public void password(){
+    public void FirstRun(){
         adminPasswordDisp();
         adminPassword();
     }
@@ -23,17 +23,17 @@ public class Firstprint {
 
                 if (password != 1234){
                     System.out.println("\t*** 관리자 비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요. ***");
+                    System.out.println();
                     adminPassword();
                 }
-                System.out.println();
             }
             while (password != 1234);
         }
         catch (Exception e)
         {
-            System.out.println("\t▶ 숫자 형태를 입력해주세요.");
-            adminPassword();
+            System.out.println("\n\t*** 숫자 형태를 입력해주세요. ***");
             System.out.println();
+            adminPassword();
         }
     }
     public void adminPasswordDisp()

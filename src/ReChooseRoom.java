@@ -43,7 +43,7 @@ public class ReChooseRoom implements BuyRoom{
             System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
             System.out.printf("\t┃   %d년 %d월 %d일               SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
             System.out.println("\t┃                                           ┃");
-            System.out.println("\t┃================객실 구매==================┃");
+            System.out.println("\t┃=============== 객실 구매 =================┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃ ▷ 숙박하실 일 수를 입력해 주세요.        ┃");
             System.out.println("\t┃                                           ┃");
@@ -67,7 +67,7 @@ public class ReChooseRoom implements BuyRoom{
             System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
             System.out.printf("\t┃   %d년 %d월 %d일               SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
             System.out.println("\t┃                                           ┃");
-            System.out.println("\t┃================객실 구매==================┃");
+            System.out.println("\t┃=============== 객실 구매 =================┃");
             System.out.println("\t┃                                           ┃");
             System.out.printf("\t┃ ▷ 숙박 일 수 : %2d일                      ┃\n",sukbak);
             System.out.println("\t┃                                           ┃");
@@ -109,7 +109,7 @@ public class ReChooseRoom implements BuyRoom{
         System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.printf("\t┃   %d년 %d월 %d일                         SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
         System.out.println("\t┃                                                     ┃");
-        System.out.println("\t┃======================객실 선택======================┃");
+        System.out.println("\t┃===================== 객실 선택 =====================┃");
         System.out.println("\t┃                                                     ┃");
 
         for (int i = 1; i <= 4; i++)
@@ -214,7 +214,7 @@ public class ReChooseRoom implements BuyRoom{
             int i = rd.nextInt(5000) + 5000;
             reNum = String.format("%d%02d%02d%04d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE),i);
         }
-        while (!reNumList.add(reNum));
+        while (roomMap.containsKey(reNum));
 
 
         if(column == 1)

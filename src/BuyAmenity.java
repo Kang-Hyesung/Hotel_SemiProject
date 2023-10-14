@@ -234,19 +234,19 @@ public class BuyAmenity {
                 try {
                     num = Integer.parseInt(br.readLine());
                     if (itemName.equals("칫솔치약") && stockArray[0] - (num + cusAmenity[0]) <= 0 ){
-                        System.out.println("\t● 그 만큼 수량을 담을 수 없습니다.");
+                        System.out.println("\n\t*** 재고가 부족하여 구매가 불가합니다. 데스크에 문의 바랍니다. ***");
                         continue;
                     }
-                    if (itemName.equals("샤워타올") && stockArray[1] - (num + cusAmenity[1]) <= 0 ){
-                        System.out.println("\t● 그 만큼 수량을 담을 수 없습니다.");
+                    if (itemName.equals("샤워타월") && stockArray[1] - (num + cusAmenity[1]) <= 0 ){
+                        System.out.println("\n\t*** 재고가 부족하여 구매가 불가합니다. 데스크에 문의 바랍니다. ***");
                         continue;
                     }
                     if (itemName.equals("면도기") && stockArray[2] - (num + cusAmenity[2]) <= 0 ){
-                        System.out.println("\t● 그 만큼 수량을 담을 수 없습니다.");
+                        System.out.println("\n\t*** 재고가 부족하여 구매가 불가합니다. 데스크에 문의 바랍니다. ***");
                         continue;
                     }
                     if (itemName.equals("객실 슬리퍼") && stockArray[3] - (num + cusAmenity[3]) <= 0 ){
-                        System.out.println("\t● 그 만큼 수량을 담을 수 없습니다.");
+                        System.out.println("\n\t*** 재고가 부족하여 구매가 불가합니다. 데스크에 문의 바랍니다. ***");
                         continue;
                     }
 
@@ -269,12 +269,16 @@ public class BuyAmenity {
 
                 if (itemName.equals("칫솔치약") && stockArray[0] - (num + cusAmenity[0])>=0){
                     cusAmenity[0] += num;
+                    stockArray[0] -= num;
                 } else if (itemName.equals("샤워타올")&& stockArray[1] - (num + cusAmenity[1])>=0){
                     cusAmenity[1] += num;
+                    stockArray[1] -= num;
                 } else if (itemName.equals("면도기")&& stockArray[2] - (num + cusAmenity[2])>=0){
                     cusAmenity[2] += num;
+                    stockArray[2] -= num;
                 } else if (itemName.equals("객실 슬리퍼")&& stockArray[3] - (num + cusAmenity[3])>=0){
                     cusAmenity[3] += num;
+                    stockArray[3] -= num;
                 }
                 else {
                     System.out.println("\t● 재고가 부족합니다.");
@@ -303,8 +307,8 @@ public class BuyAmenity {
                 con = br.readLine().toUpperCase();
             }
             else {
-                System.out.println("\t● 선택하신 상품이 없습니다.");
-                return;
+                System.out.println("\t*** 제품명을 다시 한번 확인해 주세요. ***");
+                addAmenity();
             }
 
         }while(con.equals("Y"));
@@ -323,7 +327,7 @@ public class BuyAmenity {
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃    ▷ 조식 이용권을 구매하시겠습니까?     ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃       (조식 이용권 1매 : 30,000원)        ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃         ┌──────┐        ┌──────┐          ┃");
@@ -357,9 +361,9 @@ public class BuyAmenity {
                 dayMeal = Integer.parseInt(br.readLine()); // 원하는 일 수
 
                 if (dayMeal + cusAmenity[4]> inwon*roomMap.get(reNum).getDays()) {
-                    System.out.println("\t● 그 만큼의 식권을 추가 할 수 없습니다.");
+                    System.out.println("\n\t*** 입력하신 수량은 구매 가능한 최대 수량을 초과하였습니다. ***");
                 }  else {
-                    breakfastcheck = "\t● 조식을 선택했습니다.";
+                    breakfastcheck = "조식 이용권을 추가하였습니다.";
                     cusAmenity[4] += dayMeal;
                     hasBreakfast = true;
                     //System.out.println("조식 사용권 : " +dayMeal);
@@ -367,7 +371,7 @@ public class BuyAmenity {
             } else if (con.equals("V")) {
                 break;
             } else {
-                breakfastcheck = "\t● 조식을 선택하지 않았습니다.";
+                breakfastcheck = "\n\t** 조식을 선택하지 않았습니다. 이전 메뉴로 돌아갑니다. ***";
                 System.out.println(breakfastcheck);
             }
         } while (con.length() <= 0);
@@ -387,7 +391,7 @@ public class BuyAmenity {
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃  ▷ 디너 & 바 이용권을 구매하시겠습니까?  ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃                                           ┃");
+        System.out.println("\t┃     (디너 & 바 이용권 1매 : 50,000원)     ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃         ┌──────┐        ┌──────┐          ┃");
@@ -421,9 +425,9 @@ public class BuyAmenity {
                 dayMeal = Integer.parseInt(br.readLine()); // 원하는 일 수
 
                 if (dayMeal +cusAmenity[5] > inwon*roomMap.get(reNum).getDays()) {
-                    System.out.println("\t● 그 만큼의 식권을 추가 할 수 없습니다.");
+                    System.out.println("\n\t*** 입력하신 수량은 구매 가능한 최대 수량을 초과하였습니다. ***");
                 }  else {
-                    dinner_bar = "\t● 디너 & 바를 선택했습니다.";
+                    dinner_bar = "디너 & 바 이용권을 추가하였습니다.";
                     cusAmenity[5] += dayMeal;
                     hasdinner_bar = true;
                     //System.out.println("디너 & 바 사용권 : " +dayMeal);
@@ -431,7 +435,7 @@ public class BuyAmenity {
             } else if (con.equals("V")) {
                 break;
             } else {
-                dinner_bar = "\t● 디너 & 바를 선택하지 않았습니다.";
+                dinner_bar = "\n\t*** 디너 & 바를 선택하지 않았습니다. 이전 메뉴로 돌아갑니다. ***";
                 System.out.println(dinner_bar);
             }
         } while (con.length() <= 0);
@@ -468,15 +472,19 @@ public class BuyAmenity {
                             //}
                             if (itemName.equals("칫솔치약")){
                                 cusAmenity[0] -= count;
+                                stockArray[0] += count;
                             } else if (itemName.equals("샤워타올")){
                                 cusAmenity[1] -= count;
+                                stockArray[1] += count;
                             } else if (itemName.equals("면도기")){
                                 cusAmenity[2] -= count;
+                                stockArray[2] += count;
                             } else if (itemName.equals("객실 슬리퍼")){
                                 cusAmenity[3] -= count;
+                                stockArray[3] += count;
                             }
                         } else {
-                            System.out.println("\t● 그 만큼의 수량을 선택하지 않았습니다.");
+                            System.out.println("\n\t*** 입력하신 수량은 장바구니에 담긴 수량을 초과하였습니다. ***");
                         }
 
                         if (amenity.Amenity_Number == 0) {
@@ -498,59 +506,60 @@ public class BuyAmenity {
 
     public void food_Menu() throws IOException {
         if (hasBreakfast) {
-            System.out.print("\t● 조식을 제외하시겠습니까? (Y/N) : ");
+            System.out.print("\n\t● 조식 이용권의 내역 취소를 원하십니까? (Y/N) : ");
             con = br.readLine().toUpperCase();
 
             if (con.equals("Y")) {
-                System.out.print("\t● 조식 사용권 몇개를 삭제하시겠습니까? : ");
+                System.out.print("\n\t● 장바구니 내에서 원하시는 취소 수량을 입력해 주세요. : ");
                 dayMeal = Integer.parseInt(br.readLine());
 
                 if (dayMeal <= cusAmenity[4]) {
                     cusAmenity[4] -= dayMeal; //하루동안 먹은 조식 총 인원
-                    System.out.printf("\t● 조식을 %d만큼 제외했습니다.\n",dayMeal);
+                    System.out.printf("\n\t● 조식 이용권의 수량을 %d개 만큼 취소했습니다.\n",dayMeal);
 
                     if (cusAmenity[4] == 0){
-                        System.out.println("\t● 조식을 전부 제외했습니다.");
+                        System.out.println("\n\t● 조식 이용권 수량이 전부 취소 되었습니다.");
                         breakfastcheck = "\t● 조식을 선택하지 않았습니다";
                         hasBreakfast = false;
                     }
 
                 } else {
-                    System.out.println("\t● 그 이상 만큼 제외 할 수 없습니다.");
-                    return;
+                    System.out.println("\n\t*** 입력하신 수량은 장바구니에 담긴 수량을 초과하였습니다. ***");
+                    food_Menu();
                 }
             }
         }
 
         if (hasdinner_bar) {
-            System.out.print("\t● 디너 & 바를 제외하시겠습니까? (Y/N) : ");
+            System.out.print("\n\t● 디너 & 바 이용권의 내역 취소를 원하십니까? (Y/N) : ");
             con = br.readLine().toUpperCase();
 
             if (con.equals("Y")) {
-                System.out.print("\t● 디너 & 바 이용권을 몇개 제외하시겠습니까? : ");
+                System.out.print("\n\t● 장바구니 내에서 원하시는 취소 수량을 입력해 주세요. : ");
                 dayMeal = Integer.parseInt(br.readLine());
 
                 if (dayMeal <= cusAmenity[5]) {
                     cusAmenity[5] -= dayMeal; //하루동안 디너 & 바 먹은 총 인원
-                    System.out.printf("\t● 디너 & 바를 %d만큼 제외했습니다.\n",dayMeal);
+                    System.out.printf("\n\t● 디너 & 바 이용권의 수량을 %d개 만큼 취소했습니다.\n",dayMeal);
 
                     if (cusAmenity[5] == 0){
-                        System.out.println("\t● 디너 & 바를 전부 제외했습니다.");
+                        System.out.println("\n\t● 디너 & 바 이용권 수량이 전부 취소 되었습니다.");
                         dinner_bar = "\t● 디너 & 바를 신청하지 않았습니다.";
                         hasdinner_bar = false;
                     }
 
                 } else {
-                    System.out.println("\t● 그 이상 만큼 제외 할 수 없습니다.");
+                    System.out.println("\n\t● 그 이상 만큼 제외 할 수 없습니다.");
                 }
             }
         }
     }
 
     public void Check_Menu() throws IOException { // 장바구니 확인 메서드
-        System.out.println("\t● 선택한 장바구니 내역:");
+        System.out.println("\n\n\t========== 장바구니 내역 확인 ==========");
 
         if (vt.isEmpty()) {
+            System.out.println("\n\t[ 어메니티 ]");
             System.out.println("\t● 선택한 상품이 없습니다.");
         }
 
@@ -558,8 +567,9 @@ public class BuyAmenity {
             System.out.println("\t● "+str);
         }
 
-        System.out.println("\t● 선택한 조식 여부: " + breakfastcheck + "조식 식권 수 : "+ cusAmenity[4]);
-        System.out.println("\t● 선택한 디너 & 바 여부: " + dinner_bar+ "디너 & 바 식권 수 : "+ cusAmenity[5]);
+        System.out.println("\n\n\t[ 식사권 ]");
+        System.out.println("\n\t▶ 조식 이용권 : "+ cusAmenity[4] + " 매");
+        System.out.println("\n\t▶ 디너 & 바 이용권: " + cusAmenity[5] + " 매");
 
     }
 

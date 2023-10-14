@@ -123,7 +123,29 @@ public class Room implements Serializable {
 
     @Override
     public String toString() {
-        return "{" +
+        return "\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n" +
+                "\t┃                                  SS HOTEL ┃\n" +
+                "\t┃                                           ┃\n" +
+                "\t┃             [ 예약 정보 확인 ]            ┃\n" +
+                "\t┃                                           ┃\n" +
+                String.format("\t┃ ▷ 객실 번호     : %3d호                  ┃\n",roomNum) +
+                "\t┃                                           ┃\n" +
+                String.format("\t┃ ▷ 객실 등급     : %8s               ┃\n",grade) +
+                "\t┃                                           ┃\n" +
+                String.format("\t┃ ▷ 침대 타입     : %8s               ┃\n",bedType) +
+                "\t┃                                           ┃\n" +
+                String.format("\t┃ ▷ 숙박 인원     : %3s인                  ┃\n",inwon) +
+                "\t┃                                           ┃\n" +
+                String.format("\t┃ ▷ 객실 가격     : %7d원              ┃\n",roomPrice) +
+                "\t┃                                           ┃\n" +
+                String.format("\t┃ ▷ 체크인 일자   : %d년 %02d월 %02d일       ┃\n", startYear, startMonth, startDay)  +
+                "\t┃                                           ┃\n" +
+                String.format("\t┃ ▷ 체크아웃 일자 : %d년 %02d월 %02d일       ┃\n", endYear, endMonth, endDay)  +
+                "\t┃                                           ┃\n" +
+                "\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";
+
+			/*
+		"{" +
                 "객실 번호=" + roomNum +
                 ", 등급=" + grade +
                 ", 침대 타입=" + bedType +
@@ -132,6 +154,7 @@ public class Room implements Serializable {
                 '}' + "\n" + String.format("숙박 시작 : %d년 %02d월 %02d일\n", startYear, startMonth, startDay)
                 + String.format("숙박 종료 : %d년 %02d월 %02d일", endYear, endMonth, endDay)
                 ;
+				*/
     }
 
 

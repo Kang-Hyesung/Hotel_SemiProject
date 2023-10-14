@@ -64,17 +64,17 @@ public class Reserves implements Serializable
     @Override
     public String toString()
     {
-        return "\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n" +
+        return "\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓\n" +
                 "\t┃                                  SS HOTEL ┃\n" +
                 "\t┃                                           ┃\n" +
                 "\t┃   [ 회원 정보 확인 ]                      ┃\n" +
                 "\t┃                                           ┃\n" +
                 "\t┃                                           ┃\n" +
-                "\t┃ ▷ 이름     : " + reName + "      ┃\n" +
+                "\t┃ ▷ 이름         : " + reName + "                  ┃\n" +
                 "\t┃                                           ┃\n" +
-                "\t┃ ▷ 생년월일 : " + reBirth + "   ┃\n" +
+                "\t┃ ▷ 주민등록번호 : " + reBirth + "          ┃\n" +
                 "\t┃                                           ┃\n" +
-                "\t┃ ▷ 전화번호 : " + reTel + "  ┃\n" +
+                "\t┃ ▷ 전화번호     : " + reTel + "           ┃\n" +
                 "\t┃                                           ┃\n" +
                 "\t┃                                           ┃\n" +
                 "\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛";

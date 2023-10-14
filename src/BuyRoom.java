@@ -1,7 +1,7 @@
 public interface BuyRoom {
-    public void inputSukbakInwon();
-    public void toChangeRoomEmpty();
-    public void printRoom();
-    public void inputRoomNum();
-    public String putRoom();
+    void inputSukbakInwon();
+    void toChangeRoomEmpty();
+    void printRoom();
+    void inputRoomNum();
+    String putRoom();
 }

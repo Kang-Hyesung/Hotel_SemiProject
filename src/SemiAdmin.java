@@ -61,6 +61,7 @@ public class SemiAdmin
     }
 
     // 관리자 비밀번호 입력창 출력 메소드 (초기 화면)
+	/*
     public void adminPasswordDisp()
     {
         System.out.println("\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
@@ -83,7 +84,9 @@ public class SemiAdmin
         adminPasswordDisp();
         adminPassword();
     }
+	*/
     // 관리자 비밀번호 입력 메소드
+	/*
     public void adminPassword()
     {
         try
@@ -93,24 +96,26 @@ public class SemiAdmin
                 System.out.print("\t▶ 관리자 비밀번호를 입력하세요 : ");
 
                 password = Integer.parseInt(br.readLine());
-                System.out.println();
+                //System.out.println();
 
 
-                if (password != 1234){
-                    System.out.println("\t*** 관리자 비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요. ***");
+                if (password != 1234)
+					{
+                    System.out.println("\t*** 관리자 비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요. ***\n");
+					System.out.println();
                     adminPassword();
-                }
-                System.out.println();
+					}
+                //System.out.println();
             }
             while (password != 1234);
         }
         catch (Exception e)
         {
-            System.out.println("\t▶ 숫자 형태를 입력해주세요.");
+            System.out.println("\t\t*** 숫자 형태를 입력해주세요.***\n");
             adminPassword();
-            System.out.println();
         }
     }
+	*/
 
     // 메뉴 출력 메소드
     public static void menuDisp()
@@ -160,7 +165,7 @@ public class SemiAdmin
         }
         catch (Exception e)
         {
-            System.out.println("\t*** 숫자 형태를 입력해주세요 ***");
+            System.out.println("\n\t*** 숫자 형태를 입력해주세요 ***\n");
             adminSel();
         }
     }
@@ -602,8 +607,8 @@ public class SemiAdmin
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃  [ 남녀별 당일 이용 현황 ]  * 구매자 기준 ┃ ");
         System.out.println("\t┃                                           ┃");
-        System.out.printf("\t┃   * 남성 : %2d명, %3.1f%%                     ┃\n",M,MR);
-        System.out.printf("\t┃   * 여성 : %2d명, %3.1f%%                     ┃\n",F,FR);
+        System.out.printf("\t┃   * 남성 : %2d명, %4.1f%%                    ┃\n",M,MR);
+        System.out.printf("\t┃   * 여성 : %2d명, %4.1f%%                    ┃\n",F,FR);
         System.out.println("\t┃   ┌─────────────┐       ┌─────────────┐   ┃");
         System.out.println("\t┃   │ 1. 관리자 홈│       │ 2. 이용 현황│   ┃");
         System.out.println("\t┃   └─────────────┘       └─────────────┘   ┃");
@@ -1018,7 +1023,11 @@ public class SemiAdmin
             int customerModeSel = Integer.parseInt(br.readLine());
 
             if (customerModeSel == 1)
-                System.out.println("\t키오스크 모드로 진입합니다");
+            {
+                System.out.println("\n\t============================================");
+                System.out.println("\n\t        키오스크 모드로 전환됩니다.         ");
+                System.out.println("\n\t============================================");
+            }
             else if (customerModeSel == 2)
                 resersvationSystem();
             else if (customerModeSel == 3)
@@ -1026,7 +1035,7 @@ public class SemiAdmin
         }
         catch (Exception e)
         {
-            System.out.println("\t*** 숫자 형태를 입력해주세요. ***");
+            System.out.println("\t\t*** 숫자 형태를 입력해주세요. ***");
         }
 
     }// customerMode end
@@ -1037,9 +1046,9 @@ public class SemiAdmin
         System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
         System.out.printf("\t┃  %d년 %d월 %d일                SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
         System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃ ┌───────────┐                             ┃");
-        System.out.println("\t┃ │ Kiosk mode│                             ┃");
-        System.out.println("\t┃ └───────────┘                             ┃");
+        System.out.println("\t┃ ┌───────────────┐                         ┃");
+        System.out.println("\t┃ │ SS Hotel Kiosk┃                         ┃");
+        System.out.println("\t┃ └───────────────┘                         ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃           Welcome to SS Hotel :)          ┃");
         System.out.println("\t┃                                           ┃");
@@ -1084,10 +1093,10 @@ public class SemiAdmin
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃           Welcome to SS Hotel :)          ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃		                                   ┃");
+        System.out.println("\t┃                                           ┃");
         System.out.println("\t┃		                                   ┃");
         System.out.println("\t┃  안녕하세요!                              ┃");
-        System.out.println("\t┃		                                   ┃");
+        System.out.println("\t┃                                           ┃");
         System.out.println("\t┃  SS HOTEL 온라인 예약 페이지입니다.       ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
@@ -1115,4 +1124,3 @@ public class SemiAdmin
         System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
     }
 }
-
