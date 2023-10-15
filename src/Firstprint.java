@@ -22,6 +22,11 @@ public class Firstprint {
 
 
                 if (password != 1234){
+                    if(password == 0){
+                        System.out.println("프로그램을 종료합니다");
+                        Main.CODE = 1;
+                        return;
+                    }
                     System.out.println("\t*** 관리자 비밀번호가 일치하지 않습니다. 비밀번호를 확인해주세요. ***");
                     System.out.println();
                     adminPassword();
