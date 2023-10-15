@@ -95,12 +95,14 @@ public class Main{
                             reList.putMemberInfo(reNum);                        // 회원인 경우) 예약번호, 예약자 객체 생성
                             pay = new Pay(roomMap, cusArray, stockArray, reNum);
                             pay.payRoomOnly();
+                            S = 0;
                             break;
                         } else if (R == 3) {
                             reList.setReNum(reNum);
                             reList.putInfo();                                  // 비회원인 경우) 예약번호, 예약자 객체 생성
                             pay = new Pay(roomMap, cusArray, stockArray, reNum);
                             pay.payRoomOnly();
+                            S = 0;
                             break;
                         }
                 }

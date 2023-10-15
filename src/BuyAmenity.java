@@ -222,7 +222,7 @@ public class BuyAmenity {
                 System.out.println("\t┃                                  SS HOTEL ┃");
                 System.out.println("\t┃                                           ┃");
                 System.out.println("\t┃                                           ┃");
-                System.out.printf("\t┃ ▷ 선택한 어메니티 : %6s           ┃\n", itemName);
+                System.out.printf("\t┃ ▷ 선택한 어메니티 : %7s          ┃\n", itemName);
                 System.out.println("\t┃                                           ┃");
                 System.out.println("\t┃                                           ┃");
                 System.out.println("\t┃                                           ┃");
@@ -254,7 +254,7 @@ public class BuyAmenity {
                     }
 
                 } catch (NumberFormatException e) {
-                    System.out.println("\t● 숫자형태로 입력해주세요");
+                    System.out.println("\n\t*** 숫자형태로 입력해 주세요. ***");
                     addAmenity();
                 }
 
@@ -284,7 +284,7 @@ public class BuyAmenity {
                     stockArray[3] -= num;
                 }
                 else {
-                    System.out.println("\t● 재고가 부족합니다.");
+                    System.out.println("\t*** 재고가 부족합니다. ***");
                 }
 
                 if (!itemTrue) {
@@ -296,9 +296,9 @@ public class BuyAmenity {
                 System.out.println("\t┃                                  SS HOTEL ┃");
                 System.out.println("\t┃                                           ┃");
                 System.out.println("\t┃                                           ┃");
-                System.out.printf("\t┃ ▷ 선택한 어메니티 : %6s           ┃\n", itemName);
+                System.out.printf("\t┃ ▷ 선택한 어메니티 : %7s          ┃\n", itemName);
                 System.out.println("\t┃                                           ┃");
-                System.out.printf("\t┃ ▷ 입력한 수량 : %2d                      ┃\n", num);
+                System.out.printf("\t┃ ▷ 입력한 수량 : %3d개                    ┃\n", num);
                 System.out.println("\t┃                                           ┃");
                 System.out.println("\t┃                                           ┃");
                 System.out.println("\t┃ ▷ 추가 구매를 진행하시겠습니까?          ┃");
@@ -319,7 +319,7 @@ public class BuyAmenity {
 
     public void ChBreakfast() throws IOException {
         if (cusAmenity[4] == inwon*roomMap.get(reNum).getDays()) {
-            System.out.println("\t● 이미 모든 인원이 조식을 선택하셨습니다.");
+            System.out.println("\n\t*** 이미 모든 인원이 조식을 선택하셨습니다. ***");
             return;
         }
 
@@ -451,13 +451,13 @@ public class BuyAmenity {
             con = br.readLine().toUpperCase();
 
             if (con.equals("Y")) {
-                System.out.print("\t● 제품명을 입력해 주세요 : ");
+                System.out.print("\n\t● 제품명을 입력해 주세요 : ");
                 itemName = br.readLine();
 
                 for (int i = 0; i < vt.size(); i++) {
                     Amenity_kinds amenity = vt.get(i);
                     if (amenity.name.equals(itemName)) {
-                        System.out.print("\t● 취소하고 싶은 수량을 입력해 주세요. : ");
+                        System.out.print("\n\t● 취소하고 싶은 수량을 입력해 주세요. : ");
                         count = Integer.parseInt(br.readLine());
 
                         // 뺄 수량 확인
@@ -518,11 +518,11 @@ public class BuyAmenity {
 
                 if (dayMeal <= cusAmenity[4]) {
                     cusAmenity[4] -= dayMeal; //하루동안 먹은 조식 총 인원
-                    System.out.printf("\n\t● 조식 이용권의 수량을 %d개 만큼 취소했습니다.\n",dayMeal);
+                    System.out.printf("\n\t*** 조식 이용권의 수량을 %d개 만큼 취소했습니다. ***",dayMeal);
 
                     if (cusAmenity[4] == 0){
-                        System.out.println("\n\t● 조식 이용권 수량이 전부 취소 되었습니다.");
-                        breakfastcheck = "\t● 조식을 선택하지 않았습니다";
+                        System.out.println("\n\t*** 조식 이용권 수량이 전부 취소 되었습니다. ***");
+                        breakfastcheck = "\t조식을 선택하지 않았습니다.";
                         hasBreakfast = false;
                     }
 
@@ -543,16 +543,16 @@ public class BuyAmenity {
 
                 if (dayMeal <= cusAmenity[5]) {
                     cusAmenity[5] -= dayMeal; //하루동안 디너 & 바 먹은 총 인원
-                    System.out.printf("\n\t● 디너 & 바 이용권의 수량을 %d개 만큼 취소했습니다.\n",dayMeal);
+                    System.out.printf("\n\t*** 디너 & 바 이용권의 수량을 %d개 만큼 취소했습니다. ***",dayMeal);
 
                     if (cusAmenity[5] == 0){
-                        System.out.println("\n\t● 디너 & 바 이용권 수량이 전부 취소 되었습니다.");
-                        dinner_bar = "\t● 디너 & 바를 신청하지 않았습니다.";
+                        System.out.println("\n\t*** 디너 & 바 이용권 수량이 전부 취소 되었습니다. ***");
+                        dinner_bar = "\t  디너 & 바를 신청하지 않았습니다.";
                         hasdinner_bar = false;
                     }
 
                 } else {
-                    System.out.println("\n\t● 그 이상 만큼 제외 할 수 없습니다.");
+                    System.out.println("\n\t*** 입력하신 수량은 장바구니에 담긴 수량을 초과하였습니다. ***");
                 }
             }
         }
@@ -560,19 +560,20 @@ public class BuyAmenity {
 
     public void Check_Menu() throws IOException { // 장바구니 확인 메서드
         System.out.println("\n\n\t========== 장바구니 내역 확인 ==========");
+        System.out.println("\n\t[ 어메니티 ]\n");
 
         if (vt.isEmpty()) {
-            System.out.println("\n\t[ 어메니티 ]");
-            System.out.println("\t● 선택한 상품이 없습니다.");
+            System.out.println("\n\t* 선택한 상품이 없습니다.");
         }
 
         for (Amenity_kinds str : vt) {
-            System.out.println("\t● "+str);
+            System.out.println("\t* "+str);
         }
 
         System.out.println("\n\n\t[ 식사권 ]");
-        System.out.println("\n\t▶ 조식 이용권 : "+ cusAmenity[4] + " 매");
-        System.out.println("\n\t▶ 디너 & 바 이용권: " + cusAmenity[5] + " 매");
+        System.out.println("\n\t* 조식 이용권 : "+ cusAmenity[4] + " 매");
+        System.out.println("\t* 디너 & 바 이용권: " + cusAmenity[5] + " 매");
+        System.out.println("\n\t========================================");
 
     }
 

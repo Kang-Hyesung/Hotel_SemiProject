@@ -99,28 +99,26 @@ public class ChooseRoom implements BuyRoom{
         }
     } //toChangeRoomEmpty end
 
-    public void printRoom(){  // 구매 시점의 숙박 가능 여부 출력 □ ■
+    public void printRoom() {  // 구매 시점의 숙박 가능 여부 출력 □ ■
         System.out.println("\n\t┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-        System.out.printf("\t┃   %d년 %d월 %d일                         SS HOTEL ┃\n", todayDate/10000, (todayDate%10000)/100, todayDate%100);
+        System.out.printf("\t┃   %d년 %d월 %d일                         SS HOTEL ┃\n", todayDate / 10000, (todayDate % 10000) / 100, todayDate % 100);
         System.out.println("\t┃                                                     ┃");
         System.out.println("\t┃===================== 객실 선택 =====================┃");
         System.out.println("\t┃                                                     ┃");
 
-        for (int i = 1; i <= 4; i++)
-        {
-            if(i == 1)
-            {
+        for (int i = 1; i <= 4; i++) {
+            if (i == 1) {
                 System.out.println("\t┃   [ Deluxe (2인 기준) ]                             ┃ ");
                 System.out.println("\t┃   * 101호 ~ 105호 : Twin , 106호 ~ 110호 : Double   ┃ ");
             }
-            if(i == 2)
+            if (i == 2)
                 System.out.println("\t┃   [ Superior (2 ~ 3인 기준) ]                       ┃");
-            if(i == 3)
+            if (i == 3)
                 System.out.println("\t┃   [ Family (4 ~ 6인 기준) ]                         ┃");
-            if(i == 4)
+            if (i == 4)
                 System.out.println("\t┃   [ Suite (2 ~ 3인 기준) ]                          ┃");
 
-            for(int j = 1; j <= 10; j++){
+            for (int j = 1; j <= 10; j++) {
                 boolean flag = false;
                 Iterator<String> it = roomMap.keySet().iterator();
                 Calendar start = Calendar.getInstance();
@@ -131,12 +129,10 @@ public class ChooseRoom implements BuyRoom{
                 if (j == 1)
                     System.out.print("\t┃  ");
 
-                while(it.hasNext())
-                {
+                while (it.hasNext()) {
                     String key = it.next();
-                    if(roomMap.get(key).getRoomNum() == 100 * i + j)
-                    {
-                        if( (startDate >= (roomMap.get(key).getIntStartDate()) && startDate < (roomMap.get(key).getIntEndDate())) ||
+                    if (roomMap.get(key).getRoomNum() == 100 * i + j) {
+                        if ((startDate >= (roomMap.get(key).getIntStartDate()) && startDate < (roomMap.get(key).getIntEndDate())) ||
                                 (endDate > (roomMap.get(key).getIntStartDate()) && endDate <= (roomMap.get(key).getIntEndDate()))) {
                             System.out.print(" ■  ");
                             roomCheck[i - 1][j - 1] = true;
@@ -145,7 +141,7 @@ public class ChooseRoom implements BuyRoom{
                     }
                 }
 
-                if(!flag) {
+                if (!flag) {
                     System.out.print(" □  ");
                     if (j == 10)
                         System.out.print(" ┃");
@@ -153,8 +149,7 @@ public class ChooseRoom implements BuyRoom{
             }
             System.out.println();
 
-            for (int j = 1; j <= 10; j++)
-            {
+            for (int j = 1; j <= 10; j++) {
                 if (j == 1)
                     System.out.printf("\t┃  ");
                 System.out.printf("%d  ", 100 * i + j);
@@ -177,29 +172,29 @@ public class ChooseRoom implements BuyRoom{
             row    = roomNum % 100;               // 호수
 
             if(roomCheck[column - 1][row - 1]){
-                System.out.println("이미 선택된 객실입니다 다시 선택하세요");
+                System.out.println("\n\t*** 이미 선택된 객실입니다 다시 선택하세요. ***\n");
                 inputRoomNum();
             }
 
             if((roomNum / 100 == 1) &&  Integer.parseInt(inwon) > 2){
-                System.out.println("Deluxe등급의 객실은 2인까지 가능");
+                System.out.println("\n\t*** Deluxe등급의 객실은 2인까지 숙박이 가능합니다. ***");
                 inputRoomNum();
             }
             else if((roomNum / 100 == 2) &&  Integer.parseInt(inwon) > 3){
-                System.out.println("Superior등급의 객실은 3인까지 가능");
+                System.out.println("\n\t*** Superior등급의 객실은 3인까지 숙박이 가능합니다. ***");
                 inputRoomNum();
             }
             else if((roomNum / 100 == 3) &&  Integer.parseInt(inwon) > 6){
-                System.out.println("Family등급의 객실은 6인까지 가능");
+                System.out.println("\n\t*** Family등급의 객실은 6인까지 숙박이가능합니다. ***");
                 inputRoomNum();
             }
             else if((roomNum / 100 == 4) &&  Integer.parseInt(inwon) > 3){
-                System.out.println("Suite등급의 객실은 3인까지 가능");
+                System.out.println("\n\t*** Suite등급의 객실은 3인까지 숙박이 가능합니다. ***");
                 inputRoomNum();
             }
         }
         catch (Exception e){
-            System.out.println("정수 형태로 입력해 주세요");
+            System.out.println("\n\t*** 정수 형태로 입력해 주세요. ***");
             inputRoomNum();
         }
     }
