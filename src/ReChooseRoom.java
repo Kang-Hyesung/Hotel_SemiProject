@@ -115,13 +115,25 @@ public class ReChooseRoom implements BuyRoom{
         for (int i = 1; i <= 4; i++)
         {
             if(i == 1)
-                System.out.println("\t┃   Deluxe (2인 기준)                                 ┃ ");
+            {
+                System.out.println("\t┃   [ Deluxe (2인 기준) ]                             ┃ ");
+                System.out.println("\t┃   * 101호~105호 : Twin , 106호~110호 : Double       ┃ ");
+            }
             if(i == 2)
-                System.out.println("\t┃   Superior (2 ~ 3인 기준)                           ┃");
+            {
+                System.out.println("\t┃   [ Superior (2 ~ 3인 기준) ]                       ┃");
+                System.out.println("\t┃   * 201호~205호 : Twin&Double, 206호~210호:3 Single ┃");
+            }
             if(i == 3)
-                System.out.println("\t┃   Family (4 ~ 6인 기준)                             ┃");
+            {
+                System.out.println("\t┃   [ Family (4 ~ 6인 기준) ]                         ┃");
+                System.out.println("\t┃   * 301호~310호 : 2 King                            ┃");
+            }
             if(i == 4)
-                System.out.println("\t┃   Suite (2 ~ 3인 기준)                              ┃");
+            {
+                System.out.println("\t┃   [ Suite (2 ~ 3인 기준) ]                          ┃");
+                System.out.println("\t┃   * 401호~405호 : King , 406호~410호 : 2 Double     ┃");
+            }
 
             for(int j = 1; j <= 10; j++){
                 boolean flag = false;
@@ -208,36 +220,33 @@ public class ReChooseRoom implements BuyRoom{
         }
     }
 
-    public String putRoom(){
+    public String putRoom(){                          // 예약번호를 랜덤으로 생성하여 객실 객체 생성
         Random rd = new Random();
-        do {// 예약의 경우 5000 ~ 9999 부여
-            int i = rd.nextInt(5000) + 5000;
+        do {										  // 예약의 경우 1000 ~ 4999 부여
+            int i = rd.nextInt(4000) + 1000;
             reNum = String.format("%d%02d%02d%04d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE),i);
         }
         while (roomMap.containsKey(reNum));
 
-
         if(column == 1)
             if(row <= 5)
-                roomMap.put(reNum, new Deluxe(roomNum, "Twin", sukbak, afDay, inwon));
+                roomMap.put(reNum, new Deluxe(roomNum, "Twin", sukbak, inwon));
             else
-                roomMap.put(reNum, new Deluxe(roomNum, "Double", sukbak, afDay, inwon));
+                roomMap.put(reNum, new Deluxe(roomNum, "Double", sukbak, inwon));
         else if(column == 2)
             if(row <= 5)
-                roomMap.put(reNum, new Superior(roomNum, "Twin + Double", sukbak, afDay, inwon));
+                roomMap.put(reNum, new Superior(roomNum, "Twin & Double", sukbak, inwon));
             else
-                roomMap.put(reNum, new Superior(roomNum, "3 Twin", sukbak, afDay, inwon));
+                roomMap.put(reNum, new Superior(roomNum, "3 Single", sukbak, inwon));
         else if(column == 3)
-            roomMap.put(reNum, new Family(roomNum, "2 King", sukbak, afDay, inwon));
+            roomMap.put(reNum, new Family(roomNum, "2 King", sukbak, inwon));
         else if(column == 4)
             if(row <= 5)
-                roomMap.put(reNum, new Superior(roomNum, "King", sukbak, afDay, inwon));
+                roomMap.put(reNum, new Suite(roomNum, "King", sukbak, inwon));
             else
-                roomMap.put(reNum, new Superior(roomNum, "2 Double", sukbak, afDay, inwon));
-
+                roomMap.put(reNum, new Suite(roomNum, "2 Double", sukbak, inwon));
 
         return reNum;
-
     }
 
     public void afterDay() {

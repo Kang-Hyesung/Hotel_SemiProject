@@ -107,16 +107,26 @@ public class ChooseRoom implements BuyRoom{
         System.out.println("\t┃                                                     ┃");
 
         for (int i = 1; i <= 4; i++) {
-            if (i == 1) {
+            if(i == 1)
+            {
                 System.out.println("\t┃   [ Deluxe (2인 기준) ]                             ┃ ");
-                System.out.println("\t┃   * 101호 ~ 105호 : Twin , 106호 ~ 110호 : Double   ┃ ");
+                System.out.println("\t┃   * 101호~105호 : Twin , 106호~110호 : Double       ┃ ");
             }
-            if (i == 2)
+            if(i == 2)
+            {
                 System.out.println("\t┃   [ Superior (2 ~ 3인 기준) ]                       ┃");
-            if (i == 3)
+                System.out.println("\t┃   * 201호~205호 : Twin&Double, 206호~210호:3 Single ┃");
+            }
+            if(i == 3)
+            {
                 System.out.println("\t┃   [ Family (4 ~ 6인 기준) ]                         ┃");
-            if (i == 4)
+                System.out.println("\t┃   * 301호~310호 : 2 King                            ┃");
+            }
+            if(i == 4)
+            {
                 System.out.println("\t┃   [ Suite (2 ~ 3인 기준) ]                          ┃");
+                System.out.println("\t┃   * 401호~405호 : King , 406호~410호 : 2 Double     ┃");
+            }
 
             for (int j = 1; j <= 10; j++) {
                 boolean flag = false;
@@ -215,9 +225,9 @@ public class ChooseRoom implements BuyRoom{
                 roomMap.put(reNum, new Deluxe(roomNum, "Double", sukbak, inwon));
         else if(column == 2)
             if(row <= 5)
-                roomMap.put(reNum, new Superior(roomNum, "Twin + Double", sukbak, inwon));
+                roomMap.put(reNum, new Superior(roomNum, "Twin & Double", sukbak, inwon));
             else
-                roomMap.put(reNum, new Superior(roomNum, "3 Twin", sukbak, inwon));
+                roomMap.put(reNum, new Superior(roomNum, "3 Single", sukbak, inwon));
         else if(column == 3)
             roomMap.put(reNum, new Family(roomNum, "2 King", sukbak, inwon));
         else if(column == 4)
