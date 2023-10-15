@@ -4,7 +4,6 @@ import java.util.Hashtable;
 
 public class Main{
     static int CODE;
-    static int put;
     public static void main(String[] args) throws Exception {
         while (true) {
             FileInputOutput inOut = new FileInputOutput();
@@ -84,7 +83,7 @@ public class Main{
                         }
 
                     case 2:
-                        reList.reserveCheck();                              // 예약번호 확인
+                        reNum =  reList.reserveCheck();                              // 예약번호 확인
                         buy = new BuyAmenity(roomMap, cusArray, stockArray, reNum);
                         buy.startProgram();
                         break;          // 확인하고 어매니티 구매로 이동
