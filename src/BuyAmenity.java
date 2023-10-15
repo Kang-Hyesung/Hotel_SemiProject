@@ -60,6 +60,9 @@ public class BuyAmenity {
         if (cusArray.get(reNum) == null){
             this.cusAmenity = new int [6];
         }
+        else{
+            this.cusAmenity = cusArray.get(reNum);
+        }
     }
 
     // 주요 속성 구성 --> 완료
