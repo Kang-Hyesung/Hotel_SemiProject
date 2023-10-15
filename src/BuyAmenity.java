@@ -200,7 +200,7 @@ public class BuyAmenity {
             System.out.println("\t┃                                  SS HOTEL ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
-            System.out.println("\t┃ [칫솔치약, 샤워타월, 면도기, 객실 슬리퍼] ┃");
+            System.out.println("\t┃ [칫솔치약, 샤워타올, 면도기, 객실 슬리퍼] ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
             System.out.println("\t┃                                           ┃");
