@@ -607,8 +607,8 @@ public class SemiAdmin
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃  [ 남녀별 당일 이용 현황 ]  * 구매자 기준 ┃ ");
         System.out.println("\t┃                                           ┃");
-        System.out.printf("\t┃   * 남성 : %2d명, %4.1f%%                    ┃\n",M,MR);
-        System.out.printf("\t┃   * 여성 : %2d명, %4.1f%%                    ┃\n",F,FR);
+        System.out.printf("\t┃   * 남성 : %2d명, %5.1f%%                   ┃\n",M,MR);
+        System.out.printf("\t┃   * 여성 : %2d명, %5.1f%%                   ┃\n",F,FR);
         System.out.println("\t┃   ┌─────────────┐       ┌─────────────┐   ┃");
         System.out.println("\t┃   │ 1. 관리자 홈│       │ 2. 이용 현황│   ┃");
         System.out.println("\t┃   └─────────────┘       └─────────────┘   ┃");

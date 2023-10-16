@@ -84,6 +84,8 @@ public class Main{
                         reNum =  reList.reserveCheck();                              // 예약번호 확인
                         buy = new BuyAmenity(roomMap, cusArray, stockArray, reNum);
                         buy.startProgram();
+                        pay = new Pay(roomMap, cusArray, stockArray, reNum);
+                        pay.payAmnity();
                         break;          // 확인하고 어매니티 구매로 이동
 
                     // 예약하는 경우

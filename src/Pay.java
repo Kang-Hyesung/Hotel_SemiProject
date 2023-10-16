@@ -46,11 +46,11 @@ public class Pay {
     // 어메니티 및 식사 구매 내역 정보
     public void printCartAmenity()
     {
+        System.out.println("\n\n\t[어메니티 및 식사 구매 정보]");
         for (int i=0; i<6 ;i++)
         {
             if (cusArray.get(reNum)[i] != 0)
             {
-                System.out.println("\n\n\t[어메니티 및 식사 구매 정보]");
                 if (i == 0)
                     System.out.println("\t* 칫솔&치약 : " + cusArray.get(reNum)[i] * 1000 + "원");
                 if (i == 1)

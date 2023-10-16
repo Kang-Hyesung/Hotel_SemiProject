@@ -152,10 +152,6 @@ public class Reserve_list
                             System.out.println("\t┃                                           ┃");
                             System.out.println("\t┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
 
-
-
-
-                            System.out.println("\t어메니티구매창으로..");
                             outRenum[0] = "1";
                             outRenum[1] = reNum;
                         }

@@ -230,21 +230,21 @@ public class ReChooseRoom implements BuyRoom{
 
         if(column == 1)
             if(row <= 5)
-                roomMap.put(reNum, new Deluxe(roomNum, "Twin", sukbak, inwon));
+                roomMap.put(reNum, new Deluxe(roomNum, "Twin", sukbak,afDay, inwon));
             else
-                roomMap.put(reNum, new Deluxe(roomNum, "Double", sukbak, inwon));
+                roomMap.put(reNum, new Deluxe(roomNum, "Double", sukbak,afDay, inwon));
         else if(column == 2)
             if(row <= 5)
-                roomMap.put(reNum, new Superior(roomNum, "Twin & Double", sukbak, inwon));
+                roomMap.put(reNum, new Superior(roomNum, "Twin & Double", sukbak,afDay, inwon));
             else
-                roomMap.put(reNum, new Superior(roomNum, "3 Single", sukbak, inwon));
+                roomMap.put(reNum, new Superior(roomNum, "3 Single", sukbak,afDay, inwon));
         else if(column == 3)
-            roomMap.put(reNum, new Family(roomNum, "2 King", sukbak, inwon));
+            roomMap.put(reNum, new Family(roomNum, "2 King", sukbak,afDay, inwon));
         else if(column == 4)
             if(row <= 5)
-                roomMap.put(reNum, new Suite(roomNum, "King", sukbak, inwon));
+                roomMap.put(reNum, new Suite(roomNum, "King", sukbak,afDay, inwon));
             else
-                roomMap.put(reNum, new Suite(roomNum, "2 Double", sukbak, inwon));
+                roomMap.put(reNum, new Suite(roomNum, "2 Double", sukbak,afDay, inwon));
 
         return reNum;
     }
