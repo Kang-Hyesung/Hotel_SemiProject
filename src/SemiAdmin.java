@@ -1094,7 +1094,7 @@ public class SemiAdmin
         System.out.println("\t┃           Welcome to SS Hotel :)          ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃                                           ┃");
-        System.out.println("\t┃		                                   ┃");
+        System.out.println("\t┃		                            ┃");
         System.out.println("\t┃  안녕하세요!                              ┃");
         System.out.println("\t┃                                           ┃");
         System.out.println("\t┃  SS HOTEL 온라인 예약 페이지입니다.       ┃");
