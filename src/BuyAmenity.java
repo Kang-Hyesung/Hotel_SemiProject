@@ -354,7 +354,7 @@ public class BuyAmenity {
                 System.out.println("\t┃    수량을 입력해 주세요.                  ┃");
                 System.out.println("\t┃                                           ┃");
                 System.out.println("\t┃                                           ┃");
-                System.out.printf("\t┃    * 구매 가능한 최대 수량 : %2d        ┃\n", total);
+                System.out.printf("\t┃    * 구매 가능한 최대 수량 : %2d           ┃\n", total);
                 System.out.println("\t┃      ( 숙박 인원 * 숙박 일 수 )           ┃");
                 System.out.println("\t┃                                           ┃");
                 System.out.println("\t┃                                           ┃");
