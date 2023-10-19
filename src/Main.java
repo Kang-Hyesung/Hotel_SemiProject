@@ -1,7 +1,4 @@
-import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Calendar;
 
 public class Main{
     public static void main(String[] args) throws Exception {
@@ -10,10 +7,15 @@ public class Main{
 
         //Hashtable<String, Room> roomMap = new Hashtable<>();
 
-        ChooseRoom chooseRoom = new ChooseRoom();
+        ChooseRoom_V2 chooseRoom = new ChooseRoom_V2(roomMap);
 
-        roomMap = chooseRoom.buyRoom(roomMap);					// void 형으로 바꿔도 될 듯
+        //chooseRoom.buyRoom(roomMap);					                // void 형으로 바꿔도 될 듯
         // 날짜 비교해 빈 방 만들고 구매된 방 채운 후 방 구매
+
+        chooseRoom.inputSukbakInwon();
+        chooseRoom.printRoom();
+        chooseRoom.inputRoomNum();
+        chooseRoom.putRoom();
 
         inOut.fileOut(roomMap);                                 // 추가한 Map 직렬화
         inOut = null;

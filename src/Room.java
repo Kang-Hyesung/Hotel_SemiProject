@@ -31,7 +31,7 @@ public class Room implements Serializable {
     }
 
 
-    protected String roomNum;     // 객실 호수
+    protected int roomNum;     // 객실 호수
     protected String grade;       // 객실의 등급
     protected String bedType;     // 침대 타입
     protected int num;            // 객실의 사용가능 인원
@@ -57,11 +57,11 @@ public class Room implements Serializable {
         return Integer.parseInt(String.format("%d%02d%02d", startYear, startMonth, startDay));
     }
 
-    public String getRoomNum() {
+    public int getRoomNum() {
         return roomNum;
     }
 
-    public void setRoomNum(String roomNum) {
+    public void setRoomNum(int roomNum) {
         this.roomNum = roomNum;
     }
 
@@ -137,14 +137,14 @@ class Deluxe extends Room{
         roomRe = false;
     }
 
-    Deluxe(String roomNum, String bedType, int days) {
+    Deluxe(int roomNum, String bedType, int days) {
         super(days);
         this.roomNum = roomNum;
         this.bedType = bedType;
         this.days = days;
     }
 
-    Deluxe(String roomNum, String bedType, int days, int afDay) {
+    Deluxe(int roomNum, String bedType, int days, int afDay) {
         super(days, afDay);
         this.roomNum = roomNum;
         this.bedType = bedType;
@@ -162,14 +162,14 @@ class Superior extends Room{
         roomRe = false;
     }
 
-    Superior(String roomNum, String bedType, int days) {
+    Superior(int roomNum, String bedType, int days) {
         super(days);
         this.roomNum = roomNum;
         this.bedType = bedType;
         this.days = days;
     }
 
-    Superior(String roomNum, String bedType, int days, int afDay) {
+    Superior(int roomNum, String bedType, int days, int afDay) {
         super(days, afDay);
         this.roomNum = roomNum;
         this.bedType = bedType;
@@ -188,14 +188,14 @@ class Family extends Room{
         roomRe = false;
     }
 
-    Family(String roomNum, String bedType, int days) {
+    Family(int roomNum, String bedType, int days) {
         super(days);
         this.roomNum = roomNum;
         this.bedType = bedType;
         this.days = days;
     }
 
-    Family(String roomNum, String bedType, int days, int afDay) {
+    Family(int roomNum, String bedType, int days, int afDay) {
         super(days, afDay);
         this.roomNum = roomNum;
         this.bedType = bedType;
@@ -214,14 +214,14 @@ class Suite extends Room{
         roomRe = false;
     }
 
-    Suite(String roomNum, String bedType, int days) {
+    Suite(int roomNum, String bedType, int days) {
         super(days);
         this.roomNum = roomNum;
         this.bedType = bedType;
         this.days = days;
     }
 
-    Suite(String roomNum, String bedType, int days, int afDay) {
+    Suite(int roomNum, String bedType, int days, int afDay) {
         super(days, afDay);
         this.roomNum = roomNum;
         this.bedType = bedType;
