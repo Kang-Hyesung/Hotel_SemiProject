@@ -133,7 +133,7 @@
 //                System.out.printf("%d ", 100 * i + j);
 //            }
 //            System.out.println("\n");
-//
+////
 ////            if(num >= 4)
 ////                if(i == 3)
 ////                    break;

@@ -2,7 +2,7 @@ import java.io.Serializable;
 import java.util.Calendar;
 
 public class Room implements Serializable {
-
+//
     private static final long serialVersionUID = -3406591124049958401l;
     public Room(int days) {
         Calendar now = Calendar.getInstance();
