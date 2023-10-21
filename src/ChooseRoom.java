@@ -164,8 +164,13 @@ public class ChooseRoom {
 
     }
 
-    public void getImformation(){
+    public void getInformation(){
         System.out.println(roomMap.get(reNum));
+    }
+
+    public void removeRoom(){
+        roomMap.remove(reNum);
+        reNumList.remove(reNum);
     }
 
 

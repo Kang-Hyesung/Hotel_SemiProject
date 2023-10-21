@@ -6,15 +6,14 @@ public class Main{
         Hashtable<String, Room> roomMap = inOut.fileIn();       // 역직렬화로 Hashtable 가져오기
 
         //Hashtable<String, Room> roomMap = new Hashtable<>();
+        SemiAdmin admin = new SemiAdmin(roomMap);
+        admin.menuDisp();
+        admin.adminPassword();
+        admin.adminSel();
+        admin.adminRun(roomMap);
 
-        ChooseRoom chooseRoom = new ChooseRoom(roomMap);
 
-        chooseRoom.inputSukbakInwon();
-        chooseRoom.toChangeRoomEmpty();
-        chooseRoom.printRoom();
-        chooseRoom.inputRoomNum();
-        chooseRoom.putRoom();
-        chooseRoom.getImformation();
+
 
         inOut.fileOut(roomMap);                                 // 추가한 Map 직렬화
         inOut = null;
