@@ -1,20 +1,20 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Calendar;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Random;
+import java.sql.SQLOutput;
+import java.util.*;
 
 //현장구매 클래스
 public class ChooseRoom {
-    int sukbak;       // 숙박일수
-    int inwon;        // 인원
-    int roomNum;   // 방 호수
-
-    int column;            // 층
-    int row;               // 호수
+    int sukbak;             // 숙박일수
+    int inwon;              // 인원
+    int roomNum;            // 방 호수
+    int afDay;              // 며칠뒤부터 시작?
+    String afDate;          // afDay 스트링형
+    int column;             // 층
+    int row;                // 호수
     String reNum;           // 예약 번호
-    Hashtable<String, Room> roomMap;        // 예약번호, 객실 객체 자료 구조
+    Hashtable<String, Room> roomMap;                     // 예약번호, 객실 객체 자료 구조
+    Set<String> reNumList = new HashSet<>();             // 예약번호 담을 자료구조
     Calendar today = Calendar.getInstance();
     int todayDate = Integer.parseInt(String.format("%d%02d%02d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE)));
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -137,8 +137,11 @@ public class ChooseRoom {
 
     public void putRoom(){
         Random rd = new Random();
-        int i = rd.nextInt(8999) + 1000;
-        reNum = String.format("%d%02d%02d%04d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE),i);
+        do {
+            int i = rd.nextInt(9000) + 1000;
+            reNum = String.format("%d%02d%02d%04d", today.get(Calendar.YEAR), today.get(Calendar.MONTH) + 1, today.get(Calendar.DATE),i);
+        }
+        while (!reNumList.add(reNum));
 
 
         if(column == 1)
