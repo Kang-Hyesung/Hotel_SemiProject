@@ -122,7 +122,7 @@ public class Room implements Serializable {
                 ", 객실 가격=" + roomPrice +
                 '}' + "\n" + String.format("숙박 시작 : %d년 %02d월 %02d일\n", startYear, startMonth, startDay)
                 + String.format("숙박 종료 : %d년 %02d월 %02d일", endYear, endMonth, endDay)
-                + roomRe;
+                ;
     }
 
 
